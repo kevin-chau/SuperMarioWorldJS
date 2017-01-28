@@ -1,7 +1,7 @@
 {"frames": [
 {
 	"filename": "marioluigi.png",
-	"frame": {"x":129,"y":0,"w":14,"h":20},
+	"frame": {"x":14,"y":10,"w":14,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":20},

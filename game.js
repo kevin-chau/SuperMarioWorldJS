@@ -14,7 +14,7 @@ function preload() {
   // SCALING
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-  game.scale.setUserScale(4, 4);
+  game.scale.setUserScale(3, 3);
 
   // enable crisp rendering
   game.renderer.renderSession.roundPixels = false;
@@ -54,9 +54,9 @@ function create() {
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
-  player.direction = 'right';
-	player.animations.add('left', [0,3], 10, true);
-  player.animations.add('right', [7,4], 10, true);
+  // player.direction = 'right';
+	// player.animations.add('left', [0,3], 10, true);
+  // player.animations.add('right', [7,4], 10, true);
   // player.animations.play('down', [10], 10, true);
   // player.animations.add('up', [15], 1, true);
 
@@ -99,23 +99,24 @@ function update() {
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown){
 		player.body.velocity.x = -150;
-		player.animations.play('left');
+		// player.animations.play('left');
     player.direction = 'left';
 	}
 	else if (cursors.right.isDown)
 	{
 		player.body.velocity.x = 150;
-		player.animations.play('right');
+		// player.animations.play('right');
     player.direction = 'right';
 	}
   else if (cursors.down.isDown)
   {
     player.animations.stop();
-    if (player.direction === 'left'){
-      player.frame = 10;
-    } else if (player.direction === 'right'){
-		  player.frame = 15;
-    }
+    // if (player.direction === 'left'){
+    //   player.frame = 10;
+    // } else if (player.direction === 'right'){
+		//   player.frame = 15;
+    // }
+    player.frame = 0;
   }
 	else
 	{
