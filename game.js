@@ -130,7 +130,11 @@ function update() {
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -200;
-    // player.animations.play('up');
+    if (player.direction === 'left'){
+      player.frame = 12;
+    } else if (player.direction === 'right'){
+		  player.frame = 13;
+    }
 	}
 
 	game.physics.arcade.collide(stars, platforms);
