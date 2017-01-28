@@ -57,6 +57,7 @@ function create() {
   player.direction = 'right';
 	player.animations.add('left', [0,3], 10, true);
   player.animations.add('right', [7,4], 10, true);
+  // player.animations.play('down', [10], 10, true);
   // player.animations.add('up', [15], 1, true);
 
 	/*
@@ -107,6 +108,15 @@ function update() {
 		player.animations.play('right');
     player.direction = 'right';
 	}
+  else if (cursors.down.isDown)
+  {
+    player.animations.stop();
+    if (player.direction === 'left'){
+      player.frame = 10;
+    } else if (player.direction === 'right'){
+		  player.frame = 15;
+    }
+  }
 	else
 	{
 		player.animations.stop();
@@ -119,7 +129,7 @@ function update() {
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
-		player.body.velocity.y = -350;
+		player.body.velocity.y = -200;
     // player.animations.play('up');
 	}
 
