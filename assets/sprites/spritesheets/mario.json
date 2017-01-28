@@ -1,51 +1,10 @@
 {"frames": [
 {
-	"filename": "mario.png",
+	"filename": "marioluigi.png",
 	"frame": {"x":129,"y":0,"w":14,"h":20},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":20},
 	"sourceSize": {"w":14,"h":20}
-},
-{
-	"filename": "mario.png",
-	"frame": {"x":49,"y":0,"w":15,"h":20},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":20},
-	"sourceSize": {"w":15,"h":20}
-},
-{
-	"filename": "mario.png",
-	"frame": {"x":169,"y":0,"w":14,"h":20},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":20},
-	"sourceSize": {"w":14,"h":20}
-},
-{
-	"filename": "mario.png",
-	"frame": {"x":328,"y":0,"w":15,"h":20},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":20},
-	"sourceSize": {"w":15,"h":20}
-},
-{
-	"filename": "mario.png",
-	"frame": {"x":209,"y":0,"w":14,"h":20},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":20},
-	"sourceSize": {"w":14,"h":20}
-}],
-"meta": {
-	"app": "http://www.codeandweb.com/texturepacker",
-	"version": "1.0",
-	"image": "mario.png",
-	"format": "RGBA8888",
-	"size": {"w":697,"h":64},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:fa3f861caf2cb59ceee9020a3d715468:9f174fe699ed3dc79d14cd6513ea4999:049a1e10ddf44989e4af4e84fecd01e8$"
-}
+}]
 }
