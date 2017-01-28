@@ -9,7 +9,9 @@ function preload() {
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
 	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/marioluigi.png', 'assets/sprites/spritesheets/mario.json');
+	// game.load.atlasJSONArray('mario', 'assets/sprites/images/mario/mario.png', 'assets/sprites/images/mario/mario.json');
 
+	// game.load.spritesheet('mario','assets/sprites/spritesheets/marioluigi.png', 14, 20);
 
   // SCALING
   // scale the game 4x
@@ -100,13 +102,13 @@ function update() {
 	if (cursors.left.isDown){
 		player.body.velocity.x = -150;
 		// player.animations.play('left');
-    player.direction = 'left';
+    // player.direction = 'left';
 	}
 	else if (cursors.right.isDown)
 	{
 		player.body.velocity.x = 150;
 		// player.animations.play('right');
-    player.direction = 'right';
+    // player.direction = 'right';
 	}
   else if (cursors.down.isDown)
   {
@@ -116,26 +118,27 @@ function update() {
     // } else if (player.direction === 'right'){
 		//   player.frame = 15;
     // }
-    player.frame = 0;
+    // player.frame = 0;
   }
 	else
 	{
 		player.animations.stop();
-    if (player.direction === 'left'){
-      player.frame = 3;
-    } else if (player.direction === 'right'){
-		  player.frame = 4;
-    }
+    // if (player.direction === 'left'){
+    //   player.frame = 3;
+    // } else if (player.direction === 'right'){
+		//   player.frame = 4;
+    // }
+		player.frame = 0;
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -200;
-    if (player.direction === 'left'){
-      player.frame = 12;
-    } else if (player.direction === 'right'){
-		  player.frame = 13;
-    }
+    // if (player.direction === 'left'){
+    //   player.frame = 12;
+    // } else if (player.direction === 'right'){
+		//   player.frame = 13;
+    // }
 	}
 
 	game.physics.arcade.collide(stars, platforms);
