@@ -8,13 +8,13 @@ function preload() {
 	game.load.image('sky', 'assets/maps/images/yoshis-island/yoshis-island-1.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
-	game.load.atlasJSONArray('mario', 'assets/sprites/images/mario/mario.png', 'assets/sprites/images/mario/mario.json');
+	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
 
 
   // SCALING
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-  game.scale.setUserScale(2, 2);
+  game.scale.setUserScale(4, 4);
 
   // enable crisp rendering
   game.renderer.renderSession.roundPixels = false;
@@ -54,9 +54,9 @@ function create() {
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
-	player.animations.add('left', [1, 4], 10, true);
-  player.animations.add('right', [5, 8], 10, true);
-  player.animations.add('up', [15], 1, true);
+	player.animations.add('left', [1, 2], 10, true);
+  player.animations.add('right', [3, 4], 10, true);
+  // player.animations.add('up', [15], 1, true);
 
 	/*
 	********************************************
@@ -107,13 +107,13 @@ function update() {
 	else
 	{
 		player.animations.stop();
-		player.frame = 3;
+		player.frame = 0;
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -350;
-    player.animations.play('up');
+    // player.animations.play('up');
 	}
 
 	game.physics.arcade.collide(stars, platforms);
