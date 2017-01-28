@@ -33,15 +33,15 @@ function create() {
 	platforms.enableBody = true;
 
 	// Ground
-	var ground = platforms.create(0, game.world.height - 64, 'ground');
+	var ground = platforms.create(0, game.world.height - 2, 'ground');
 	ground.scale.setTo(2,2);
 	ground.body.immovable = true;
 
 	// Ledges
-	var ledge = platforms.create(400, 400, 'ground');
-	ledge.body.immovable = true;
-	ledge = platforms.create(-150, 250, 'ground');
-	ledge.body.immovable = true;
+	// var ledge = platforms.create(400, 400, 'ground');
+	// ledge.body.immovable = true;
+	// ledge = platforms.create(-150, 250, 'ground');
+	// ledge.body.immovable = true;
 
 	/*
 	********************************************
