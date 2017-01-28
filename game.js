@@ -1,14 +1,24 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 var score = 0;
 var scoreText;
 
 function preload() {
 
-	game.load.image('sky', 'assets/tutorial/sky.png');
+	game.load.image('sky', 'assets/maps/images/yoshis-island/yoshis-island-1.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
-	game.load.spritesheet('dude', 'assets/tutorial/dude.png', 32, 48);
+	game.load.spritesheet('dude', 'assets/sprites/images/mario.png', 32, 48);
+
+
+  // SCALING
+  // scale the game 4x
+  game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+  game.scale.setUserScale(3, 3);
+
+  // enable crisp rendering
+  game.renderer.renderSession.roundPixels = false;
+  Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)
 }
 
 function create() {
