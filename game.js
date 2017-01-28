@@ -1,4 +1,4 @@
-var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
 
 var score = 0;
 var scoreText;
@@ -8,13 +8,13 @@ function preload() {
 	game.load.image('sky', 'assets/maps/images/yoshis-island/yoshis-island-1.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
-	game.load.spritesheet('dude', 'assets/sprites/images/mario.png', 32, 48);
+	game.load.spritesheet('mario', 'assets/sprites/images/mario.png', 40, 20);
 
 
   // SCALING
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-  game.scale.setUserScale(3, 3);
+  game.scale.setUserScale(2, 2);
 
   // enable crisp rendering
   game.renderer.renderSession.roundPixels = false;
@@ -49,13 +49,13 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(32, game.world.height - 150, 'dude');
+	player = game.add.sprite(32, game.world.height - 150, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0.2;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
-	player.animations.add('left', [0, 1, 2, 3], 10, true);
-  player.animations.add('right', [5, 6, 7, 8], 10, true);
+	player.animations.add('left', [1, 4], 10, true);
+  player.animations.add('right', [5, 8], 10, true);
 
 	/*
 	********************************************
@@ -106,7 +106,7 @@ function update() {
 	else
 	{
 		player.animations.stop();
-		player.frame = 4;
+		player.frame = 3;
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
