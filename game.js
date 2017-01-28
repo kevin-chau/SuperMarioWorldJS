@@ -8,7 +8,7 @@ function preload() {
 	game.load.image('sky', 'assets/maps/images/yoshis-island/yoshis-island-1.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
-	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
+	game.load.atlasJSONArray('mario', 'assets/sprites/images/mario/mario.png', 'assets/sprites/images/mario/mario.json');
 
 
   // SCALING
@@ -54,8 +54,8 @@ function create() {
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
-	player.animations.add('left', [1, 2], 10, true);
-  player.animations.add('right', [3, 4], 10, true);
+	player.animations.add('left', [0,3], 10, true);
+  player.animations.add('right', [7,4], 10, true);
   // player.animations.add('up', [15], 1, true);
 
 	/*
@@ -107,7 +107,7 @@ function update() {
 	else
 	{
 		player.animations.stop();
-		player.frame = 0;
+		player.frame = 2;
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
