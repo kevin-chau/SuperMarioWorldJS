@@ -54,6 +54,7 @@ function create() {
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
+  player.direction = 'right';
 	player.animations.add('left', [0,3], 10, true);
   player.animations.add('right', [7,4], 10, true);
   // player.animations.add('up', [15], 1, true);
@@ -98,16 +99,22 @@ function update() {
 	if (cursors.left.isDown){
 		player.body.velocity.x = -150;
 		player.animations.play('left');
+    player.direction = 'left';
 	}
 	else if (cursors.right.isDown)
 	{
 		player.body.velocity.x = 150;
 		player.animations.play('right');
+    player.direction = 'right';
 	}
 	else
 	{
 		player.animations.stop();
-		player.frame = 2;
+    if (player.direction === 'left'){
+      player.frame = 3;
+    } else if (player.direction === 'right'){
+		  player.frame = 4;
+    }
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
