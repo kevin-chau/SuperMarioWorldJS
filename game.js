@@ -22,7 +22,10 @@ function preload() {
   Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)
 
 	// Music
-	game.load.audio('Overworld Theme', 'assets/music/2-53\ Overworld\ Theme\ (SMW).mp3')
+	game.load.audio('Overworld Theme', 'assets/sound/music/2-53\ Overworld\ Theme\ (SMW).mp3')
+
+	// Sound Effects
+	game.load.audio('Jump Wav', 'assets/sound/effects/jump.wav');
 }
 
 function create() {
@@ -50,6 +53,9 @@ function create() {
 	// Music
 	music = game.add.audio('Overworld Theme');
   music.play();
+
+	// Sound effects
+	jumpWav = game.add.audio('Jump Wav');
 
 	/*
 	********************************************
@@ -139,6 +145,7 @@ function update() {
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -200;
+		jumpWav.play();
     // if (player.direction === 'left'){
     //   player.frame = 12;
     // } else if (player.direction === 'right'){
