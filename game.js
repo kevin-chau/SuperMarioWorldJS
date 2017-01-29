@@ -20,6 +20,9 @@ function preload() {
   // enable crisp rendering
   game.renderer.renderSession.roundPixels = false;
   Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)
+
+	// Music
+	game.load.audio('Overworld Theme', 'assets/music/2-53\ Overworld\ Theme\ (SMW).mp3')
 }
 
 function create() {
@@ -43,6 +46,10 @@ function create() {
 	// ledge.body.immovable = true;
 	// ledge = platforms.create(-150, 250, 'ground');
 	// ledge.body.immovable = true;
+
+	// Music
+	music = game.add.audio('Overworld Theme');
+  music.play();
 
 	/*
 	********************************************
