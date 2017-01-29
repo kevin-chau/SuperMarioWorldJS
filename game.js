@@ -1,4 +1,4 @@
-var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, true, null);
+var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
 
 var score = 0;
 var scoreText;
