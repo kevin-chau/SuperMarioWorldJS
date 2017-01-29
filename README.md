@@ -12,15 +12,15 @@ TO-DO:
   * background objects/platforms
 
   * Controls:
-    * Look Up
-    * Jump Button
+    * stop left/right movement when crouched
 
   * Animation:
-    * Look Up
-    * Jump
-    * Crouch
+    * Jump (frame depends on +/- velocity)
+    * spin jump
 
   * Sounds:
+    * mute button
+    * spin jump
 
   * IO PAGE / DEMO
 

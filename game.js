@@ -83,10 +83,9 @@ function create() {
 	coins.enableBody = true;
 
 	for (var i = 0; i < 12; i++){
-		var coin = coins.create(i*70,0,'items');
+		var coin = coins.create(i*30, game.world.height - 18,'items');
 		coin.frame = 0;
 		coin.body.gravity.y = 6;
-		coin.body.bounce.y = 0.7 + Math.random() * 0.2;
 	}
 
 	/*
