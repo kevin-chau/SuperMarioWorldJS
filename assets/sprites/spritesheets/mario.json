@@ -1,10 +1,33 @@
-{"frames": [
-  {
-  	"filename": "0.png",
-  	"frame": {"x":14,"y":30,"w":14,"h":20},
-  	"rotated": false,
-  	"trimmed": true,
-  	"spriteSourceSize": {"x":14,"y":30,"w":14,"h":20},
-  	"sourceSize": {"w":14,"h":20}
-  }
-]}
+{
+   "frames":[
+     {
+        "filename":"0",
+        "frame":{
+           "x":14,
+           "y":10,
+           "w":14,
+           "h":20
+        },
+        "rotated":false,
+        "trimmed":true,
+        "spriteSourceSize":{
+           "x":0,
+           "y":0,
+           "w":14,
+           "h":20
+        },
+        "sourceSize":{
+           "w":14,
+           "h":20
+        }
+     }
+   ],
+   "meta":{
+      "image":"spritesheet.png",
+      "size":{
+         "w":970,
+         "h":370
+      },
+      "scale":1
+   }
+}
