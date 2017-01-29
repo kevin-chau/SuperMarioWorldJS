@@ -27,6 +27,7 @@ function preload() {
 
 	// Sound Effects
 	game.load.audio('Jump Wav', 'assets/sound/effects/jump.wav');
+	game.load.audio('Coin Wav', 'assets/sound/effects/coin.wav');
 }
 
 function create() {
@@ -57,6 +58,7 @@ function create() {
 
 	// Sound effects
 	jumpWav = game.add.audio('Jump Wav');
+	coinWav = game.add.audio('Coin Wav');
 
 	/*
 	********************************************
@@ -109,7 +111,7 @@ function create() {
 	SCORE
 	*******************************************
 	*/
-	scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000'});
+	// scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000'});
 
 }
 
@@ -162,7 +164,8 @@ function update() {
 
 function collectCoin(player, coin) {
 	coin.kill();
+	coinWav.play();
 
 	score += 10;
-	scoreText.text = 'Score: ' + score;
+	// scoreText.text = 'Score: ' + score;
 }

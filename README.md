@@ -5,7 +5,6 @@ To run this game, use MAMP or another web server and set the root to this reposi
 Go to 127.0.0.1:PORTNUM where PORTNUM is the port you've set your webserver on.
 
 TO-DO:
-  * Stars -> Coins
   * Score
   * Timer
   * Loop Music / Running out of time music
