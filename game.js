@@ -96,7 +96,10 @@ function create() {
 	*/
 	// Load arrow key controls
 	cursors = game.input.keyboard.createCursorKeys();
-	buttons = game.input.keyboard.addKeys( {'A': Phaser.KeyCode.D, 'B': Phaser.KeyCode.S } );
+	buttons = {
+		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
+		'B': game.input.keyboard.addKey(Phaser.Keyboard.S)
+	};
 
 	/*
 	*******************************************
