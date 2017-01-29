@@ -62,6 +62,27 @@
            "w":15,
            "h":21
         }
+     },
+     {
+        "filename":"3",
+        "frame":{
+           "x":320,
+           "y":9,
+           "w":15,
+           "h":21
+        },
+        "rotated":false,
+        "trimmed":false,
+        "spriteSourceSize":{
+           "x":0,
+           "y":0,
+           "w":15,
+           "h":21
+        },
+        "sourceSize":{
+           "w":15,
+           "h":21
+        }
      }
    ],
    "meta":{
