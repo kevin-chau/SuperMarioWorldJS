@@ -8,8 +8,8 @@ function preload() {
 	game.load.image('sky', 'assets/maps/images/yoshis-island/yoshis-island-1.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
-	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
-	// game.load.atlasJSONArray('mario', 'assets/sprites/images/mario/mario.png', 'assets/sprites/images/mario/mario.json');
+	// game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
+	game.load.atlasJSONArray('mario', 'assets/sprites/atlases/mario/mario.png', 'assets/sprites/atlases/mario/mario.json');
 
 	// game.load.spritesheet('mario','assets/sprites/spritesheets/marioluigi.png', 14, 20);
 
@@ -56,11 +56,11 @@ function create() {
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
-  // player.direction = 'right';
-	// player.animations.add('left', [0,3], 10, true);
-  // player.animations.add('right', [7,4], 10, true);
-  // player.animations.play('down', [10], 10, true);
-  // player.animations.add('up', [15], 1, true);
+  player.direction = 'right';
+	player.animations.add('left', [0,3], 10, true);
+  player.animations.add('right', [7,4], 10, true);
+  player.animations.play('down', [10], 10, true);
+  player.animations.add('up', [15], 1, true);
 
 	/*
 	********************************************
@@ -101,44 +101,42 @@ function update() {
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown){
 		player.body.velocity.x = -150;
-		// player.animations.play('left');
-    // player.direction = 'left';
+		player.animations.play('left');
+    player.direction = 'left';
 	}
 	else if (cursors.right.isDown)
 	{
 		player.body.velocity.x = 150;
-		// player.animations.play('right');
-    // player.direction = 'right';
+		player.animations.play('right');
+    player.direction = 'right';
 	}
   else if (cursors.down.isDown)
   {
     player.animations.stop();
-    // if (player.direction === 'left'){
-    //   player.frame = 10;
-    // } else if (player.direction === 'right'){
-		//   player.frame = 15;
-    // }
-    // player.frame = 0;
+    if (player.direction === 'left'){
+      player.frame = 10;
+    } else if (player.direction === 'right'){
+		  player.frame = 15;
+    }
   }
 	else
 	{
 		player.animations.stop();
-    // if (player.direction === 'left'){
-    //   player.frame = 3;
-    // } else if (player.direction === 'right'){
-		//   player.frame = 4;
-    // }
-		player.frame = 0;
+    if (player.direction === 'left'){
+      player.frame = 3;
+    } else if (player.direction === 'right'){
+		  player.frame = 4;
+    }
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -200;
-    // if (player.direction === 'left'){
-    //   player.frame = 12;
-    // } else if (player.direction === 'right'){
-		//   player.frame = 13;
-    // }
+    if (player.direction === 'left'){
+      player.frame = 12;
+    } else if (player.direction === 'right'){
+		  player.frame = 13;
+    }
 	}
 
 	game.physics.arcade.collide(stars, platforms);
