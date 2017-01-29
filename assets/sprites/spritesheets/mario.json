@@ -1,19 +1,10 @@
 {"frames": [
   {
   	"filename": "0.png",
-  	"frame": {"x":153,"y":1,"w":24,"h":31},
+  	"frame": {"x":14,"y":30,"w":14,"h":20},
   	"rotated": false,
   	"trimmed": true,
-  	"spriteSourceSize": {"x":11,"y":6,"w":24,"h":31},
-  	"sourceSize": {"w":24,"h":31}
+  	"spriteSourceSize": {"x":14,"y":30,"w":14,"h":20},
+  	"sourceSize": {"w":14,"h":20}
   }
-],
-"meta": {
-	"app": "http://www.codeandweb.com/texturepacker",
-	"version": "1.0",
-	"image": "marioluigi.png",
-	"format": "RGBA8888",
-	"size": {"w":970,"h":370},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d62df85210f48be45f4e63b4c3872a47:7dcfefff9ce1b87aea3cf91fe286d8cf:049a1e10ddf44989e4af4e84fecd01e8$"
-}}
+]}

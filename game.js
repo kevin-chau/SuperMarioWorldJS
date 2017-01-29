@@ -8,7 +8,7 @@ function preload() {
 	game.load.image('sky', 'assets/maps/images/yoshis-island/yoshis-island-1.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
-	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/marioluigi.png', 'assets/sprites/spritesheets/mario.json');
+	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
 	// game.load.atlasJSONArray('mario', 'assets/sprites/images/mario/mario.png', 'assets/sprites/images/mario/mario.json');
 
 	// game.load.spritesheet('mario','assets/sprites/spritesheets/marioluigi.png', 14, 20);
