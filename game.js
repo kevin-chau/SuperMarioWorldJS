@@ -55,9 +55,13 @@ function create() {
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
-  // player.direction = 'right';
-	// player.animations.add('left', [0,3], 10, true);
-  player.animations.add('right', [0,1], 10, true);
+
+	// default direction
+  player.direction = 'right';
+
+	player.anchor.setTo(.5,1);
+	player.animations.add('left', [1,0], 10, true);
+  player.animations.add('right', [1,0], 10, true);
   // player.animations.play('down', [10], 10, true);
   // player.animations.add('up', [15], 1, true);
 
@@ -97,27 +101,32 @@ function create() {
 function update() {
 	var hitPlatform = game.physics.arcade.collide(player, platforms);
 
+	if (player.direction === 'right'){
+		player.scale.x = 1;
+	} else if (player.direction === 'left'){
+		player.scale.x = -1;
+	}
+
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown){
 		player.body.velocity.x = -150;
-		// player.animations.play('left');
-    // player.direction = 'left';
+		player.direction = 'left';
+		player.animations.play('left');
 	}
 	else if (cursors.right.isDown)
 	{
 		player.body.velocity.x = 150;
+		player.direction = 'right';
 		player.animations.play('right');
-    player.direction = 'right';
 	}
 	else
 	{
 		player.animations.stop();
-    // if (player.direction === 'left'){
-    //   player.frame = 3;
-    // } else if (player.direction === 'right'){
-		//   player.frame = 4;
-    // }
-		player.frame = 0;
+    if (player.direction === 'left'){
+      player.frame = 0;
+    } else if (player.direction === 'right'){
+		  player.frame = 0;
+    }
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
