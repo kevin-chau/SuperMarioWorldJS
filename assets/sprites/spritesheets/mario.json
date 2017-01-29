@@ -20,10 +20,31 @@
            "w":14,
            "h":20
         }
+     },
+     {
+        "filename":"1",
+        "frame":{
+           "x":31,
+           "y":10,
+           "w":15,
+           "h":19
+        },
+        "rotated":false,
+        "trimmed":false,
+        "spriteSourceSize":{
+           "x":0,
+           "y":0,
+           "w":15,
+           "h":19
+        },
+        "sourceSize":{
+           "w":15,
+           "h":19
+        }
      }
    ],
    "meta":{
-      "image":"spritesheet.png",
+      "image":"mario.png",
       "size":{
          "w":970,
          "h":370

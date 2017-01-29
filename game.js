@@ -57,7 +57,7 @@ function create() {
 	player.body.collideWorldBounds = true;
   // player.direction = 'right';
 	// player.animations.add('left', [0,3], 10, true);
-  // player.animations.add('right', [7,4], 10, true);
+  player.animations.add('right', [0,1], 10, true);
   // player.animations.play('down', [10], 10, true);
   // player.animations.add('up', [15], 1, true);
 
@@ -106,8 +106,8 @@ function update() {
 	else if (cursors.right.isDown)
 	{
 		player.body.velocity.x = 150;
-		// player.animations.play('right');
-    // player.direction = 'right';
+		player.animations.play('right');
+    player.direction = 'right';
 	}
 	else
 	{
