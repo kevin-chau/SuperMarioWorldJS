@@ -9,7 +9,7 @@
            "h":20
         },
         "rotated":false,
-        "trimmed":true,
+        "trimmed":false,
         "spriteSourceSize":{
            "x":0,
            "y":0,
@@ -40,6 +40,27 @@
         "sourceSize":{
            "w":15,
            "h":19
+        }
+     },
+     {
+        "filename":"2",
+        "frame":{
+           "x":320,
+           "y":9,
+           "w":15,
+           "h":21
+        },
+        "rotated":false,
+        "trimmed":false,
+        "spriteSourceSize":{
+           "x":0,
+           "y":0,
+           "w":15,
+           "h":21
+        },
+        "sourceSize":{
+           "w":15,
+           "h":21
         }
      }
    ],
