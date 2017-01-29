@@ -69,7 +69,7 @@ function create() {
 	player = game.add.sprite(32, game.world.height - 150, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
-	player.body.gravity.y = 300;
+	player.body.gravity.y = 500;
 	player.body.collideWorldBounds = true;
 
 	// default direction
