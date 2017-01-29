@@ -10,8 +10,18 @@ TO-DO:
   * Loop Music / Running out of time music
   * Map/ground tiles
   * background objects/platforms
+
+  * Controls:
+    * Look Up
+    * Jump Button
+
   * Animation:
+    * Look Up
     * Jump
     * Crouch
 
   * Sounds:
+
+  * IO PAGE / DEMO
+
+  * Enum sprite frames

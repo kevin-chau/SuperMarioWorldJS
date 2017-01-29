@@ -11,9 +11,6 @@ function preload() {
 	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
 	game.load.atlasJSONArray('items', 'assets/items/items.png', 'assets/items/items.json');
 
-	// game.load.atlasJSONArray('mario', 'assets/sprites/atlases/mario/mario.png', 'assets/sprites/atlases/mario/mario.json');
-
-  // SCALING
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
   game.scale.setUserScale(3, 3);
@@ -45,12 +42,6 @@ function create() {
 	var ground = platforms.create(0, game.world.height - 2, 'ground');
 	ground.scale.setTo(2,2);
 	ground.body.immovable = true;
-
-	// Ledges
-	// var ledge = platforms.create(400, 400, 'ground');
-	// ledge.body.immovable = true;
-	// ledge = platforms.create(-150, 250, 'ground');
-	// ledge.body.immovable = true;
 
 	// Music
 	music = game.add.audio('Overworld Theme');
@@ -105,6 +96,7 @@ function create() {
 	*/
 	// Load arrow key controls
 	cursors = game.input.keyboard.createCursorKeys();
+	buttons = game.input.keyboard.addKeys( {'A': Phaser.KeyCode.D, 'B': Phaser.KeyCode.S } );
 
 	/*
 	*******************************************
@@ -146,7 +138,7 @@ function update() {
     }
 	}
 
-	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
+	if (buttons.B.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -200;
 		jumpWav.play();
