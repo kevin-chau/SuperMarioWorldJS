@@ -1,4 +1,4 @@
-var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
+var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, true, null);
 
 var score = 0;
 var scoreText;
@@ -16,7 +16,7 @@ function preload() {
   game.scale.setUserScale(3, 3);
 
   // enable crisp rendering
-  game.renderer.renderSession.roundPixels = false;
+  game.renderer.renderSession.roundPixels = true;
   Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)
 
 	// Music
