@@ -143,8 +143,12 @@ function update() {
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
-		console.log("Looking up!");
 		player.frame = 2;
+	}
+
+	if (cursors.down.isDown && player.body.touching.down && hitPlatform)
+	{
+		player.frame = 3;
 	}
 
 	if (buttons.B.isDown && player.body.touching.down && hitPlatform)
