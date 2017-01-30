@@ -54,7 +54,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  music.play();
+  // music.play();
 
 	// Sound effects
 	jumpWav = game.add.audio('Jump Wav');
@@ -92,8 +92,8 @@ function create() {
 		var coin = coins.create(i*30, game.world.height - 10,'items');
 		coin.anchor.setTo(.5,.5);
 		coin.body.height = 15;
-		coin.body.width = 8;
-		coin.frame = 5;
+		coin.body.width = 12;
+		coin.frame = 4;
 		coin.body.gravity.y = 6;
 	}
 
@@ -106,8 +106,10 @@ function create() {
 	cursors = game.input.keyboard.createCursorKeys();
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
-		'B': game.input.keyboard.addKey(Phaser.Keyboard.S)
+		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
+		'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
 	};
+	// game.input.keyboard.addCallBacks()
 
 	/*
 	*******************************************
@@ -162,16 +164,20 @@ function update() {
 	}
 
 	if (player.body.velocity.y < 0) {
-		console.log("jumping up!");
 		player.frame = 1;
 	} else if (player.body.velocity.y > 0){
-		console.log("falling down!");
 		player.frame = 3;
 	}
 
 	game.physics.arcade.collide(coins, platforms);
 	game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 
+
+	if (buttons.Mute.isDown && game.sound.mute) {
+		game.sound.mute = true;
+	} else if (buttons.Mute.isDown && !game.sound.mute) {
+		game.sound.mute = false;
+	}
 }
 
 function collectCoin(player, coin) {

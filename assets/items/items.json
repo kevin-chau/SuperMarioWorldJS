@@ -64,7 +64,7 @@
          }
       },
       {
-         "filename":"sprite4 - Coin",
+         "filename":"sprite4",
          "frame":{
             "x":213,
             "y":13,
@@ -85,7 +85,7 @@
          }
       },
       {
-         "filename":"sprite5",
+         "filename":"sprite5 - Coin",
          "frame":{
             "x":14,
             "y":14,

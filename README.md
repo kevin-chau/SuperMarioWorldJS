@@ -8,7 +8,8 @@ TO-DO:
   * Score
   * Timer
   * Loop Music / Running out of time music
-  * Map/ground tiles
+  * Map:
+    * Repeating Background / Side scrolling
   * background objects/platforms
   * star menu
   * world map
@@ -19,9 +20,18 @@ TO-DO:
     * Different jump heights
     * Adjust kinematics
     * jump only once per button press
+    * Start Button
+
+  * Sprites:
+    * Super Mushroom
+    * Super Mario
+    * 1-Up
+    * Goomba
 
   * Animation:
     * spin jump
+    * Super Mario
+    * slide
 
   * Sounds:
     * mute music button
