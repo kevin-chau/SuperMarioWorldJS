@@ -48,6 +48,10 @@ function create() {
 	wall.scale.setTo(2,2);
 	wall.body.immovable = true;
 
+	// var wall = platforms.create(game.world.width - 914, game.world.height - 20, 'ground');
+	// wall.scale.setTo(2,2);
+	// wall.body.immovable = true;
+
 	// Music
 	music = game.add.audio('Overworld Theme');
   music.play();
@@ -72,7 +76,7 @@ function create() {
   player.direction = 'right';
 
 	player.anchor.setTo(.5,1);
-	player.body.width = 10;
+	player.body.width = 13;
 	player.animations.add('walk', [15,14], 10, true);
 	/*
 	********************************************
@@ -85,7 +89,10 @@ function create() {
 	coins.enableBody = true;
 
 	for (var i = 0; i < 12; i++){
-		var coin = coins.create(i*30, game.world.height - 18,'items');
+		var coin = coins.create(i*30, game.world.height - 10,'items');
+		coin.anchor.setTo(.5,.5);
+		coin.body.height = 15;
+		coin.body.width = 8;
 		coin.frame = 5;
 		coin.body.gravity.y = 6;
 	}
