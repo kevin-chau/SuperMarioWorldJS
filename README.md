@@ -16,12 +16,12 @@ TO-DO:
   * world map
 
   * Controls:
-    * stop left/right movement when crouched
     * running
     * Different jump heights
     * Adjust kinematics
     * jump only once per button press
     * Start Button
+    * slide
 
   * Sprites:
     * Super Mushroom
@@ -33,13 +33,16 @@ TO-DO:
     * spin jump
     * Super Mario
     * slide
-    * Coin spinning
     * Coin collect
+    * turn around
 
   * Sounds:
     * mute music button
     * spin jump
+    * slide
 
+  * Code:
+    * refactor looking up and crouching boolean logic
   * IO PAGE / DEMO
 
   * Enum sprite frames

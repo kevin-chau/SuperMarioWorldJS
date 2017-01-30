@@ -132,12 +132,12 @@ function update() {
 		player.scale.x = -1;
 	}
 
-	if (cursors.left.isDown){
+	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && hitPlatform)){
 		player.body.velocity.x = -75;
 		player.direction = 'left';
 		player.animations.play('walk');
 	}
-	else if (cursors.right.isDown)
+	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && hitPlatform))
 	{
 		player.body.velocity.x = 75;
 		player.direction = 'right';
