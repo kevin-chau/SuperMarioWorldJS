@@ -95,7 +95,10 @@ function create() {
 		coin.body.width = 12;
 		coin.frame = 4;
 		coin.body.gravity.y = 6;
+		coin.animations.add('spin', [4,5,6,7], 10, true);
+		coin.animations.play('spin');
 	}
+
 
 	/*
 	*******************************************

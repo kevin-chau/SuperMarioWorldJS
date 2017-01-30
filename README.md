@@ -6,6 +6,7 @@ Go to 127.0.0.1:PORTNUM where PORTNUM is the port you've set your webserver on.
 
 TO-DO:
   * Score
+    * Coin Count
   * Timer
   * Loop Music / Running out of time music
   * Map:
@@ -32,6 +33,8 @@ TO-DO:
     * spin jump
     * Super Mario
     * slide
+    * Coin spinning
+    * Coin collect
 
   * Sounds:
     * mute music button
