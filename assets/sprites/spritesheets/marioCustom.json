@@ -1,0 +1,84 @@
+{
+  "filename": "0 mario standing right",
+  "frame": {
+    "x": 14,
+    "y": 10,
+    "w": 14,
+    "h": 20
+  },
+  "rotated": false,
+  "trimmed": false,
+  "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 14,
+    "h": 20
+  },
+  "sourceSize": {
+    "w": 14,
+    "h": 20
+  }
+},
+{
+  "filename": "1 mario walking right",
+  "frame": {
+    "x": 31,
+    "y": 10,
+    "w": 15,
+    "h": 19
+  },
+  "rotated": false,
+  "trimmed": false,
+  "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 15,
+    "h": 19
+  },
+  "sourceSize": {
+    "w": 15,
+    "h": 19
+  }
+},
+{
+  "filename": "2 mario looking up",
+  "frame": {
+    "x": 320,
+    "y": 9,
+    "w": 15,
+    "h": 21
+  },
+  "rotated": false,
+  "trimmed": false,
+  "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 15,
+    "h": 21
+  },
+  "sourceSize": {
+    "w": 15,
+    "h": 21
+  }
+},
+{
+  "filename": "3 mario crouching",
+  "frame": {
+    "x": 167,
+    "y": 16,
+    "w": 15,
+    "h": 14
+  },
+  "rotated": false,
+  "trimmed": false,
+  "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 15,
+    "h": 14
+  },
+  "sourceSize": {
+    "w": 15,
+    "h": 14
+  }
+}

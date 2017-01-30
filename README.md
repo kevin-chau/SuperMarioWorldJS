@@ -10,16 +10,21 @@ TO-DO:
   * Loop Music / Running out of time music
   * Map/ground tiles
   * background objects/platforms
+  * star menu
+  * world map
 
   * Controls:
     * stop left/right movement when crouched
+    * running
+    * Different jump heights
+    * Adjust kinematics
+    * jump only once per button press
 
   * Animation:
-    * Jump (frame depends on +/- velocity)
     * spin jump
 
   * Sounds:
-    * mute button
+    * mute music button
     * spin jump
 
   * IO PAGE / DEMO

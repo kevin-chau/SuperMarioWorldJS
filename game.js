@@ -13,7 +13,7 @@ function preload() {
 
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-  game.scale.setUserScale(3, 3);
+  game.scale.setUserScale(2, 2);
 
   // enable crisp rendering
   game.renderer.renderSession.roundPixels = true;
@@ -57,7 +57,7 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(32, game.world.height - 150, 'mario');
+	player = game.add.sprite(32, game.world.height - 2, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 500;
@@ -67,11 +67,7 @@ function create() {
   player.direction = 'right';
 
 	player.anchor.setTo(.5,1);
-	player.animations.add('left', [1,0], 10, true);
-  player.animations.add('right', [1,0], 10, true);
-  // player.animations.play('down', [10], 10, true);
-  // player.animations.add('up', [15], 1, true);
-
+	player.animations.add('walk', [15,14], 10, true);
 	/*
 	********************************************
 	Coins
@@ -118,47 +114,46 @@ function update() {
 		player.scale.x = -1;
 	}
 
-	player.body.velocity.x = 0;
 	if (cursors.left.isDown){
 		player.body.velocity.x = -75;
 		player.direction = 'left';
-		player.animations.play('left');
+		player.animations.play('walk');
 	}
 	else if (cursors.right.isDown)
 	{
 		player.body.velocity.x = 75;
 		player.direction = 'right';
-		player.animations.play('right');
+		player.animations.play('walk');
 	}
 	else
 	{
+		player.body.velocity.x = 0;
 		player.animations.stop();
-    if (player.direction === 'left'){
-      player.frame = 0;
-    } else if (player.direction === 'right'){
-		  player.frame = 0;
-    }
+    player.frame = 14;
 	}
 
 	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
 	{
-		player.frame = 2;
+		player.frame = 9;
 	}
 
 	if (cursors.down.isDown && player.body.touching.down && hitPlatform)
 	{
-		player.frame = 3;
+		player.frame = 49;
 	}
 
 	if (buttons.B.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -200;
 		jumpWav.play();
-    // if (player.direction === 'left'){
-    //   player.frame = 12;
-    // } else if (player.direction === 'right'){
-		//   player.frame = 13;
-    // }
+	}
+
+	if (player.body.velocity.y < 0) {
+		console.log("jumping up!");
+		player.frame = 1;
+	} else if (player.body.velocity.y > 0){
+		console.log("falling down!");
+		player.frame = 3;
 	}
 
 	game.physics.arcade.collide(coins, platforms);
