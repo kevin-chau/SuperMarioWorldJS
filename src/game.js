@@ -1,4 +1,7 @@
-var game = new Phaser.Game(256, 224, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
+var SNES_WIDTH = 256;
+var SNES_HEIGHT = 224;
+
+var game = new Phaser.Game(SNES_WIDTH, SNES_HEIGHT, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
 
 var score = 0;
 var scoreText;
@@ -11,6 +14,7 @@ function preload() {
 	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
 	game.load.atlasJSONArray('items', 'assets/items/items.png', 'assets/items/items.json');
 	game.load.atlasJSONArray('hud', 'assets/hud/hud.png', 'assets/hud/hud.json');
+	game.load.atlasJSONArray('groundTiles', 'assets/maps/tiles/ground.png', 'assets/maps/tiles/ground.json');
 
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
@@ -40,14 +44,14 @@ function create() {
 	platforms.enableBody = true;
 
 	// Ground
-	var ground = platforms.create(0, game.world.height - 2, 'ground');
+	var ground = platforms.create(0, game.world.height - 31, 'ground');
 	ground.scale.setTo(2,2);
 	ground.body.immovable = true;
 
 	// Wall
-	var wall = platforms.create(game.world.width - 100, game.world.height - 20, 'ground');
-	wall.scale.setTo(2,2);
-	wall.body.immovable = true;
+	// var wall = platforms.create(game.world.width - 100, game.world.height - 20, 'ground');
+	// wall.scale.setTo(2,2);
+	// wall.body.immovable = true;
 
 	// var wall = platforms.create(game.world.width - 914, game.world.height - 20, 'ground');
 	// wall.scale.setTo(2,2);
@@ -67,7 +71,7 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(32, game.world.height - 2, 'mario');
+	player = game.add.sprite(32, game.world.height - 32, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 500;
@@ -78,7 +82,7 @@ function create() {
 
 	player.anchor.setTo(.5,1);
 	player.body.width = 13;
-	player.animations.add('walk', [15,14], 10, true);
+	player.animations.add('walk', [15,14], 8, true);
 	/*
 	********************************************
 	Coins
@@ -90,7 +94,7 @@ function create() {
 	coins.enableBody = true;
 
 	for (var i = 0; i < 12; i++){
-		var coin = coins.create(i*30, game.world.height - 10,'items');
+		var coin = coins.create(i*30, game.world.height - 48,'items');
 		coin.anchor.setTo(.5,.5);
 		coin.body.height = 15;
 		coin.body.width = 12;
@@ -114,6 +118,19 @@ function create() {
 		'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
 	};
 	// game.input.keyboard.addCallBacks()
+
+	/*
+	*******************************************
+	MAP
+	*******************************************
+	*/
+	groundTilesGroup = game.add.group();
+	for (var i = 0; i < SNES_WIDTH; i += 16){
+		tile = groundTilesGroup.create(i,SNES_HEIGHT - 32, 'groundTiles');
+		tile.frame = 84;
+		tile = groundTilesGroup.create(i,SNES_HEIGHT - 16, 'groundTiles');
+		tile.frame = 109;
+	}
 
 	/*
 	*******************************************
