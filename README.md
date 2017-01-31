@@ -37,6 +37,7 @@ This will start the web server as well as a `watch` task that continuously monit
 
     grunt watch
 
+# Controls
 
 # TO-DO:
   * Score
@@ -46,7 +47,7 @@ This will start the web server as well as a `watch` task that continuously monit
   * Map:
     * Repeating Background / Side scrolling
   * background objects/platforms
-  * star menu
+  * start menu
   * world map
 
   * Controls:
@@ -78,6 +79,8 @@ This will start the web server as well as a `watch` task that continuously monit
 
   * Code:
     * refactor looking up and crouching boolean logic
+    * Build System:
+      * Multiple source files
   * IO PAGE / DEMO
 
   * Enum sprite frames
