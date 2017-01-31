@@ -15,15 +15,24 @@ module.exports = function(grunt) {
     watch: {
       files: ['src/*.js'],
       tasks: ['uglify']
+    },
+    connect: {
+      server: {
+        options: {
+          port: 8888,
+          base: './'
+        }
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task(s).
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['connect','watch']);
   grunt.registerTask('build', ['uglify']);
 
 };

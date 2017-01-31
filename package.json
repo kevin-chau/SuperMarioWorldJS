@@ -18,6 +18,7 @@
   "homepage": "https://github.com/kevinchau321/SuperMarioWorldJS#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0"
   }
