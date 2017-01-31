@@ -1,8 +1,42 @@
 # SuperMarioWorldJS
-Super Mario World built with Phaser JS
+Super Mario World built with Phaser.
 
-To run this game, use MAMP or another web server and set the root to this repository.
-Go to 127.0.0.1:PORTNUM where PORTNUM is the port you've set your webserver on.
+# Installing
+This project uses `node` and `npm` to get up and running:
+
+    git clone https://github.com/kevinchau321/SuperMarioWorldJS.git
+    cd SuperMarioWorldJS
+    npm install
+
+# Running
+This project uses `grunt connect` to run the web server. To start the server, simply run `grunt`:
+
+    grunt
+
+This will start the grunt web server as well as a `watch` task.
+By default the port will be set to 8888 so go to the following URL in your browser:
+
+    http://localhost:8888
+
+That's it to start playing!
+You can change the port in `Gruntfile.js`
+
+# Building
+This project uses `grunt` to build and minify the source code via UglifyJS2.
+To build the project, run:
+
+    grunt build
+
+This will place a file called `super-mario-world-js.min.js` in your `build/` folder.
+
+Alternatively, just run:
+
+    grunt
+
+This will start the web server as well as a `watch` task that continuously monitors the source files and will automatically trigger the build process if anything changes. If you want to start the `watch` task only, run:
+
+    grunt watch
+
 
 TO-DO:
   * Score
