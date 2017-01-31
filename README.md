@@ -1,9 +1,12 @@
-# SuperMarioWorldJS
+# SuperMarioWorldJS ([Demo](https://kevinchau321.github.io/SuperMarioWorldJS/))
 Super Mario World built with Phaser.
 
 <p align="center">
   <img src="assets/screenshots/1.png?raw=true" alt="Screenshot"/>
 </p>
+
+# Demo
+Play the demo online at https://kevinchau321.github.io/SuperMarioWorldJS/
 
 # Installing
 This project uses `node` and `npm` to get up and running:
