@@ -15,6 +15,7 @@ function preload() {
 	game.load.atlasJSONArray('items', 'assets/items/items.png', 'assets/items/items.json');
 	game.load.atlasJSONArray('hud', 'assets/hud/hud.png', 'assets/hud/hud.json');
 	game.load.atlasJSONArray('groundTiles', 'assets/maps/tiles/ground.png', 'assets/maps/tiles/ground.json');
+	game.load.atlasJSONArray('background-objects', 'assets/backgrounds/background-objects.png', 'assets/backgrounds/background-objects.json');
 
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
@@ -48,14 +49,21 @@ function create() {
 	ground.scale.setTo(2,2);
 	ground.body.immovable = true;
 
-	// Wall
-	// var wall = platforms.create(game.world.width - 100, game.world.height - 20, 'ground');
-	// wall.scale.setTo(2,2);
-	// wall.body.immovable = true;
+	/*
+	*******************************************
+	MAP
+	*******************************************
+	*/
+	groundTilesGroup = game.add.group();
+	for (var i = 0; i < SNES_WIDTH; i += 16){
+		tile = groundTilesGroup.create(i,SNES_HEIGHT - 32, 'groundTiles');
+		tile.frame = 84;
+		tile = groundTilesGroup.create(i,SNES_HEIGHT - 16, 'groundTiles');
+		tile.frame = 109;
+	}
 
-	// var wall = platforms.create(game.world.width - 914, game.world.height - 20, 'ground');
-	// wall.scale.setTo(2,2);
-	// wall.body.immovable = true;
+	bush = game.add.sprite(64, SNES_HEIGHT - 48, 'background-objects');
+	bush.frame = 73;
 
 	// Music
 	music = game.add.audio('Overworld Theme');
@@ -118,18 +126,6 @@ function create() {
 	};
 	// game.input.keyboard.addCallBacks()
 
-	/*
-	*******************************************
-	MAP
-	*******************************************
-	*/
-	groundTilesGroup = game.add.group();
-	for (var i = 0; i < SNES_WIDTH; i += 16){
-		tile = groundTilesGroup.create(i,SNES_HEIGHT - 32, 'groundTiles');
-		tile.frame = 84;
-		tile = groundTilesGroup.create(i,SNES_HEIGHT - 16, 'groundTiles');
-		tile.frame = 109;
-	}
 
 	/*
 	*******************************************
