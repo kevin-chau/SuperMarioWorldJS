@@ -9,7 +9,7 @@ canvas {
     padding-left: 0;
     padding-right: 0;
     border: 5px solid black;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     margin-left: auto;
     margin-right: auto;
     display: block;

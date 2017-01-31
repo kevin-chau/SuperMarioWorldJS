@@ -37,7 +37,7 @@ function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
 	// Sky background
-	game.add.sprite(0,-200,'sky');
+	game.add.sprite(0,-192,'sky');
 
 	// Platforms
 	platforms = game.add.group();
@@ -71,7 +71,7 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(32, game.world.height - 32, 'mario');
+	player = game.add.sprite(24, game.world.height - 32, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 500;
@@ -94,13 +94,12 @@ function create() {
 	coins.enableBody = true;
 
 	for (var i = 0; i < 12; i++){
-		var coin = coins.create(i*30, game.world.height - 48,'items');
+		var coin = coins.create(i*30, game.world.height - 40,'items');
 		coin.anchor.setTo(.5,.5);
 		coin.body.height = 15;
 		coin.body.width = 12;
 		coin.frame = 4;
-		coin.body.gravity.y = 6;
-		coin.animations.add('spin', [4,5,6,7], 10, true);
+		coin.animations.add('spin', [4,5,6,7], 8, true);
 		coin.animations.play('spin');
 	}
 
