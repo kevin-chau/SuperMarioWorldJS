@@ -9,7 +9,7 @@ This project uses `node` and `npm` to get up and running:
     npm install
 
 # Running
-This project uses `grunt connect` to run the web server. To start the server, simply run `grunt`:
+This project uses `grunt connect` to run the web server behind Phaser. To start the server, simply run `grunt`:
 
     grunt
 
@@ -38,7 +38,7 @@ This will start the web server as well as a `watch` task that continuously monit
     grunt watch
 
 
-TO-DO:
+# TO-DO:
   * Score
     * Coin Count
   * Timer
