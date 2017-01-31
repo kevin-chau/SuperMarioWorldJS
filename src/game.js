@@ -37,6 +37,11 @@ function create() {
 	// Enable physics
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
+	/*
+	*******************************************
+	MAP
+	*******************************************
+	*/
 	// Sky background
 	game.add.sprite(0,-192,'sky');
 
@@ -49,11 +54,6 @@ function create() {
 	ground.scale.setTo(2,2);
 	ground.body.immovable = true;
 
-	/*
-	*******************************************
-	MAP
-	*******************************************
-	*/
 	groundTilesGroup = game.add.group();
 	for (var i = 0; i < SNES_WIDTH; i += 16){
 		tile = groundTilesGroup.create(i,SNES_HEIGHT - 32, 'groundTiles');
@@ -65,9 +65,20 @@ function create() {
 	bush = game.add.sprite(64, SNES_HEIGHT - 48, 'background-objects');
 	bush.frame = 73;
 
+	ledge = platforms.create(176, SNES_HEIGHT - 128, 'background-objects');
+	ledge.frame = 23;
+	ledge = platforms.create(180, SNES_HEIGHT - 76, 'background-objects');
+	ledge.frame = 28;
+
+	/*
+	*******************************************
+	AUDIO
+	*******************************************
+	*/
+
 	// Music
 	music = game.add.audio('Overworld Theme');
-  // music.play();
+  music.play();
 
 	// Sound effects
 	jumpWav = game.add.audio('Jump Wav');
