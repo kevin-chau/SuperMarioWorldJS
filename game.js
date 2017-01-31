@@ -10,6 +10,7 @@ function preload() {
 	game.load.image('star', 'assets/tutorial/star.png');
 	game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
 	game.load.atlasJSONArray('items', 'assets/items/items.png', 'assets/items/items.json');
+	game.load.atlasJSONArray('hud', 'assets/hud/hud.png', 'assets/hud/hud.json');
 
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
@@ -116,11 +117,14 @@ function create() {
 
 	/*
 	*******************************************
-	SCORE
+	HUD
 	*******************************************
 	*/
 	// scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000'});
-
+	coin1HUD = game.add.sprite(200,15, 'hud'); // Y good, x needs adjustment
+	coin1HUD.frame = 3;
+	coin2HUD = game.add.sprite(209,16, 'hud'); // Y good, x needs adjustment
+	coin2HUD.frame = 5;
 }
 
 function update() {

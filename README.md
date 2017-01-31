@@ -35,6 +35,7 @@ TO-DO:
     * slide
     * Coin collect
     * turn around
+    * crouch jumping
 
   * Sounds:
     * mute music button
