@@ -8,6 +8,11 @@ Super Mario World built with Phaser.
 # Demo
 Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJS/">github.io/SuperMarioWorldJS</a>
 
+# Controls
+* Keyboard Mapping:
+  * SPACE - Jump
+  * ARROW KEYS - Left, Right, Up, Down
+
 # Installing
 This project uses `node` and `npm` to get up and running:
 
@@ -56,6 +61,9 @@ This will start the web server as well as a `watch` task that continuously monit
   * background objects/platforms
   * start menu
   * world map
+  * Interface:
+    * show SNES controller
+    * show controls
 
   * Controls:
     * running

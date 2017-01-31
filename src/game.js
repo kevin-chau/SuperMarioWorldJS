@@ -132,7 +132,7 @@ function create() {
 	cursors = game.input.keyboard.createCursorKeys();
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
-		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
+		'B': game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
 		'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
 	};
 	// game.input.keyboard.addCallBacks()
