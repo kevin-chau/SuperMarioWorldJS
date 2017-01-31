@@ -65,9 +65,9 @@ function create() {
 	bush = game.add.sprite(64, SNES_HEIGHT - 48, 'background-objects');
 	bush.frame = 73;
 
-	ledge = platforms.create(176, SNES_HEIGHT - 128, 'background-objects');
+	ledge = game.add.sprite(176, SNES_HEIGHT - 128, 'background-objects');
 	ledge.frame = 23;
-	ledge = platforms.create(180, SNES_HEIGHT - 76, 'background-objects');
+	ledge = game.add.sprite(180, SNES_HEIGHT - 76, 'background-objects');
 	ledge.frame = 28;
 
 	/*
@@ -93,7 +93,7 @@ function create() {
 	player = game.add.sprite(24, game.world.height - 32, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
-	player.body.gravity.y = 500;
+	player.body.gravity.y = 700;
 	player.body.collideWorldBounds = true;
 
 	// default direction
@@ -189,7 +189,7 @@ function update() {
 
 	if (buttons.B.isDown && player.body.touching.down && hitPlatform)
 	{
-		player.body.velocity.y = -200;
+		player.body.velocity.y = -310;
 		jumpWav.play();
 	}
 
