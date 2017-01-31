@@ -1,7 +1,9 @@
 # SuperMarioWorldJS
 Super Mario World built with Phaser.
 
-![Alt text](assets/screenshots/1.png?raw=true "Screenshot 1")
+<p align="center">
+  <img src="assets/screenshots/1.png?raw=true" alt="Screenshot"/>
+</p>
 
 # Installing
 This project uses `node` and `npm` to get up and running:
