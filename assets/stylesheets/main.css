@@ -1,19 +1,35 @@
 body {
   background-color: black;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
   background-image: url("https://i.ytimg.com/vi/RGMXzg1lXqM/maxresdefault.jpg");
-  /*http://www.mariouniverse.com/images/maps/snes/smw/world-map-5.gif*/
-  background-size: 100%;
 }
 
-canvas {
+canvas
+{
+    background: #fffff;
+    border: 3px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+/*canvas {
     padding-left: 0;
     padding-right: 0;
     border: 5px solid black;
-    /*border-radius: 10px;*/
+    border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
     display: block;
-}
+}*/
 
 .ghbuttoncontainer {
   right: 0;
