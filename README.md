@@ -49,8 +49,6 @@ This will start the web server as well as a `watch` task that continuously monit
 
     grunt watch
 
-# Controls
-
 # TO-DO:
   * Score
     * Coin Count
@@ -64,6 +62,7 @@ This will start the web server as well as a `watch` task that continuously monit
   * Interface:
     * show SNES controller
     * show controls
+    * Loading Screen
 
   * Controls:
     * running
@@ -72,6 +71,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * jump only once per button press
     * Start Button
     * slide
+    * IOS controls
 
   * Sprites:
     * Super Mushroom
