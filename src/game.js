@@ -105,6 +105,7 @@ function create() {
 	player.body.width = 13;
 	player.animations.add('walk', [15,14], 8, true);
 	player.hitPlatform;
+	player.jumptimeStart = -1
 
 	/*
 	********************************************
@@ -152,8 +153,6 @@ function create() {
 	coin2HUD.frame = 5;
 }
 
-var jumptimeStart = -1;
-
 function update() {
 	player.hitPlatform = game.physics.arcade.collide(player, platforms);
 
@@ -163,10 +162,10 @@ function update() {
 		player.scale.x = -1;
 	}
 
-	if (buttons.B.isDown && (jumptimeStart != -1))
+	if (buttons.B.isDown && (player.jumptimeStart != -1))
 	 {
-			 if (game.time.time - jumptimeStart > 175) {
-					 jumptimeStart = -1;
+			 if (game.time.time - player.jumptimeStart > 175) {
+					 player.jumptimeStart = -1;
 			 } else {
 					 player.body.velocity.y = -250;
 			 }
@@ -216,7 +215,7 @@ function update() {
 function jump() {
 	if (player.body.touching.down && player.hitPlatform)
 	 {
-			 jumptimeStart = game.time.time;
+			 player.jumptimeStart = game.time.time;
 			 player.body.velocity.y = -250;
 			 jumpSFX.play();
 	 }
