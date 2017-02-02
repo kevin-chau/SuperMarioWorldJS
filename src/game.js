@@ -79,7 +79,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  music.play();
+  // music.play();
 
 	// Sound effects
 	jumpSFX = game.add.audio('Jump Wav');
@@ -95,7 +95,7 @@ function create() {
 	player = game.add.sprite(24, game.world.height - 32, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
-	player.body.gravity.y = 700;
+	player.body.gravity.y = 1000;
 	player.body.collideWorldBounds = true;
 
 	// default direction
@@ -136,9 +136,9 @@ function create() {
 	cursors = game.input.keyboard.createCursorKeys();
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
-		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
+		'B': game.input.keyboard.addKey(Phaser.Keyboard.S)
 	};
-	buttons.B.onDown.add(jump, this);
+	// buttons.B.onDown.add(jump, this);
 
 	/*
 	*******************************************
@@ -152,6 +152,8 @@ function create() {
 	coin2HUD.frame = 5;
 }
 
+var jumptimeStart = -1;
+
 function update() {
 	player.hitPlatform = game.physics.arcade.collide(player, platforms);
 
@@ -160,6 +162,24 @@ function update() {
 	} else if (player.direction === 'left'){
 		player.scale.x = -1;
 	}
+
+	if (buttons.B.isDown && player.body.touching.down)
+	 {
+			 jumptimeStart = game.time.time;
+			 player.body.velocity.y = -1000;
+			 jumpSFX.play();
+	 }
+	 else if (buttons.B.isDown && (jumptimeStart != -1))
+	 {
+			 if (game.time.time - jumptimeStart > 200) {
+					 jumptimeStart = -1;
+			 } else {
+					 player.body.velocity.y = -200;
+			 }
+	 }
+
+
+
 
 	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && hitPlatform)){
 		player.body.velocity.x = -75;
