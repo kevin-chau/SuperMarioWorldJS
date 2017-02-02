@@ -104,6 +104,8 @@ function create() {
 	player.anchor.setTo(.5,1);
 	player.body.width = 13;
 	player.animations.add('walk', [15,14], 8, true);
+	player.hitPlatform;
+
 	/*
 	********************************************
 	Coins
@@ -150,14 +152,8 @@ function create() {
 	coin2HUD.frame = 5;
 }
 
-function jump() {
-	player.body.velocity.y = -310;
-	jumpSFX.play();
-}
-
-
 function update() {
-	var hitPlatform = game.physics.arcade.collide(player, platforms);
+	player.hitPlatform = game.physics.arcade.collide(player, platforms);
 
 	if (player.direction === 'right'){
 		player.scale.x = 1;
@@ -193,13 +189,6 @@ function update() {
 		player.frame = 49;
 	}
 
-	// if (buttons.A.isDown && player.body.touching.down && hitPlatform)
-	// {
-	// 	player.body.velocity.y = -275;
-	// 	player.animations.play('walk');
-	// 	spinSFX.play();
-	// }
-
 	if (player.body.velocity.y < 0) {
 		player.frame = 1;
 	} else if (player.body.velocity.y > 0){
@@ -208,6 +197,13 @@ function update() {
 
 	game.physics.arcade.collide(coins, platforms);
 	game.physics.arcade.overlap(player, coins, collectCoin, null, this);
+}
+
+function jump() {
+	if (player.body.touching.down && player.hitPlatform) {
+		player.body.velocity.y = -310;
+		jumpSFX.play();
+	}
 }
 
 function collectCoin(player, coin) {
