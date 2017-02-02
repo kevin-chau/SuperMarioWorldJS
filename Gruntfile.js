@@ -22,7 +22,8 @@ module.exports = function(grunt) {
           port: 8888,
           base: './'
         }
-      }
+      },
+      keepalive: true
     }
   });
 

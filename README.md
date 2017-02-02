@@ -30,6 +30,10 @@ To start the server, simply run `grunt`:
     grunt
 
 This will start the grunt web server as well as a `watch` task.
+If you want to run just the server without the watch task, use:
+
+    grunt:server:keepalive
+
 By default the port will be set to 8888 so go to the following URL in your browser:
 
     http://localhost:8888
