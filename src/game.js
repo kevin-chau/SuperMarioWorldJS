@@ -79,7 +79,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  // music.play();
+  music.play();
 
 	// Sound effects
 	jumpSFX = game.add.audio('Jump Wav');
