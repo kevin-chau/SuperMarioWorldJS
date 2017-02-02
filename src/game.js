@@ -174,12 +174,12 @@ function update() {
 
 
 
-	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && hitPlatform)){
+	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform)){
 		player.body.velocity.x = -75;
 		player.direction = 'left';
 		player.animations.play('walk');
 	}
-	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && hitPlatform))
+	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform))
 	{
 		player.body.velocity.x = 75;
 		player.direction = 'right';
@@ -192,12 +192,12 @@ function update() {
     player.frame = 14;
 	}
 
-	if (cursors.up.isDown && player.body.touching.down && hitPlatform)
+	if (cursors.up.isDown && player.body.touching.down && player.hitPlatform)
 	{
 		player.frame = 9;
 	}
 
-	if (cursors.down.isDown && player.body.touching.down && hitPlatform)
+	if (cursors.down.isDown && player.body.touching.down && player.hitPlatform)
 	{
 		player.frame = 49;
 	}
