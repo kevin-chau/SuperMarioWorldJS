@@ -135,10 +135,8 @@ function create() {
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
 		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
-		'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
 	};
-	// game.input.keyboard.addCallBacks()
-
+	buttons.B.onDown.add(jump, this);
 
 	/*
 	*******************************************
@@ -151,6 +149,12 @@ function create() {
 	coin2HUD = game.add.sprite(209,16, 'hud'); // Y good, x needs adjustment
 	coin2HUD.frame = 5;
 }
+
+function jump() {
+	player.body.velocity.y = -310;
+	jumpSFX.play();
+}
+
 
 function update() {
 	var hitPlatform = game.physics.arcade.collide(player, platforms);
@@ -189,18 +193,12 @@ function update() {
 		player.frame = 49;
 	}
 
-	if (buttons.B.isDown && player.body.touching.down && hitPlatform)
-	{
-		player.body.velocity.y = -310;
-		jumpSFX.play();
-	}
-
-	if (buttons.A.isDown && player.body.touching.down && hitPlatform)
-	{
-		player.body.velocity.y = -275;
-		player.animations.play('walk');
-		spinSFX.play();
-	}
+	// if (buttons.A.isDown && player.body.touching.down && hitPlatform)
+	// {
+	// 	player.body.velocity.y = -275;
+	// 	player.animations.play('walk');
+	// 	spinSFX.play();
+	// }
 
 	if (player.body.velocity.y < 0) {
 		player.frame = 1;
@@ -210,13 +208,6 @@ function update() {
 
 	game.physics.arcade.collide(coins, platforms);
 	game.physics.arcade.overlap(player, coins, collectCoin, null, this);
-
-
-	if (buttons.Mute.isDown && game.sound.mute) {
-		game.sound.mute = true;
-	} else if (buttons.Mute.isDown && !game.sound.mute) {
-		game.sound.mute = false;
-	}
 }
 
 function collectCoin(player, coin) {
