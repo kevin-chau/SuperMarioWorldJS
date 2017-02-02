@@ -104,8 +104,11 @@ function create() {
 	player.anchor.setTo(.5,1);
 	player.body.width = 13;
 	player.animations.add('walk', [15,14], 8, true);
+	player.animations.add('spin', [20,21,14], 20, true);
+
 	player.hitPlatform;
 	player.jumptimeStart = -1
+	player.jumpType = 0;
 
 	/*
 	********************************************
@@ -140,6 +143,7 @@ function create() {
 		'B': game.input.keyboard.addKey(Phaser.Keyboard.S)
 	};
 	buttons.B.onDown.add(jump, this);
+	buttons.A.onDown.add(spin, this);
 
 	/*
 	*******************************************
@@ -155,6 +159,8 @@ function create() {
 
 function update() {
 	player.hitPlatform = game.physics.arcade.collide(player, platforms);
+	player.jumpType = player.body.touching.down && player.hitPlatform ? 0 : player.jumpType;
+
 
 	if (player.direction === 'right'){
 		player.scale.x = 1;
@@ -164,26 +170,41 @@ function update() {
 
 	if (buttons.B.isDown && (player.jumptimeStart != -1))
 	 {
+		 		player.animations.play('spin');
 			 if (game.time.time - player.jumptimeStart > 175) {
 					 player.jumptimeStart = -1;
 			 } else {
 					 player.body.velocity.y = -250;
 			 }
+			 player.animations.play('spin');
 	 }
 
-
-
+	 if (buttons.A.isDown && (player.jumptimeStart != -1))
+ 	 {
+ 			 if (game.time.time - player.jumptimeStart > 200) {
+ 					 player.jumptimeStart = -1;
+ 			 } else {
+ 					 player.body.velocity.y = -200;
+ 			 }
+ 	 }
 
 	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform)){
 		player.body.velocity.x = -75;
 		player.direction = 'left';
-		player.animations.play('walk');
+		if (player.jumpType != 2) {
+			player.animations.play('walk');
+		}
 	}
 	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform))
 	{
 		player.body.velocity.x = 75;
 		player.direction = 'right';
-		player.animations.play('walk');
+		if (player.jumpType != 2) {
+			player.animations.play('walk');
+		}
+	}
+	else if (player.jumpType == 2) {
+		player.animations.play('spin');
 	}
 	else
 	{
@@ -202,17 +223,31 @@ function update() {
 		player.frame = 49;
 	}
 
-	if (player.body.velocity.y < 0) {
-		player.frame = 1;
-	} else if (player.body.velocity.y > 0){
-		player.frame = 3;
+	if (player.jumpType === 1){
+		if (player.body.velocity.y < 0) {
+			player.frame = 1;
+		} else if (player.body.velocity.y > 0){
+			player.frame = 3;
+		}
 	}
 
 	game.physics.arcade.collide(coins, platforms);
 	game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 }
 
+function spin() {
+	player.jumpType = 2;
+	if (player.body.touching.down && player.hitPlatform)
+	 {
+			 player.jumptimeStart = game.time.time;
+			 player.body.velocity.y = -200;
+			 spinSFX.play();
+			 player.animations.play('spin');
+	 }
+}
+
 function jump() {
+	player.jumpType = 1;
 	if (player.body.touching.down && player.hitPlatform)
 	 {
 			 player.jumptimeStart = game.time.time;
