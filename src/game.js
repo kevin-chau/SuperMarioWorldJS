@@ -165,10 +165,10 @@ function update() {
 
 	if (buttons.B.isDown && (jumptimeStart != -1))
 	 {
-			 if (game.time.time - jumptimeStart > 200) {
+			 if (game.time.time - jumptimeStart > 175) {
 					 jumptimeStart = -1;
 			 } else {
-					 player.body.velocity.y = -200;
+					 player.body.velocity.y = -250;
 			 }
 	 }
 
@@ -217,7 +217,7 @@ function jump() {
 	if (player.body.touching.down && player.hitPlatform)
 	 {
 			 jumptimeStart = game.time.time;
-			 player.body.velocity.y = -1000;
+			 player.body.velocity.y = -250;
 			 jumpSFX.play();
 	 }
 }
