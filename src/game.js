@@ -138,7 +138,7 @@ function create() {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
 		'B': game.input.keyboard.addKey(Phaser.Keyboard.S)
 	};
-	// buttons.B.onDown.add(jump, this);
+	buttons.B.onDown.add(jump, this);
 
 	/*
 	*******************************************
@@ -163,13 +163,7 @@ function update() {
 		player.scale.x = -1;
 	}
 
-	if (buttons.B.isDown && player.body.touching.down)
-	 {
-			 jumptimeStart = game.time.time;
-			 player.body.velocity.y = -1000;
-			 jumpSFX.play();
-	 }
-	 else if (buttons.B.isDown && (jumptimeStart != -1))
+	if (buttons.B.isDown && (jumptimeStart != -1))
 	 {
 			 if (game.time.time - jumptimeStart > 200) {
 					 jumptimeStart = -1;
@@ -220,10 +214,12 @@ function update() {
 }
 
 function jump() {
-	if (player.body.touching.down && player.hitPlatform) {
-		player.body.velocity.y = -310;
-		jumpSFX.play();
-	}
+	if (player.body.touching.down && player.hitPlatform)
+	 {
+			 jumptimeStart = game.time.time;
+			 player.body.velocity.y = -1000;
+			 jumpSFX.play();
+	 }
 }
 
 function collectCoin(player, coin) {
