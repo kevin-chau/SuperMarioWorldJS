@@ -103,7 +103,8 @@ function create() {
 
 	player.anchor.setTo(.5,1);
 	player.body.width = 13;
-	player.animations.add('walk', [15,14], 8, true);
+	player.animations.add('walk', [15,14], 10, true);
+	player.animations.add('run', [15,14], 16, true);
 	player.animations.add('spin', [20,21,14], 20, true);
 
 	player.hitPlatform;
@@ -140,7 +141,8 @@ function create() {
 	cursors = game.input.keyboard.createCursorKeys();
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
-		'B': game.input.keyboard.addKey(Phaser.Keyboard.S)
+		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
+		'Y': game.input.keyboard.addKey(Phaser.Keyboard.A)
 	};
 	buttons.B.onDown.add(jump, this);
 	buttons.A.onDown.add(spin, this);
@@ -189,18 +191,26 @@ function update() {
  	 }
 
 	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform)){
-		player.body.velocity.x = -75;
+		player.body.velocity.x = buttons.Y.isDown ? -125 : -75;
 		player.direction = 'left';
 		if (player.jumpType != 2) {
-			player.animations.play('walk');
+			if (buttons.Y.isDown){
+				player.animations.play('run');
+			} else {
+				player.animations.play('walk');
+			}
 		}
 	}
 	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform))
 	{
-		player.body.velocity.x = 75;
+		player.body.velocity.x = buttons.Y.isDown ? 125 : 75;
 		player.direction = 'right';
 		if (player.jumpType != 2) {
-			player.animations.play('walk');
+			if (buttons.Y.isDown){
+				player.animations.play('run');
+			} else {
+				player.animations.play('walk');
+			}
 		}
 	}
 	else if (player.jumpType == 2) {

@@ -73,13 +73,10 @@ This will start the web server as well as a `watch` task that continuously monit
     * Loading Screen
 
   * Controls:
-    * running
-    * Different jump heights
-    * Adjust kinematics
-    * jump only once per button press
     * Start Button
     * slide
     * IOS controls
+    * crouch jumping
 
   * Sprites:
     * Super Mushroom
@@ -88,7 +85,6 @@ This will start the web server as well as a `watch` task that continuously monit
     * Goomba
 
   * Animation:
-    * spin jump
     * Super Mario
     * slide
     * Coin collect
@@ -97,13 +93,11 @@ This will start the web server as well as a `watch` task that continuously monit
 
   * Sounds:
     * mute music button
-    * spin jump
     * slide
 
   * Code:
-    * refactor looking up and crouching boolean logic
+    * REFACTOR REFACTOR REFACTOR
     * Build System:
       * Multiple source files
-  * IO PAGE / DEMO
 
-  * Enum sprite frames
+  * Enum sprite frames, jumptype
