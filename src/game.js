@@ -31,6 +31,7 @@ function preload() {
 	// Sound Effects
 	game.load.audio('Jump Wav', 'assets/sound/effects/jump.wav');
 	game.load.audio('Coin Wav', 'assets/sound/effects/coin.wav');
+	game.load.audio('Spin Wav', 'assets/sound/effects/spin.wav');
 }
 
 function create() {
@@ -81,8 +82,9 @@ function create() {
   music.play();
 
 	// Sound effects
-	jumpWav = game.add.audio('Jump Wav');
-	coinWav = game.add.audio('Coin Wav');
+	jumpSFX = game.add.audio('Jump Wav');
+	coinSFX = game.add.audio('Coin Wav');
+	spinSFX = game.add.audio('Spin Wav');
 
 	/*
 	********************************************
@@ -190,13 +192,14 @@ function update() {
 	if (buttons.B.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -310;
-		jumpWav.play();
+		jumpSFX.play();
 	}
 
 	if (buttons.A.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -275;
-		jumpWav.play();
+		player.animations.play('walk');
+		spinSFX.play();
 	}
 
 	if (player.body.velocity.y < 0) {
@@ -218,7 +221,7 @@ function update() {
 
 function collectCoin(player, coin) {
 	coin.kill();
-	coinWav.play();
+	coinSFX.play();
 
 	score += 10;
 	// scoreText.text = 'Score: ' + score;
