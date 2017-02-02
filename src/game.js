@@ -132,7 +132,7 @@ function create() {
 	cursors = game.input.keyboard.createCursorKeys();
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
-		'B': game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
+		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
 		'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
 	};
 	// game.input.keyboard.addCallBacks()
@@ -190,6 +190,12 @@ function update() {
 	if (buttons.B.isDown && player.body.touching.down && hitPlatform)
 	{
 		player.body.velocity.y = -310;
+		jumpWav.play();
+	}
+
+	if (buttons.A.isDown && player.body.touching.down && hitPlatform)
+	{
+		player.body.velocity.y = -275;
 		jumpWav.play();
 	}
 

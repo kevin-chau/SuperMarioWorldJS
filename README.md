@@ -21,9 +21,9 @@ This project uses `node` and `npm` to get up and running:
     npm install
 
 # Running
-This project uses `grunt connect` to run the web server behind Phaser. If you don't have `grunt` you can install it with `npm`
+This project uses `grunt connect` to run the web server behind Phaser. If you don't have the grunt command line interface you can install it with `npm`:
 
-    npm install -g grunt
+    npm install -g grunt-cli
 
 To start the server, simply run `grunt`:
 
