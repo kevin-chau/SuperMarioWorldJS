@@ -194,25 +194,34 @@ function update() {
  			 }
  	 }
 
-	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform)){
+	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown))){
 		player.direction = 'left';
 		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
-		player.body.acceleration.x = buttons.Y.isDown ? -500 : -250;
+		player.body.acceleration.x = buttons.Y.isDown ? -500 : -500;
 	}
-	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform))
+	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown)))
 	{
 		player.direction = 'right';
 		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
-		player.body.acceleration.x = buttons.Y.isDown ? 500 : 250;
+		player.body.acceleration.x = buttons.Y.isDown ? 500 : 500;
 	}
 	else if (player.jumpType === 2) {
+		if (player.body.acceleration.x > 0){
+			player.body.acceleration.x = player.body.acceleration.x <= 0 ? 0 : player.body.acceleration.x - 50;
+		} else if (player.body.acceleration.x < 0) {
+			player.body.acceleration.x = player.body.acceleration.x >= 0 ? 0 : player.body.acceleration.x + 50;
+		}
 		player.animations.play('spin');
 	} else if (player.jumpType === 1){
+		if (player.body.acceleration.x > 0){
+			player.body.acceleration.x = player.body.acceleration.x <= 0 ? 0 : player.body.acceleration.x - 100;
+		} else if (player.body.acceleration.x < 0) {
+			player.body.acceleration.x = player.body.acceleration.x >= 0 ? 0 : player.body.acceleration.x + 100;
+		}
 	}
 	else
 	{
 		player.body.acceleration.x = 0;
-
 	}
 
 	if (Math.abs(player.body.velocity.x) > 75) {
