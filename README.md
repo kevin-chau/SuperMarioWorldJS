@@ -10,8 +10,11 @@ Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJ
 
 # Controls
 * Keyboard Mapping:
-  * SPACE - Jump
+  * S - Jump
+  * D - Spin Jump
   * ARROW KEYS - Left, Right, Up, Down
+  * M - Toggle Mute
+
 
 # Installing
 This project uses `node` and `npm` to get up and running:
