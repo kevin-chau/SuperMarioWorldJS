@@ -176,13 +176,11 @@ function update() {
 
 	if (buttons.B.isDown && (player.jumptimeStart != -1))
 	 {
-		 	 player.animations.play('spin');
 			 if (game.time.time - player.jumptimeStart > 175) {
 					 player.jumptimeStart = -1;
 			 } else {
 					 player.body.velocity.y = (Math.abs(player.body.velocity.x) >= 125) ? -290 : ((Math.abs(player.body.velocity.x) >= 75) ? -265 : -250);
 			 }
-			 player.animations.play('spin');
 	 }
 
 	 if (buttons.A.isDown && (player.jumptimeStart != -1))
@@ -190,7 +188,8 @@ function update() {
  			 if (game.time.time - player.jumptimeStart > 200) {
  					 player.jumptimeStart = -1;
  			 } else {
- 					 player.body.velocity.y = -200;
+ 				// 	 player.body.velocity.y = -200;
+				player.body.velocity.y = (Math.abs(player.body.velocity.x) >= 125) ? -240 : ((Math.abs(player.body.velocity.x) >= 75) ? -215 : -200);
  			 }
  	 }
 
