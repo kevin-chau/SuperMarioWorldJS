@@ -10,8 +10,11 @@ Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJ
 
 # Controls
 * Keyboard Mapping:
-  * SPACE - Jump
+  * S - Jump
+  * D - Spin Jump
   * ARROW KEYS - Left, Right, Up, Down
+  * M - Toggle Mute
+
 
 # Installing
 This project uses `node` and `npm` to get up and running:
@@ -77,6 +80,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * slide
     * IOS controls
     * crouch jumping
+    * accelerate
 
   * Sprites:
     * Super Mushroom
@@ -90,6 +94,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * Coin collect
     * turn around
     * crouch jumping
+    * accelerate
 
   * Sounds:
     * mute music button

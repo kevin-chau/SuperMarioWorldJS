@@ -79,7 +79,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  // music.play();
+  music.play();
 
 	// Sound effects
 	jumpSFX = game.add.audio('Jump Wav');
@@ -102,7 +102,8 @@ function create() {
   player.direction = 'right';
 
 	player.anchor.setTo(.5,1);
-	player.body.width = 13;
+	player.body.width = 14;
+	player.body.height = 20;
 	player.animations.add('walk', [15,14], 10, true);
 	player.animations.add('run', [15,14], 16, true);
 	player.animations.add('spin', [20,21,14], 20, true);
@@ -142,10 +143,12 @@ function create() {
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
 		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
-		'Y': game.input.keyboard.addKey(Phaser.Keyboard.A)
+		'Y': game.input.keyboard.addKey(Phaser.Keyboard.A),
+		'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
 	};
 	buttons.B.onDown.add(jump, this);
 	buttons.A.onDown.add(spin, this);
+	buttons.Mute.onDown.add(mute, this);
 
 	/*
 	*******************************************
@@ -160,11 +163,10 @@ function create() {
 }
 
 function update() {
+	player.body.height = player.height;
+
 	player.hitPlatform = game.physics.arcade.collide(player, platforms);
 	player.jumpType = player.body.touching.down && player.hitPlatform ? 0 : player.jumpType;
-
-	player.body.width = Math.abs(player.width);
-	player.body.height = player.height;
 
 	if (player.direction === 'right'){
 		player.scale.x = 1;
@@ -233,14 +235,14 @@ function update() {
 		}
 	}
 
-	// if (cursors.up.isDown && player.body.touching.down && player.hitPlatform)
-	// {
-	// 	player.frame = 9;
-	// }
-	// else if (cursors.down.isDown && player.body.touching.down && player.hitPlatform)
-	// {
-	// 	player.frame = 49;
-	// }
+	if (cursors.up.isDown && player.body.touching.down && player.hitPlatform)
+	{
+		player.frame = 9;
+	}
+	else if (cursors.down.isDown && player.body.touching.down && player.hitPlatform)
+	{
+		player.frame = 49;
+	}
 
 	// Coin collisions
 	game.physics.arcade.collide(coins, platforms);
@@ -266,6 +268,10 @@ function jump() {
 			 player.body.velocity.y = -250;
 			 jumpSFX.play();
 	 }
+}
+
+function mute() {
+	game.sound.mute = !game.sound.mute;
 }
 
 function collectCoin(player, coin) {
