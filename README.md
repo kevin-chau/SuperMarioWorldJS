@@ -96,6 +96,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * slide
 
   * Code:
+    * PHASER 2.6.2 Branch
     * REFACTOR REFACTOR REFACTOR
     * Build System:
       * Multiple source files
