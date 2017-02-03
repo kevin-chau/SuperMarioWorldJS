@@ -77,6 +77,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * slide
     * IOS controls
     * crouch jumping
+    * accelerate
 
   * Sprites:
     * Super Mushroom
@@ -90,6 +91,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * Coin collect
     * turn around
     * crouch jumping
+    * accelerate
 
   * Sounds:
     * mute music button

@@ -142,10 +142,12 @@ function create() {
 	buttons = {
 		'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
 		'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
-		'Y': game.input.keyboard.addKey(Phaser.Keyboard.A)
+		'Y': game.input.keyboard.addKey(Phaser.Keyboard.A),
+		'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
 	};
 	buttons.B.onDown.add(jump, this);
 	buttons.A.onDown.add(spin, this);
+	buttons.Mute.onDown.add(mute, this);
 
 	/*
 	*******************************************
@@ -264,6 +266,10 @@ function jump() {
 			 player.body.velocity.y = -250;
 			 jumpSFX.play();
 	 }
+}
+
+function mute() {
+	game.sound.mute = !game.sound.mute;
 }
 
 function collectCoin(player, coin) {
