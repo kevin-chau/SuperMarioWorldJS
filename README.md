@@ -74,6 +74,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * show SNES controller
     * show controls
     * Loading Screen
+    * mute icon
 
   * Controls:
     * Start Button
@@ -81,6 +82,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * IOS controls
     * crouch jumping
     * accelerate
+    * jump higher when walking/running
 
   * Sprites:
     * Super Mushroom
@@ -97,7 +99,6 @@ This will start the web server as well as a `watch` task that continuously monit
     * accelerate
 
   * Sounds:
-    * mute music button
     * slide
 
   * Bugs:
