@@ -49,11 +49,11 @@ function create() {
 	// Platforms
 	platforms = game.add.group();
 	platforms.enableBody = true;
+	var ground = platforms.create(0, game.world.height - 31, 'ground');
+	ground.body.immovable = true;
 
 	// Ground
-	var ground = platforms.create(0, game.world.height - 31, 'ground');
 	ground.scale.setTo(2,2);
-	ground.body.immovable = true;
 
 	groundTilesGroup = game.add.group();
 	for (var i = 0; i < SNES_WIDTH; i += 16){
@@ -79,7 +79,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  music.play();
+  // music.play();
 
 	// Sound effects
 	jumpSFX = game.add.audio('Jump Wav');
@@ -163,6 +163,8 @@ function update() {
 	player.hitPlatform = game.physics.arcade.collide(player, platforms);
 	player.jumpType = player.body.touching.down && player.hitPlatform ? 0 : player.jumpType;
 
+	player.body.width = Math.abs(player.width);
+	player.body.height = player.height;
 
 	if (player.direction === 'right'){
 		player.scale.x = 1;
@@ -223,16 +225,6 @@ function update() {
     player.frame = 14;
 	}
 
-	if (cursors.up.isDown && player.body.touching.down && player.hitPlatform)
-	{
-		player.frame = 9;
-	}
-
-	if (cursors.down.isDown && player.body.touching.down && player.hitPlatform)
-	{
-		player.frame = 49;
-	}
-
 	if (player.jumpType === 1){
 		if (player.body.velocity.y < 0) {
 			player.frame = 1;
@@ -241,8 +233,18 @@ function update() {
 		}
 	}
 
+	// if (cursors.up.isDown && player.body.touching.down && player.hitPlatform)
+	// {
+	// 	player.frame = 9;
+	// }
+	// else if (cursors.down.isDown && player.body.touching.down && player.hitPlatform)
+	// {
+	// 	player.frame = 49;
+	// }
+
+	// Coin collisions
 	game.physics.arcade.collide(coins, platforms);
-	game.physics.arcade.overlap(player, coins, collectCoin, null, this);
+	// game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 }
 
 function spin() {
