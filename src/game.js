@@ -190,7 +190,6 @@ function update() {
  			 if (game.time.time - player.jumptimeStart > 200) {
  					 player.jumptimeStart = -1;
  			 } else {
- 				// 	 player.body.velocity.y = -200;
 				player.body.velocity.y = (Math.abs(player.body.velocity.x) >= 125) ? -240 : ((Math.abs(player.body.velocity.x) >= 75) ? -215 : -200);
  			 }
  	 }
@@ -198,48 +197,40 @@ function update() {
 	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform)){
 		player.direction = 'left';
 		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
-		if (!buttons.Y.isDown) {
-			player.body.velocity.x = -75;
-		}
-		player.body.acceleration.x = -500;
-		if (player.jumpType != 2) {
-			if (buttons.Y.isDown){
-				player.animations.play('run');
-			} else {
-				player.animations.play('walk');
-			}
-		}
+		player.body.acceleration.x = buttons.Y.isDown ? -500 : -250;
 	}
 	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform))
 	{
 		player.direction = 'right';
 		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
-		if (!buttons.Y.isDown) {
-			player.body.velocity.x = 75;
-		}
-		player.body.acceleration.x = 500;
-		if (player.jumpType != 2) {
-			if (buttons.Y.isDown){
-				player.animations.play('run');
-			} else {
-				player.animations.play('walk');
-			}
-		}
+		player.body.acceleration.x = buttons.Y.isDown ? 500 : 250;
 	}
-	else if (player.jumpType == 2) {
+	else if (player.jumpType === 2) {
 		player.animations.play('spin');
+	} else if (player.jumpType === 1){
 	}
 	else
 	{
-		if (player.body.velocity.x > 0) {
-			console.log("slide walking");
+		player.body.acceleration.x = 0;
+
+	}
+
+	if (Math.abs(player.body.velocity.x) > 75) {
+		if (player.jumpType === 0){
+			player.animations.play('run');
+		}
+	} else if (Math.abs(player.body.velocity.x) > 0){
+		if (player.jumpType === 0){
 			player.animations.play('walk');
 		}
-		player.body.acceleration.x = 0;
-		// player.body.velocity.x = 0;
-		player.animations.stop();
-    player.frame = 14;
+	} else {
+		if (player.jumpType != 2){
+			player.animations.stop();
+	    player.frame = 14;
+		}
 	}
+
+
 
 	if (player.jumpType === 1){
 		if (player.body.velocity.y < 0) {
