@@ -113,6 +113,7 @@ function create() {
 	player.jumptimeStart = -1
 	player.jumpType = 0;
 
+	player.body.drag.setTo(250,0)
 	/*
 	********************************************
 	Coins
@@ -230,8 +231,12 @@ function update() {
 	}
 	else
 	{
+		if (player.body.velocity.x > 0) {
+			console.log("slide walking");
+			player.animations.play('walk');
+		}
 		player.body.acceleration.x = 0;
-		player.body.velocity.x = 0;
+		// player.body.velocity.x = 0;
 		player.animations.stop();
     player.frame = 14;
 	}
