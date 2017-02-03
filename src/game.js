@@ -104,6 +104,7 @@ function create() {
 	player.anchor.setTo(.5,1);
 	player.body.width = 14;
 	player.body.height = 20;
+
 	player.animations.add('walk', [15,14], 10, true);
 	player.animations.add('run', [15,14], 16, true);
 	player.animations.add('spin', [20,21,14], 20, true);
@@ -194,8 +195,12 @@ function update() {
  	 }
 
 	if (cursors.left.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform)){
-		player.body.velocity.x = buttons.Y.isDown ? -125 : -75;
 		player.direction = 'left';
+		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
+		if (!buttons.Y.isDown) {
+			player.body.velocity.x = -75;
+		}
+		player.body.acceleration.x = -500;
 		if (player.jumpType != 2) {
 			if (buttons.Y.isDown){
 				player.animations.play('run');
@@ -206,8 +211,12 @@ function update() {
 	}
 	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown) && player.body.touching.down && player.hitPlatform))
 	{
-		player.body.velocity.x = buttons.Y.isDown ? 125 : 75;
 		player.direction = 'right';
+		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
+		if (!buttons.Y.isDown) {
+			player.body.velocity.x = 75;
+		}
+		player.body.acceleration.x = 500;
 		if (player.jumpType != 2) {
 			if (buttons.Y.isDown){
 				player.animations.play('run');
@@ -221,6 +230,7 @@ function update() {
 	}
 	else
 	{
+		player.body.acceleration.x = 0;
 		player.body.velocity.x = 0;
 		player.animations.stop();
     player.frame = 14;
