@@ -8,6 +8,8 @@ Super Mario World built with Phaser.
 # Demo
 Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJS/">github.io/SuperMarioWorldJS</a>
 
+Play with the Monokai Color Palette: <a href="https://kevinchau321.github.io/SublimeMarioWorldJS/">github.io/SuperMarioWorldJS</a>
+
 # Controls
 * Keyboard Mapping:
   * S - Jump
@@ -78,10 +80,9 @@ This will start the web server as well as a `watch` task that continuously monit
 
   * Controls:
     * Start Button
-    * slide
     * IOS controls
     * crouch jumping
-    * accelerate / sprint
+    * sprint
 
   * Sprites:
     * Super Mushroom
@@ -95,7 +96,7 @@ This will start the web server as well as a `watch` task that continuously monit
     * Coin collect
     * turn around
     * crouch jumping
-    * accelerate / sprint
+    * sprint
 
   * Sounds:
     * slide
