@@ -92,7 +92,7 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(24, game.world.height - 32, 'mario');
+	player = game.add.sprite(24, game.world.height - 31, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;
@@ -176,7 +176,7 @@ function update() {
 
 	if (buttons.B.isDown && (player.jumptimeStart != -1))
 	 {
-		 		player.animations.play('spin');
+		 	 player.animations.play('spin');
 			 if (game.time.time - player.jumptimeStart > 175) {
 					 player.jumptimeStart = -1;
 			 } else {
@@ -245,7 +245,7 @@ function update() {
 	}
 
 	// Coin collisions
-	game.physics.arcade.collide(coins, platforms);
+	// game.physics.arcade.collide(coins, platforms);
 	// game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 }
 

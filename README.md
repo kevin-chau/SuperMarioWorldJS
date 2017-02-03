@@ -100,6 +100,9 @@ This will start the web server as well as a `watch` task that continuously monit
     * mute music button
     * slide
 
+  * Bugs:
+    * Double jump
+
   * Code:
     * REFACTOR REFACTOR REFACTOR
     * Build System:
