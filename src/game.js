@@ -84,7 +84,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  music.play();
+  // music.play();
 
 	// Sound effects
 	jumpSFX = game.add.audio('Jump Wav');
@@ -203,14 +203,20 @@ function create() {
 				34: 'HALF_LEFT'
 			});
 		game.map.setCollisionBetween(2, 34, true, 'collision');
+		player.body.width = 12;
+		player.body.height = 19;
 		game.slopes.enable(player);
+		player.body.width = 14;
+		player.body.height = 20;
 
 }
 
 function update() {
 	player.body.height = player.height;
+	player.onSlope = game.physics.arcade.collide(player, game.groundSlope);
 
-	player.hitPlatform = game.physics.arcade.collide(player, platforms);
+	player.hitPlatform = game.physics.arcade.collide(player, platforms) || player.onSlope;
+	if (player.onSlope) { player.body.drag.setTo(500,500); } else { player.body.drag.setTo(250,0); }
 	player.jumpType = player.body.touching.down && player.hitPlatform ? 0 : player.jumpType;
 
 	if (player.direction === 'right'){
@@ -241,12 +247,14 @@ function update() {
 		player.direction = 'left';
 		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
 		player.body.acceleration.x = buttons.Y.isDown ? -500 : -500;
+		player.body.acceleration.x = player.onSlope ? -10000 : player.body.acceleration.x;
 	}
 	else if (cursors.right.isDown && !((cursors.up.isDown || cursors.down.isDown)))
 	{
 		player.direction = 'right';
 		player.body.maxVelocity.x = buttons.Y.isDown ? 125 : 75;
 		player.body.acceleration.x = buttons.Y.isDown ? 500 : 500;
+		player.body.acceleration.x = player.onSlope ? 10000 : player.body.acceleration.x;
 	}
 	else if (player.jumpType === 2) {
 		if (player.body.acceleration.x > 0){
@@ -277,8 +285,8 @@ function update() {
 		}
 	} else {
 		if (player.jumpType != 2){
-			player.animations.stop();
-	    player.frame = 14;
+				player.animations.stop();
+		    player.frame = 14;
 		}
 	}
 
