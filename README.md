@@ -8,7 +8,7 @@ Super Mario World built with Phaser.
 # Demo
 Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJS/">github.io/SuperMarioWorldJS</a>
 
-Play with the Monokai Color Palette: <a href="https://kevinchau321.github.io/SublimeMarioWorldJS/">github.io/SuperMarioWorldJS</a>
+Play with the Monokai Color Palette: <a href="https://kevinchau321.github.io/SublimeMarioWorldJS/">github.io/SublimeMarioWorldJS</a>
 
 # Controls
 * Keyboard Mapping:

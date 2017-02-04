@@ -8,6 +8,8 @@ var scoreText;
 
 function preload() {
 
+	game.load.tilemap('demo-tilemap', 'assets/maps/tiles/demo.json', null, Phaser.Tilemap.TILED_JSON);
+	game.load.spritesheet('pink-collision-spritesheet', 'assets/maps/tiles/ninja-tiles32-pink.png', 32, 32);
 	game.load.image('sky', 'assets/maps/yoshis-island-1/background.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
@@ -37,6 +39,9 @@ function preload() {
 function create() {
 	// Enable physics
 	game.physics.startSystem(Phaser.Physics.ARCADE);
+
+	// Enable Slopes plugin for arcade physics
+	game.plugins.add(Phaser.Plugin.ArcadeSlopes);
 
 	/*
 	*******************************************
@@ -162,6 +167,46 @@ function create() {
 	coin1HUD.frame = 3;
 	coin2HUD = game.add.sprite(209,16, 'hud'); // Y good, x needs adjustment
 	coin2HUD.frame = 5;
+
+
+	// Slopes
+	game.map = game.add.tilemap('demo-tilemap');
+	game.map.addTilesetImage('collision', 'pink-collision-spritesheet');
+	//
+	game.groundSlope = game.map.createLayer('collision');
+	//
+	game.slopes.convertTilemapLayer(game.groundSlope, {
+				2:  'FULL',
+				3:  'HALF_BOTTOM_LEFT',
+				4:  'HALF_BOTTOM_RIGHT',
+				6:  'HALF_TOP_LEFT',
+				5:  'HALF_TOP_RIGHT',
+				15: 'QUARTER_BOTTOM_LEFT_LOW',
+				16: 'QUARTER_BOTTOM_RIGHT_LOW',
+				17: 'QUARTER_TOP_RIGHT_LOW',
+				18: 'QUARTER_TOP_LEFT_LOW',
+				19: 'QUARTER_BOTTOM_LEFT_HIGH',
+				20: 'QUARTER_BOTTOM_RIGHT_HIGH',
+				21: 'QUARTER_TOP_RIGHT_HIGH',
+				22: 'QUARTER_TOP_LEFT_HIGH',
+				23: 'QUARTER_LEFT_BOTTOM_HIGH',
+				24: 'QUARTER_RIGHT_BOTTOM_HIGH',
+				25: 'QUARTER_RIGHT_TOP_LOW',
+				26: 'QUARTER_LEFT_TOP_LOW',
+				27: 'QUARTER_LEFT_BOTTOM_LOW',
+				28: 'QUARTER_RIGHT_BOTTOM_LOW',
+				29: 'QUARTER_RIGHT_TOP_HIGH',
+				30: 'QUARTER_LEFT_TOP_HIGH',
+				31: 'HALF_BOTTOM',
+				32: 'HALF_RIGHT',
+				33: 'HALF_TOP',
+				34: 'HALF_LEFT'
+			});
+		game.map.setCollisionBetween(2, 34, true, 'collision');
+		game.slopes.enable(player);
+		// player.body.tilePadding.x = 1;
+		// player.body.tilePadding.y = 1;
+
 }
 
 function update() {
@@ -261,6 +306,8 @@ function update() {
 	// Coin collisions
 	// game.physics.arcade.collide(coins, platforms);
 	// game.physics.arcade.overlap(player, coins, collectCoin, null, this);
+
+	game.physics.arcade.collide(player, game.groundSlope);
 }
 
 function spin() {
