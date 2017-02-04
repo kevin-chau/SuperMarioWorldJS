@@ -172,9 +172,9 @@ function create() {
 	// Slopes
 	game.map = game.add.tilemap('demo-tilemap');
 	game.map.addTilesetImage('collision', 'pink-collision-spritesheet');
-	//
+
 	game.groundSlope = game.map.createLayer('collision');
-	//
+
 	game.slopes.convertTilemapLayer(game.groundSlope, {
 				2:  'FULL',
 				3:  'HALF_BOTTOM_LEFT',
@@ -204,8 +204,6 @@ function create() {
 			});
 		game.map.setCollisionBetween(2, 34, true, 'collision');
 		game.slopes.enable(player);
-		// player.body.tilePadding.x = 1;
-		// player.body.tilePadding.y = 1;
 
 }
 
