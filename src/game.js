@@ -37,6 +37,9 @@ function preload() {
 }
 
 function create() {
+	// bounds
+	game.world.setBounds(0, 0, SNES_WIDTH * 3,  SNES_HEIGHT);
+
 	// Enable physics
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -50,6 +53,8 @@ function create() {
 	*/
 	// Sky background
 	game.add.sprite(0,-192,'sky');
+	game.add.sprite(512,-192,'sky');
+	game.add.sprite(512 * 2,-192,'sky');
 
 	// Platforms
 	platforms = game.add.group();
@@ -103,6 +108,11 @@ function create() {
 				34: 'HALF_LEFT'
 			});
 	game.map.setCollisionBetween(2, 34, true, 'collision');
+	game.map.forEach(function(tile) {
+			tile.collideDown = true;
+			console.log(tile);
+		},
+		this, 0, 0, game.map.width, game.map.height, 0);
 
 	ledge = game.add.sprite(176, SNES_HEIGHT - 128, 'background-objects');
 	ledge.frame = 23;
@@ -140,8 +150,8 @@ function create() {
   player.direction = 'right';
 
 	player.anchor.setTo(.5,1);
-	player.body.width = 12;
-	player.body.height = 19;
+	player.body.width = 10;
+	player.body.height = 17;
 	game.slopes.enable(player);
 	player.body.width = 14;
 	player.body.height = 20;
@@ -204,6 +214,9 @@ function create() {
 	coin1HUD.frame = 3;
 	coin2HUD = game.add.sprite(209,16, 'hud'); // Y good, x needs adjustment
 	coin2HUD.frame = 5;
+
+	// Camera
+	game.camera.follow(player);
 
 }
 
