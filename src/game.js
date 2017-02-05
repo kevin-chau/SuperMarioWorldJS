@@ -38,7 +38,7 @@ function preload() {
 
 function create() {
 	// bounds
-	game.world.setBounds(0, 0, SNES_WIDTH * 3,  SNES_HEIGHT);
+	game.world.setBounds(0, 0, 5120, 432);
 
 	// Enable physics
 	game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -52,24 +52,28 @@ function create() {
 	*******************************************
 	*/
 	// Sky background
-	game.add.sprite(0,-192,'sky');
-	game.add.sprite(512,-192,'sky');
-	game.add.sprite(512 * 2,-192,'sky');
+	game.add.sprite(0,0,'sky');
+	game.add.sprite(512,0,'sky');
+	game.add.sprite(512 * 2,0,'sky');
+	game.add.sprite(512 * 3,0,'sky');
+	game.add.sprite(512 * 4,0,'sky');
 
 	// Platforms
 	platforms = game.add.group();
 	platforms.enableBody = true;
-	var ground = platforms.create(0, game.world.height - 31, 'ground');
+	var ground = platforms.create(0, game.world.height - 47, 'ground');
 	ground.body.immovable = true;
 
 	// Ground
 	ground.scale.setTo(2,2);
 
 	groundTilesGroup = game.add.group();
-	for (var i = 0; i < SNES_WIDTH; i += 16){
-		tile = groundTilesGroup.create(i,SNES_HEIGHT - 32, 'groundTiles');
+	for (var i = 0; i < 944; i += 16){
+		tile = groundTilesGroup.create(i,432 - 48, 'groundTiles');
 		tile.frame = 84;
-		tile = groundTilesGroup.create(i,SNES_HEIGHT - 16, 'groundTiles');
+		tile = groundTilesGroup.create(i,432 - 16, 'groundTiles');
+		tile.frame = 109;
+		tile = groundTilesGroup.create(i,432 - 32, 'groundTiles');
 		tile.frame = 109;
 	}
 
@@ -108,6 +112,8 @@ function create() {
 				34: 'HALF_LEFT'
 			});
 	game.map.setCollisionBetween(2, 34, true, 'collision');
+
+	// This should work, but doesn't seem to work for the slopes engine
 	game.map.forEach(function(tile) {
 			tile.collideDown = true;
 			console.log(tile);
@@ -140,7 +146,7 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(24, game.world.height - 31, 'mario');
+	player = game.add.sprite(24, game.world.height - 47, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;
@@ -216,6 +222,7 @@ function create() {
 	coin2HUD.frame = 5;
 
 	// Camera
+	game.camera.height = SNES_HEIGHT + 16;
 	game.camera.follow(player);
 
 }
