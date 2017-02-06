@@ -62,6 +62,8 @@ function create() {
 	platforms.enableBody = true;
 	var ground = platforms.create(0, game.world.height - 47, 'ground');
 	ground.body.immovable = true;
+	var ground = platforms.create(SNES_WIDTH*2, game.world.height - 47, 'ground');
+	ground.body.immovable = true;
 	var wall = platforms.create(257, game.world.height - 64, 'ground');
 	wall.body.immovable = true;
 
