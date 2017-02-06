@@ -9,6 +9,7 @@ var scoreText;
 function preload() {
 
 	game.load.tilemap('demo-tilemap', 'assets/maps/tiles/demo.json', null, Phaser.Tilemap.TILED_JSON);
+	game.load.tilemap('yoshis-island-1-tilemap', 'assets/maps/tiles/yoshis-island-1-tilemap.json', null, Phaser.Tilemap.TILED_JSON);
 	game.load.spritesheet('pink-collision-spritesheet', 'assets/maps/tiles/ninja-tiles32-pink.png', 32, 32);
 	game.load.image('sky', 'assets/maps/yoshis-island-1/background.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
@@ -52,33 +53,33 @@ function create() {
 	*******************************************
 	*/
 	// Sky background
-	game.add.sprite(0,0,'sky');
-	game.add.sprite(512,0,'sky');
-	game.add.sprite(512 * 2,0,'sky');
-	game.add.sprite(512 * 3,0,'sky');
-	game.add.sprite(512 * 4,0,'sky');
+	for (var i = 0; i < 10; i++){
+		game.add.sprite(i*512, 0, 'sky');
+	}
 
 	// Platforms
 	platforms = game.add.group();
 	platforms.enableBody = true;
 	var ground = platforms.create(0, game.world.height - 47, 'ground');
 	ground.body.immovable = true;
+	var wall = platforms.create(257, game.world.height - 64, 'ground');
+	wall.body.immovable = true;
 
 	// Ground
 	ground.scale.setTo(2,2);
 
-	groundTilesGroup = game.add.group();
-	for (var i = 0; i < 944; i += 16){
-		tile = groundTilesGroup.create(i,432 - 48, 'groundTiles');
-		tile.frame = 84;
-		tile = groundTilesGroup.create(i,432 - 16, 'groundTiles');
-		tile.frame = 109;
-		tile = groundTilesGroup.create(i,432 - 32, 'groundTiles');
-		tile.frame = 109;
-	}
-
-	bush = game.add.sprite(64, SNES_HEIGHT - 48, 'background-objects');
-	bush.frame = 73;
+	// groundTilesGroup = game.add.group();
+	// for (var i = 0; i < 944; i += 16){
+	// 	tile = groundTilesGroup.create(i,432 - 48, 'groundTiles');
+	// 	tile.frame = 84;
+	// 	tile = groundTilesGroup.create(i,432 - 16, 'groundTiles');
+	// 	tile.frame = 109;
+	// 	tile = groundTilesGroup.create(i,432 - 32, 'groundTiles');
+	// 	tile.frame = 109;
+	// }
+	//
+	// bush = game.add.sprite(64, SNES_HEIGHT - 48, 'background-objects');
+	// bush.frame = 73;
 
 	// Slopes
 	game.map = game.add.tilemap('demo-tilemap');
@@ -116,14 +117,13 @@ function create() {
 	// This should work, but doesn't seem to work for the slopes engine
 	game.map.forEach(function(tile) {
 			tile.collideDown = true;
-			console.log(tile);
 		},
 		this, 0, 0, game.map.width, game.map.height, 0);
 
-	ledge = game.add.sprite(176, SNES_HEIGHT - 128, 'background-objects');
-	ledge.frame = 23;
-	ledge = game.add.sprite(180, SNES_HEIGHT - 76, 'background-objects');
-	ledge.frame = 28;
+	// ledge = game.add.sprite(176, SNES_HEIGHT - 128, 'background-objects');
+	// ledge.frame = 23;
+	// ledge = game.add.sprite(180, SNES_HEIGHT - 76, 'background-objects');
+	// ledge.frame = 28;
 
 	/*
 	*******************************************
@@ -156,9 +156,12 @@ function create() {
   player.direction = 'right';
 
 	player.anchor.setTo(.5,1);
-	player.body.width = 10;
-	player.body.height = 17;
-	game.slopes.enable(player);
+
+	// Dimensions for slope collision
+	// player.body.width = 10;
+	// player.body.height = 17;
+	// game.slopes.enable(player);
+
 	player.body.width = 14;
 	player.body.height = 20;
 
@@ -223,7 +226,7 @@ function create() {
 
 	// Camera
 	game.camera.height = SNES_HEIGHT + 16;
-	game.camera.follow(player);
+	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER, 1, 1);
 
 }
 
@@ -330,6 +333,9 @@ function update() {
 	// game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 
 	game.physics.arcade.collide(player, game.groundSlope);
+}
+
+function render() {
 }
 
 function spin() {
