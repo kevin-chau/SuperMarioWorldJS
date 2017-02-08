@@ -200,7 +200,28 @@ function createPlatforms() {
   tile = game.add.sprite(2896, MAP_HEIGHT - 160, 'groundTiles', 109);
   tile = game.add.sprite(2880, MAP_HEIGHT - 160, 'groundTiles', 109);
   tile = game.add.sprite(2864, MAP_HEIGHT - 160, 'groundTiles', 109);
-  tile = game.add.sprite(2848, MAP_HEIGHT - 160, 'groundTiles', 109); 
+  tile = game.add.sprite(2848, MAP_HEIGHT - 160, 'groundTiles', 109);
+
+  // Last Platform
+  for (var j = 0; j < 3; j++){
+    tile = game.add.sprite(4304, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 175);
+  }
+  for (var i = 270; i < 277; i++){
+    for (var j = 0; j < 3; j++){
+      tile = game.add.sprite(16 * i, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 109);
+    }
+  }
+  for (var j = 0; j < 3; j++){
+    tile = game.add.sprite(4432, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 177);
+  }
+  platform = platforms.create(4304, MAP_HEIGHT - 112, 'groundTiles', 151);
+  platform.body.immovable = true;
+  for (var i = 270; i < 277; i++){
+    platform = platforms.create(16 * i, MAP_HEIGHT - 112, 'groundTiles', 152);
+    platform.body.immovable = true;
+  }
+  platform = platforms.create(4432, MAP_HEIGHT - 112, 'groundTiles', 153);
+  platform.body.immovable = true;
 }
 
 function createPipes(){
