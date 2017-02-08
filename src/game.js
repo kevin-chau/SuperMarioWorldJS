@@ -55,18 +55,7 @@ function create() {
 	MAP
 	*******************************************
 	*/
-	// Sky background
-	for (var i = 0; i < 10; i++){
-		game.add.sprite(i*512, 0, 'sky');
-	}
 
-	// Platforms
-	platforms = game.add.group();
-	platforms.enableBody = true;
-	groundTilesGroup = game.add.group();
-	groundTilesGroup.enableBody = true;
-	tilesGroup = game.add.group();
-	tilesGroup.enableBody = true;
 	buildYoshisIsland1();
 
 	/*

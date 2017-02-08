@@ -1,4 +1,19 @@
 function buildYoshisIsland1() {
+  // SLOPES
+  buildSlopes();
+
+  // Sky background
+  for (var i = 0; i < 10; i++){
+    game.add.sprite(i*512, 0, 'sky');
+  }
+
+  platforms = game.add.group();
+	platforms.enableBody = true;
+	groundTilesGroup = game.add.group();
+	groundTilesGroup.enableBody = true;
+	tilesGroup = game.add.group();
+	tilesGroup.enableBody = true;
+
   // Background Objects
   createBushes();
 
@@ -38,9 +53,6 @@ function buildYoshisIsland1() {
     createGroundTile(i * 16, MAP_HEIGHT - 16,109);
     createGroundTile(i * 16, MAP_HEIGHT - 32,109);
   }
-
-
-  buildSlopes();
 
   // Ledges
   ledges = game.add.group();
