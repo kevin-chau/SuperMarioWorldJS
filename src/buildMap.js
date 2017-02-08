@@ -18,6 +18,8 @@ function buildYoshisIsland1() {
 	groundTilesGroup.enableBody = true;
 	tilesGroup = game.add.group();
 	tilesGroup.enableBody = true;
+  blocksGroup = game.add.group();
+	blocksGroup.enableBody = true;
 
   // Background Objects
   createBushes();
@@ -58,23 +60,72 @@ function buildYoshisIsland1() {
   createLedge(1264);
   createLedge(1328);
 
-  // Slope Pipe
-  pipe = ledges.create(818, MAP_HEIGHT - 101, 'background-objects');
-  pipe.frame = 26;
-  pipe = ledges.create(871, MAP_HEIGHT - 144, 'background-objects');
-  pipe.frame = 24;
-  // Slope Pipe
-  pipe = ledges.create(1986, MAP_HEIGHT - 101, 'background-objects');
-  pipe.frame = 26;
-  pipe = ledges.create(2039, MAP_HEIGHT - 144, 'background-objects');
-  pipe.frame = 24;
+  createPipes();
+
+  createBlocks();
+}
+
+function createPipes(){
+  pipePlatform = platforms.create(1808, MAP_HEIGHT - 96, 'pipes',4);
+  pipePlatform.body.immovable = true;
+  pipePlatform = platforms.create(1809, MAP_HEIGHT - 64, 'pipes',44);
+  pipePlatform.body.immovable = true;
+
+  pipePlatform = platforms.create(1920, MAP_HEIGHT - 80, 'pipes',4);
+  pipePlatform.body.immovable = true;
+
+  // Slope Pipes
+  pipe = ledges.create(818, MAP_HEIGHT - 101, 'background-objects', 26);
+  pipe = ledges.create(871, MAP_HEIGHT - 144, 'background-objects', 24);
+  pipe = ledges.create(1986, MAP_HEIGHT - 101, 'background-objects',26);
+  pipe = ledges.create(2039, MAP_HEIGHT - 144, 'background-objects',24);
+
+  pipes = platforms.create(2096, MAP_HEIGHT - 112, 'background-objects', 32);
+  pipes.body.immovable = true;
+
+  // Silver Pipe
+  pipePlatform = platforms.create(2224, MAP_HEIGHT - 112, 'pipes',3);
+  pipePlatform.body.immovable = true;
+  pipePlatform = platforms.create(2225, MAP_HEIGHT - 80, 'pipes',43);
+  pipePlatform.body.immovable = true;
+  pipePlatform = platforms.create(2225, MAP_HEIGHT - 64, 'pipes',43);
+  pipePlatform.body.immovable = true;
+
+  // Last Pipe
+  pipePlatform = platforms.create(4544, MAP_HEIGHT - 112, 'pipes',87);
+  pipePlatform.body.immovable = true;
+  pipePlatform = platforms.create(4545, MAP_HEIGHT - 80, 'pipes',102);
+  pipePlatform.body.immovable = true;
+  pipePlatform = platforms.create(4545, MAP_HEIGHT - 64, 'pipes',102);
+  pipePlatform.body.immovable = true;
+}
+
+function createBlocks(){
+  block = blocksGroup.create(1904, MAP_HEIGHT - 64, 'background-objects', 67);
+  block.body.immovable = true;
+  block = blocksGroup.create(1904, MAP_HEIGHT - 80, 'background-objects', 67);
+  block.body.immovable = true;
+  block = blocksGroup.create(1904, MAP_HEIGHT - 96, 'background-objects', 67);
+  block.body.immovable = true;
+  block = platforms.create(1904, MAP_HEIGHT - 112, 'background-objects', 67);
+  block.body.immovable = true;
+  block = blocksGroup.create(1952, MAP_HEIGHT - 64, 'background-objects', 67);
+  block.body.immovable = true;
+  block = blocksGroup.create(1952, MAP_HEIGHT - 80, 'background-objects', 67);
+  block.body.immovable = true;
+  block = blocksGroup.create(1952, MAP_HEIGHT - 96, 'background-objects', 67);
+  block.body.immovable = true;
+  block = platforms.create(1952, MAP_HEIGHT - 112, 'background-objects', 67);
+  block.body.immovable = true;
+  block = platforms.create(1920, MAP_HEIGHT - 112, 'background-objects', 69);
+  block.body.immovable = true;
+  block = platforms.create(1936, MAP_HEIGHT - 112, 'background-objects', 69);
+  block.body.immovable = true;
 }
 
 function createLedge(x){
-  ledge = ledges.create(x, MAP_HEIGHT - 144, 'background-objects');
-  ledge.frame = 23;
-  ledge = ledges.create(x+4, MAP_HEIGHT - 92, 'background-objects');
-  ledge.frame = 28;
+  ledge = ledges.create(x, MAP_HEIGHT - 144, 'background-objects',23);
+  ledge = ledges.create(x+4, MAP_HEIGHT - 92, 'background-objects',28);
 }
 
 function createElevatedGround(x1,x2,y){
@@ -138,15 +189,13 @@ function createGround(x1, x2){
 }
 
 function createGroundTile(x,y,frame){
-  tile = groundTilesGroup.create(x, y, 'groundTiles');
+  tile = groundTilesGroup.create(x, y, 'groundTiles',frame);
   tile.body.immovable = true;
-  tile.frame = frame;
 }
 
 function createTile(x,y,frame){
-  tile = tilesGroup.create(x, y, 'groundTiles');
+  tile = tilesGroup.create(x, y, 'groundTiles',frame);
   tile.body.immovable = true;
-  tile.frame = frame;
 }
 
 function createBushes() {
@@ -166,8 +215,7 @@ function createBushes() {
 }
 
 function createBush(x,y,frame) {
-  bush = game.add.sprite(x, y, 'background-objects');
-  bush.frame = frame;
+  bush = game.add.sprite(x, y, 'background-objects',frame);
 }
 
 function buildSlopes() {

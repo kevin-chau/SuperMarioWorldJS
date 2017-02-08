@@ -673,7 +673,7 @@
          }
       },
       {
-         "filename":"sprite33",
+         "filename":"sprite33 - Double Skinny Pipes",
          "frame":{
             "x":507,
             "y":452,
@@ -1353,7 +1353,7 @@
             "h":32
          },
          "rotated":false,
-         "trimmed":false,
+         "trimmed":true,
          "spriteSourceSize":{
             "x":0,
             "y":0,

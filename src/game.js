@@ -22,6 +22,7 @@ function preload() {
 	game.load.atlasJSONArray('hud', 'assets/hud/hud.png', 'assets/hud/hud.json');
 	game.load.atlasJSONArray('groundTiles', 'assets/maps/tiles/ground.png', 'assets/maps/tiles/ground.json');
 	game.load.atlasJSONArray('background-objects', 'assets/backgrounds/background-objects.png', 'assets/backgrounds/background-objects.json');
+	game.load.atlasJSONArray('pipes', 'assets/pipes/pipes.png', 'assets/pipes/pipes.json');
 
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
@@ -66,7 +67,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  // music.play();
+  music.play();
 
 	// Sound effects
 	jumpSFX = game.add.audio('Jump Wav');
@@ -79,8 +80,7 @@ function create() {
 	********************************************
 	*/
 
-	// player = game.add.sprite(24, game.world.height - 50, 'mario');
-	player = game.add.sprite(1986, game.world.height - 50, 'mario');
+	player = game.add.sprite(24, game.world.height - 50, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;
@@ -168,7 +168,7 @@ function update() {
 	player.body.height = player.height;
 	player.onSlope = game.physics.arcade.collide(player, game.groundSlope);
 
-	player.hitPlatform = game.physics.arcade.collide(player, groundTilesGroup) || player.onSlope;
+	player.hitPlatform = game.physics.arcade.collide(player, groundTilesGroup) || game.physics.arcade.collide(player, platforms) || player.onSlope;
 	if (player.onSlope) { player.body.drag.setTo(500,500); } else { player.body.drag.setTo(250,0); }
 	player.jumpType = player.body.touching.down && player.hitPlatform ? 0 : player.jumpType;
 
@@ -267,7 +267,8 @@ function update() {
 	// game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 
 	game.physics.arcade.collide(player, game.groundSlope);
-	game.physics.arcade.collide(player, tilesGroup)
+	game.physics.arcade.collide(player, tilesGroup);
+	game.physics.arcade.collide(player, blocksGroup);
 }
 
 function render() {
