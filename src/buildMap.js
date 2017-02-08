@@ -1,3 +1,7 @@
+var MAP_HEIGHT_16 = MAP_HEIGHT - 16;
+var MAP_HEIGHT_32 = MAP_HEIGHT - 32;
+var MAP_HEIGHT_48 = MAP_HEIGHT - 48;
+
 function buildYoshisIsland1() {
   // SLOPES
   buildSlopes();
@@ -18,12 +22,7 @@ function buildYoshisIsland1() {
   createBushes();
 
   // First Ground Platform
-  for (var i = 0; i < 59; i += 1){
-    createGroundTile(i * 16, MAP_HEIGHT - 48,84);
-    createGroundTile(i * 16, MAP_HEIGHT - 16,109);
-    createGroundTile(i * 16, MAP_HEIGHT - 32,109);
-	}
-
+  createGround(0,59);
 
   // Inside Corner
   createGroundTile(59 * 16, MAP_HEIGHT - 48,183);
@@ -54,6 +53,26 @@ function buildYoshisIsland1() {
     createGroundTile(i * 16, MAP_HEIGHT - 32,109);
   }
 
+  createGround(73,192);
+
+  // Ditch
+  createGroundTile(192 * 16, MAP_HEIGHT - 48,85);
+  createGroundTile(192 * 16, MAP_HEIGHT - 32,182);
+  createGroundTile(192 * 16, MAP_HEIGHT - 16,109);
+  for (var i = 193; i < 198; i+=1){
+    createGroundTile(i * 16, MAP_HEIGHT - 32,84);
+    createGroundTile(i * 16, MAP_HEIGHT - 16,109);
+  }
+  createGroundTile(198 * 16, MAP_HEIGHT - 32,183);
+  createGroundTile(198 * 16, MAP_HEIGHT - 16,109);
+  createGroundTile(198 * 16, MAP_HEIGHT - 48,83);
+
+  createGround(199,212);
+
+  createGroundTile(212 * 16, MAP_HEIGHT - 48, 85);
+  createGroundTile(212 * 16, MAP_HEIGHT - 32, 110);
+  createGroundTile(212 * 16, MAP_HEIGHT - 16, 110);
+
   // Ledges
   ledges = game.add.group();
   ledge = ledges.create(176, MAP_HEIGHT - 144, 'background-objects');
@@ -66,6 +85,14 @@ function buildYoshisIsland1() {
   pipe.frame = 26;
   pipe = ledges.create(871, MAP_HEIGHT - 144, 'background-objects');
   pipe.frame = 24;
+}
+
+function createGround(x1, x2){
+  for (var i = x1; i < x2; i += 1){
+    createGroundTile(i * 16, MAP_HEIGHT - 48,84);
+    createGroundTile(i * 16, MAP_HEIGHT - 16,109);
+    createGroundTile(i * 16, MAP_HEIGHT - 32,109);
+  }
 }
 
 function createGroundTile(x,y,frame){
