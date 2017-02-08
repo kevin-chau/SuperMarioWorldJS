@@ -1,8 +1,9 @@
-var MAP_HEIGHT_16 = MAP_HEIGHT - 16;
-var MAP_HEIGHT_32 = MAP_HEIGHT - 32;
-var MAP_HEIGHT_48 = MAP_HEIGHT - 48;
+var MAP_HEIGHT_16 = 416;
+var MAP_HEIGHT_32 = 400;
+var MAP_HEIGHT_48 = 384;
 
 function buildYoshisIsland1() {
+
   // SLOPES
   buildSlopes();
 
@@ -25,7 +26,7 @@ function buildYoshisIsland1() {
   createGround(0,59);
 
   // Inside Corner
-  createGroundTile(59 * 16, MAP_HEIGHT - 48,183);
+  createGroundTile(59 * 16, MAP_HEIGHT_48,183);
   // Right Vertical
   createTile(59 * 16, MAP_HEIGHT - 64,108);
   createTile(59 * 16, MAP_HEIGHT - 80,108);
@@ -38,7 +39,7 @@ function buildYoshisIsland1() {
     createGroundTile(i * 16, MAP_HEIGHT - 96,109);
     createGroundTile(i * 16, MAP_HEIGHT - 80,109);
     createGroundTile(i * 16, MAP_HEIGHT - 64,109);
-    createGroundTile(i * 16, MAP_HEIGHT - 48,109);
+    createGroundTile(i * 16, MAP_HEIGHT_48,109);
   }
   // Outside Corner
   createGroundTile(72 * 16, MAP_HEIGHT - 112,85);
@@ -47,31 +48,31 @@ function buildYoshisIsland1() {
   createTile(72 * 16, MAP_HEIGHT - 80,110);
   createTile(72 * 16, MAP_HEIGHT - 96,110);
   // Inside Corner
-  createGroundTile(72 * 16, MAP_HEIGHT - 48,182);
+  createGroundTile(72 * 16, MAP_HEIGHT_48,182);
   for (var i = 59; i < 73; i+=1){
-    createGroundTile(i * 16, MAP_HEIGHT - 16,109);
-    createGroundTile(i * 16, MAP_HEIGHT - 32,109);
+    createGroundTile(i * 16, MAP_HEIGHT_16,109);
+    createGroundTile(i * 16, MAP_HEIGHT_32,109);
   }
 
   createGround(73,192);
 
   // Ditch
-  createGroundTile(192 * 16, MAP_HEIGHT - 48,85);
-  createGroundTile(192 * 16, MAP_HEIGHT - 32,182);
-  createGroundTile(192 * 16, MAP_HEIGHT - 16,109);
+  createGroundTile(192 * 16, MAP_HEIGHT_48,85);
+  createGroundTile(192 * 16, MAP_HEIGHT_32,182);
+  createGroundTile(192 * 16, MAP_HEIGHT_16,109);
   for (var i = 193; i < 198; i+=1){
-    createGroundTile(i * 16, MAP_HEIGHT - 32,84);
-    createGroundTile(i * 16, MAP_HEIGHT - 16,109);
+    createGroundTile(i * 16, MAP_HEIGHT_32,84);
+    createGroundTile(i * 16, MAP_HEIGHT_16,109);
   }
-  createGroundTile(198 * 16, MAP_HEIGHT - 32,183);
-  createGroundTile(198 * 16, MAP_HEIGHT - 16,109);
-  createGroundTile(198 * 16, MAP_HEIGHT - 48,83);
+  createGroundTile(198 * 16, MAP_HEIGHT_32,183);
+  createGroundTile(198 * 16, MAP_HEIGHT_16,109);
+  createGroundTile(198 * 16, MAP_HEIGHT_48,83);
 
   createGround(199,212);
 
-  createGroundTile(212 * 16, MAP_HEIGHT - 48, 85);
-  createGroundTile(212 * 16, MAP_HEIGHT - 32, 110);
-  createGroundTile(212 * 16, MAP_HEIGHT - 16, 110);
+  createGroundTile(212 * 16, MAP_HEIGHT_48, 85);
+  createGroundTile(212 * 16, MAP_HEIGHT_32, 110);
+  createGroundTile(212 * 16, MAP_HEIGHT_16, 110);
 
   // Ledges
   ledges = game.add.group();
@@ -89,9 +90,9 @@ function buildYoshisIsland1() {
 
 function createGround(x1, x2){
   for (var i = x1; i < x2; i += 1){
-    createGroundTile(i * 16, MAP_HEIGHT - 48,84);
-    createGroundTile(i * 16, MAP_HEIGHT - 16,109);
-    createGroundTile(i * 16, MAP_HEIGHT - 32,109);
+    createGroundTile(i * 16, MAP_HEIGHT_48,84);
+    createGroundTile(i * 16, MAP_HEIGHT_16,109);
+    createGroundTile(i * 16, MAP_HEIGHT_32,109);
   }
 }
 
