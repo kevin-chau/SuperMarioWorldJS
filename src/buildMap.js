@@ -48,6 +48,8 @@ function buildYoshisIsland1() {
 
   createElevatedGround(286, 291, 3);
 
+  createGround(292,320);
+
 
   // Ledges
   ledges = game.add.group();
