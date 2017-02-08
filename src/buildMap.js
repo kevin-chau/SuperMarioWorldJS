@@ -143,6 +143,14 @@ function createBushes() {
   createBush(480, MAP_HEIGHT - 64, 72);
   createBush(640, MAP_HEIGHT - 64, 73);
   createBush(736, MAP_HEIGHT - 64, 72);
+  createBush(1056, MAP_HEIGHT - 128, 72);
+  createBush(1616, MAP_HEIGHT - 64, 73);
+  createBush(1728, MAP_HEIGHT - 64, 73);
+  createBush(2464, MAP_HEIGHT - 64, 72);
+  createBush(3200, MAP_HEIGHT - 64, 72);
+  createBush(3712, MAP_HEIGHT - 64, 72);
+  createBush(3984, MAP_HEIGHT - 64, 72);
+  createBush(4224, MAP_HEIGHT - 64, 72);
 }
 
 function createBush(x,y,frame) {
