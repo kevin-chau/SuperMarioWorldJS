@@ -1,5 +1,8 @@
+// import {buildYoshisIsland1} from 'buildMap';
+
 var SNES_WIDTH = 256;
 var SNES_HEIGHT = 224;
+var MAP_HEIGHT = 432;
 
 var game = new Phaser.Game(SNES_WIDTH, SNES_HEIGHT, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
 
@@ -10,7 +13,7 @@ function preload() {
 
 	game.load.tilemap('demo-tilemap', 'assets/maps/tiles/demo.json', null, Phaser.Tilemap.TILED_JSON);
 	game.load.tilemap('yoshis-island-1-tilemap', 'assets/maps/tiles/yoshis-island-1-tilemap.json', null, Phaser.Tilemap.TILED_JSON);
-	game.load.spritesheet('pink-collision-spritesheet', 'assets/maps/tiles/ninja-tiles32-pink.png', 32, 32);
+	game.load.spritesheet('collision-spritesheet', 'assets/maps/tiles/ninja-tiles16.png', 16, 16);
 	game.load.image('sky', 'assets/maps/yoshis-island-1/background.png');
 	game.load.image('ground', 'assets/tutorial/platform.png');
 	game.load.image('star', 'assets/tutorial/star.png');
@@ -39,7 +42,7 @@ function preload() {
 
 function create() {
 	// bounds
-	game.world.setBounds(0, 0, 5120, 432);
+	game.world.setBounds(0, 0, 5120, MAP_HEIGHT);
 
 	// Enable physics
 	game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -60,72 +63,9 @@ function create() {
 	// Platforms
 	platforms = game.add.group();
 	platforms.enableBody = true;
-	var ground = platforms.create(0, game.world.height - 47, 'ground');
-	ground.body.immovable = true;
-	var ground = platforms.create(SNES_WIDTH*2, game.world.height - 47, 'ground');
-	ground.body.immovable = true;
-	var wall = platforms.create(257, game.world.height - 64, 'ground');
-	wall.body.immovable = true;
-
-	// Ground
-	ground.scale.setTo(2,2);
-
-	// groundTilesGroup = game.add.group();
-	// for (var i = 0; i < 944; i += 16){
-	// 	tile = groundTilesGroup.create(i,432 - 48, 'groundTiles');
-	// 	tile.frame = 84;
-	// 	tile = groundTilesGroup.create(i,432 - 16, 'groundTiles');
-	// 	tile.frame = 109;
-	// 	tile = groundTilesGroup.create(i,432 - 32, 'groundTiles');
-	// 	tile.frame = 109;
-	// }
-	//
-	// bush = game.add.sprite(64, SNES_HEIGHT - 48, 'background-objects');
-	// bush.frame = 73;
-
-	// Slopes
-	game.map = game.add.tilemap('demo-tilemap');
-	game.map.addTilesetImage('collision', 'pink-collision-spritesheet');
-	game.groundSlope = game.map.createLayer('collision');
-	game.slopes.convertTilemapLayer(game.groundSlope, {
-				2:  'FULL',
-				3:  'HALF_BOTTOM_LEFT',
-				4:  'HALF_BOTTOM_RIGHT',
-				6:  'HALF_TOP_LEFT',
-				5:  'HALF_TOP_RIGHT',
-				15: 'QUARTER_BOTTOM_LEFT_LOW',
-				16: 'QUARTER_BOTTOM_RIGHT_LOW',
-				17: 'QUARTER_TOP_RIGHT_LOW',
-				18: 'QUARTER_TOP_LEFT_LOW',
-				19: 'QUARTER_BOTTOM_LEFT_HIGH',
-				20: 'QUARTER_BOTTOM_RIGHT_HIGH',
-				21: 'QUARTER_TOP_RIGHT_HIGH',
-				22: 'QUARTER_TOP_LEFT_HIGH',
-				23: 'QUARTER_LEFT_BOTTOM_HIGH',
-				24: 'QUARTER_RIGHT_BOTTOM_HIGH',
-				25: 'QUARTER_RIGHT_TOP_LOW',
-				26: 'QUARTER_LEFT_TOP_LOW',
-				27: 'QUARTER_LEFT_BOTTOM_LOW',
-				28: 'QUARTER_RIGHT_BOTTOM_LOW',
-				29: 'QUARTER_RIGHT_TOP_HIGH',
-				30: 'QUARTER_LEFT_TOP_HIGH',
-				31: 'HALF_BOTTOM',
-				32: 'HALF_RIGHT',
-				33: 'HALF_TOP',
-				34: 'HALF_LEFT'
-			});
-	game.map.setCollisionBetween(2, 34, true, 'collision');
-
-	// This should work, but doesn't seem to work for the slopes engine
-	game.map.forEach(function(tile) {
-			tile.collideDown = true;
-		},
-		this, 0, 0, game.map.width, game.map.height, 0);
-
-	// ledge = game.add.sprite(176, SNES_HEIGHT - 128, 'background-objects');
-	// ledge.frame = 23;
-	// ledge = game.add.sprite(180, SNES_HEIGHT - 76, 'background-objects');
-	// ledge.frame = 28;
+	groundTilesGroup = game.add.group();
+	groundTilesGroup.enableBody = true;
+	buildYoshisIsland1();
 
 	/*
 	*******************************************
@@ -148,7 +88,7 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(24, game.world.height - 47, 'mario');
+	player = game.add.sprite(24, game.world.height - 50, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;
@@ -160,9 +100,9 @@ function create() {
 	player.anchor.setTo(.5,1);
 
 	// Dimensions for slope collision
-	// player.body.width = 10;
-	// player.body.height = 17;
-	// game.slopes.enable(player);
+	player.body.width = 10;
+	player.body.height = 17;
+	game.slopes.enable(player);
 
 	player.body.width = 14;
 	player.body.height = 20;
@@ -236,7 +176,7 @@ function update() {
 	player.body.height = player.height;
 	player.onSlope = game.physics.arcade.collide(player, game.groundSlope);
 
-	player.hitPlatform = game.physics.arcade.collide(player, platforms) || player.onSlope;
+	player.hitPlatform = game.physics.arcade.collide(player, groundTilesGroup) || player.onSlope;
 	if (player.onSlope) { player.body.drag.setTo(500,500); } else { player.body.drag.setTo(250,0); }
 	player.jumpType = player.body.touching.down && player.hitPlatform ? 0 : player.jumpType;
 
