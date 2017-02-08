@@ -65,6 +65,8 @@ function create() {
 	platforms.enableBody = true;
 	groundTilesGroup = game.add.group();
 	groundTilesGroup.enableBody = true;
+	tilesGroup = game.add.group();
+	tilesGroup.enableBody = true;
 	buildYoshisIsland1();
 
 	/*
@@ -88,7 +90,8 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(24, game.world.height - 50, 'mario');
+	// player = game.add.sprite(24, game.world.height - 50, 'mario');
+	player = game.add.sprite(800, game.world.height - 50, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;
@@ -275,6 +278,7 @@ function update() {
 	// game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 
 	game.physics.arcade.collide(player, game.groundSlope);
+	game.physics.arcade.collide(player, tilesGroup)
 }
 
 function render() {

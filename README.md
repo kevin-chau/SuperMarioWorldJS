@@ -102,7 +102,10 @@ This will start the web server as well as a `watch` task that continuously monit
     * slide
 
   * Bugs:
-    * Double jump
+    * Double jump (really fast button mashing)
+    * stuck in inside Corner
+    * can't jump under slope platform
+    * Varying sprite width (getting stuck on walls)
 
   * Code:
     * REFACTOR REFACTOR REFACTOR
