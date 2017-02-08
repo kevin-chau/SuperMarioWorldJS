@@ -79,8 +79,8 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(24, game.world.height - 50, 'mario');
-	// player = game.add.sprite(800, game.world.height - 50, 'mario');
+	// player = game.add.sprite(24, game.world.height - 50, 'mario');
+	player = game.add.sprite(1200, game.world.height - 50, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;

@@ -8,9 +8,9 @@ function buildYoshisIsland1() {
   buildSlopes();
 
   // Sky background
-  for (var i = 0; i < 10; i++){
-    game.add.sprite(i*512, 0, 'sky');
-  }
+  // for (var i = 0; i < 10; i++){
+  //   game.add.sprite(i*512, 0, 'sky');
+  // }
 
   platforms = game.add.group();
 	platforms.enableBody = true;
@@ -53,16 +53,23 @@ function buildYoshisIsland1() {
 
   // Ledges
   ledges = game.add.group();
-  ledge = ledges.create(176, MAP_HEIGHT - 144, 'background-objects');
-  ledge.frame = 23;
-  ledge = ledges.create(180, MAP_HEIGHT - 92, 'background-objects');
-  ledge.frame = 28;
+  createLedge(176);
+  createLedge(1200);
+  createLedge(1264);
+  createLedge(1328);
 
   // Slope Pipe
   pipe = ledges.create(818, MAP_HEIGHT - 101, 'background-objects');
   pipe.frame = 26;
   pipe = ledges.create(871, MAP_HEIGHT - 144, 'background-objects');
   pipe.frame = 24;
+}
+
+function createLedge(x){
+  ledge = ledges.create(x, MAP_HEIGHT - 144, 'background-objects');
+  ledge.frame = 23;
+  ledge = ledges.create(x+4, MAP_HEIGHT - 92, 'background-objects');
+  ledge.frame = 28;
 }
 
 function createElevatedGround(x1,x2,y){
