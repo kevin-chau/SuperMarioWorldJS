@@ -4,7 +4,43 @@ var SNES_WIDTH = 256;
 var SNES_HEIGHT = 224;
 var MAP_HEIGHT = 432;
 
-var game = new Phaser.Game(SNES_WIDTH, SNES_HEIGHT, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
+var game = new Phaser.Game(window.innerWidth / 2.05, SNES_HEIGHT, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);
+
+$(window).resize(function() { window.resizeGame(); } );
+
+function resizeGame() {
+    var size = {
+        width: window.innerWidth / 2.05,
+        height: SNES_HEIGHT
+    };
+    console.log('resizing to ', size.width, size.height);
+    game.width = size.width;
+    game.height = size.height;
+    game.canvas.width = size.width;
+    game.canvas.height = size.height;
+    game.scale.width = size.width;
+    game.scale.height = size.height;
+    if (game.debug.sprite) {
+        game.stage.removeChild(game.debug.sprite);
+        game.debug.sprite = null;
+        game.debug.textureFrame = null;
+        if (game.debug.texture) {
+            game.debug.texture.destroy();
+        }
+        game.debug.texture = null;
+        if (game.debug.baseTexture) {
+            game.debug.baseTexture.destroy();
+        }
+        game.debug.baseTexture = null;
+        game.debug.context = null;
+        game.debug.canvas = null;
+        game.debug.boot();
+    }
+    game.renderer.resize(size.width, size.height);
+    game.camera.setSize(size.width, size.height);
+    game.camera.setBoundsToWorld();
+    resizeTimeout = false;
+}
 
 var score = 0;
 var scoreText;
@@ -80,8 +116,8 @@ function create() {
 	********************************************
 	*/
 
-	// player = game.add.sprite(24, game.world.height - 50, 'mario');
-	player = game.add.sprite(4266, game.world.height - 50, 'mario');
+	player = game.add.sprite(24, game.world.height - 50, 'mario');
+	// player = game.add.sprite(4266, game.world.height - 50, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;
