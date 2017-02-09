@@ -26,8 +26,6 @@ function loadAssets(){
   game.load.tilemap('yoshis-island-1-tilemap', 'assets/maps/tiles/yoshis-island-1-tilemap.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.spritesheet('collision-spritesheet', 'assets/maps/tiles/ninja-tiles16.png', 16, 16);
   game.load.image('sky', 'assets/maps/yoshis-island-1/background.png');
-  game.load.image('ground', 'assets/tutorial/platform.png');
-  game.load.image('star', 'assets/tutorial/star.png');
   game.load.atlasJSONArray('mario', 'assets/sprites/spritesheets/mario.png', 'assets/sprites/spritesheets/mario.json');
   game.load.atlasJSONArray('items', 'assets/items/items.png', 'assets/items/items.json');
   game.load.atlasJSONArray('hud', 'assets/hud/hud.png', 'assets/hud/hud.json');
