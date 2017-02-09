@@ -307,7 +307,9 @@ function createElevatedGround(x1,x2,y){
   createGroundTile(x2 * 16, MAP_HEIGHT - (48 + y * 16),85);
   // Left Vertical
   for (var j = 0; j < y - 1; j++){
-    createTile(x2 * 16, MAP_HEIGHT - (64 + j * 16),110);
+    tile = createTile(x2 * 16, MAP_HEIGHT - (64 + j * 16),110);
+    tile.body.checkCollision.up = false;
+    tile.body.checkCollision.down = false;
   }
   // Inside Corner
   createGroundTile(x2 * 16, MAP_HEIGHT_48,182);
@@ -355,6 +357,7 @@ function createGroundTile(x,y,frame){
 function createTile(x,y,frame){
   tile = tilesGroup.create(x, y, 'groundTiles',frame);
   tile.body.immovable = true;
+  return tile;
 }
 
 function createBushes() {
@@ -413,7 +416,12 @@ function buildSlopes() {
 
 	// This should work, but doesn't seem to work for the slopes engine
 	game.mapSlope.forEach(function(tile) {
-			tile.collideDown = false;
+      if (tile.index != -1){
+        console.log(tile);
+        tile.collideDown = false;
+        tile.collideRight = false;
+        tile.collideLeft = false;
+      }
 		},
 		this, 0, 0, game.mapSlope.width, game.mapSlope.height, 0);
 }

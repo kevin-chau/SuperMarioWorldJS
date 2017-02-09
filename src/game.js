@@ -13,29 +13,12 @@ function resizeGame() {
         width: window.innerWidth / 2.05,
         height: SNES_HEIGHT
     };
-    console.log('resizing to ', size.width, size.height);
     game.width = size.width;
     game.height = size.height;
     game.canvas.width = size.width;
     game.canvas.height = size.height;
     game.scale.width = size.width;
     game.scale.height = size.height;
-    if (game.debug.sprite) {
-        game.stage.removeChild(game.debug.sprite);
-        game.debug.sprite = null;
-        game.debug.textureFrame = null;
-        if (game.debug.texture) {
-            game.debug.texture.destroy();
-        }
-        game.debug.texture = null;
-        if (game.debug.baseTexture) {
-            game.debug.baseTexture.destroy();
-        }
-        game.debug.baseTexture = null;
-        game.debug.context = null;
-        game.debug.canvas = null;
-        game.debug.boot();
-    }
     game.renderer.resize(size.width, size.height);
     game.camera.setSize(size.width, size.height);
     game.camera.setBoundsToWorld();
@@ -103,7 +86,7 @@ function create() {
 
 	// Music
 	music = game.add.audio('Overworld Theme');
-  // music.play();
+  music.play();
 
 	// Sound effects
 	jumpSFX = game.add.audio('Jump Wav');
@@ -116,8 +99,8 @@ function create() {
 	********************************************
 	*/
 
-	player = game.add.sprite(24, game.world.height - 50, 'mario');
-	// player = game.add.sprite(4266, game.world.height - 50, 'mario');
+	// player = game.add.sprite(24, game.world.height - 50, 'mario');
+	player = game.add.sprite(1024, game.world.height - 112, 'mario');
 	game.physics.arcade.enable(player);
 	player.body.bounce.y = 0;
 	player.body.gravity.y = 1000;
@@ -129,12 +112,9 @@ function create() {
 	player.anchor.setTo(.5,1);
 
 	// Dimensions for slope collision
-	player.body.width = 10;
-	player.body.height = 17;
+	player.body.width = 12;
+	player.body.height = 15;
 	game.slopes.enable(player);
-
-	player.body.width = 14;
-	player.body.height = 20;
 
 
 	player.animations.add('walk', [15,14], 10, true);
@@ -203,6 +183,7 @@ function create() {
 
 function update() {
 	player.body.height = player.height;
+	// player.body.width = player.width; // this makes players fall through
 	player.onSlope = game.physics.arcade.collide(player, game.groundSlope);
 
 	player.hitPlatform = game.physics.arcade.collide(player, groundTilesGroup) || game.physics.arcade.collide(player, platforms) || player.onSlope;
