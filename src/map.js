@@ -416,8 +416,7 @@ function buildSlopes() {
 
 	// This should work, but doesn't seem to work for the slopes engine
 	game.mapSlope.forEach(function(tile) {
-      if (tile.index != -1){
-        console.log(tile);
+      if (tile.index == 3 || tile.index == 4){
         tile.collideDown = false;
         tile.collideRight = false;
         tile.collideLeft = false;
