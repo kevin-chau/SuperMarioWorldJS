@@ -1,3 +1,25 @@
+function loader(){
+  // scale the game 4x
+  game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+  game.scale.setUserScale(2, 2);
+
+  // enable crisp rendering
+  // game.renderer.renderSession.roundPixels = true;
+  Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)
+
+  // Load assets
+  loadAssets();
+
+  // bounds
+  game.world.setBounds(0, 0, 5120, MAP_HEIGHT);
+
+  // Enable physics
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  // Enable Slopes plugin for arcade physics
+  game.plugins.add(Phaser.Plugin.ArcadeSlopes);
+}
+
 function loadAssets(){
   // Spritesheets
   game.load.tilemap('demo-tilemap', 'assets/maps/tiles/demo.json', null, Phaser.Tilemap.TILED_JSON);
