@@ -4,8 +4,7 @@ body {
   background-attachment: fixed;
   background-size:cover;
   background-position: bottom;
-  /*background-image: url("https://i.ytimg.com/vi/RGMXzg1lXqM/maxresdefault.jpg");*/
-  background-image: url("../backgrounds/wallpaper.jpg");
+  background-image: url("../wallpaper/wallpaper.jpg");
 }
 
 canvas
@@ -20,16 +19,6 @@ canvas
     display: block;
     -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 }
-
-/*canvas {
-    padding-left: 0;
-    padding-right: 0;
-    border: 5px solid black;
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}*/
 
 .ghbuttoncontainer {
   right: 0;

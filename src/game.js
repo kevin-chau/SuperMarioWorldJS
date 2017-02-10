@@ -1,7 +1,6 @@
 // MACROS
 var SNES_WIDTH = 256;
 var SNES_HEIGHT = 224;
-var MAP_HEIGHT = 432;
 
 // GAME
 var game = new Phaser.Game(window.innerWidth / 2.05, SNES_HEIGHT, Phaser.AUTO, '', { preload: preload, create: create, update: update }, false, false, null);

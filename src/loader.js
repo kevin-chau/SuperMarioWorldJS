@@ -1,3 +1,5 @@
+var MAP_HEIGHT = 432;
+
 function loader(){
   // scale the game 4x
   game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
@@ -30,7 +32,7 @@ function loadAssets(){
   game.load.atlasJSONArray('items', 'assets/items/items.png', 'assets/items/items.json');
   game.load.atlasJSONArray('hud', 'assets/hud/hud.png', 'assets/hud/hud.json');
   game.load.atlasJSONArray('groundTiles', 'assets/maps/tiles/ground.png', 'assets/maps/tiles/ground.json');
-  game.load.atlasJSONArray('background-objects', 'assets/backgrounds/background-objects.png', 'assets/backgrounds/background-objects.json');
+  game.load.atlasJSONArray('background-objects', 'assets/background/background-objects.png', 'assets/background/background-objects.json');
   game.load.atlasJSONArray('pipes', 'assets/pipes/pipes.png', 'assets/pipes/pipes.json');
 
   // Music
