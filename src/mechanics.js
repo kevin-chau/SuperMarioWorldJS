@@ -1,9 +1,11 @@
 function updateMechanics(){
   player.body.height = player.height;
   // player.body.width = player.width; // this makes players fall through
+  player.touchGroundTile = game.physics.arcade.collide(player, groundTilesGroup);
   player.onSlope = game.physics.arcade.collide(player, game.groundSlope);
+  player.touchPlatform = game.physics.arcade.collide(player, platforms);
 
-  player.hitPlatform = game.physics.arcade.collide(player, groundTilesGroup) || game.physics.arcade.collide(player, platforms) || player.onSlope;
+  player.hitPlatform = player.touchGroundTile || player.touchPlatform || player.onSlope;
   if (player.onSlope) { player.body.drag.setTo(500,500); } else { player.body.drag.setTo(250,0); }
   player.jumpType = player.body.touching.down && player.hitPlatform ? 0 : player.jumpType;
 

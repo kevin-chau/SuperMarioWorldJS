@@ -382,7 +382,7 @@ function createBush(x,y,frame) {
 
 function buildSlopes() {
   // Slopes
-	game.mapSlope = game.add.tilemap('demo-tilemap');
+	game.mapSlope = game.add.tilemap('yoshis-island-1-tilemap');
 	game.mapSlope.addTilesetImage('collision', 'collision-spritesheet');
 	game.groundSlope = game.mapSlope.createLayer('collision');
 	game.slopes.convertTilemapLayer(game.groundSlope, {

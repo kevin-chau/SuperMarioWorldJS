@@ -24,7 +24,6 @@ function loader(){
 
 function loadAssets(){
   // Spritesheets
-  game.load.tilemap('demo-tilemap', 'assets/maps/tiles/demo.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.tilemap('yoshis-island-1-tilemap', 'assets/maps/tiles/yoshis-island-1-tilemap.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.spritesheet('collision-spritesheet', 'assets/maps/tiles/ninja-tiles16.png', 16, 16);
   game.load.image('sky', 'assets/maps/yoshis-island-1/background.png');
@@ -36,7 +35,7 @@ function loadAssets(){
   game.load.atlasJSONArray('pipes', 'assets/pipes/pipes.png', 'assets/pipes/pipes.json');
 
   // Music
-	game.load.audio('Overworld Theme', 'assets/sound/music/2-53\ Overworld\ Theme\ (SMW).mp3')
+	// game.load.audio('Overworld Theme', 'assets/sound/music/2-53\ Overworld\ Theme\ (SMW).mp3')
 
 	// Sound Effects
 	game.load.audio('Jump Wav', 'assets/sound/effects/jump.wav');
