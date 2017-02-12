@@ -6,44 +6,67 @@ var _GameState = require('states/GameState');
 var _GameState2 = _interopRequireDefault(_GameState);
 
 function _interopRequireDefault(obj) {
-	return obj && obj.__esModule ? obj : { default: obj };
+  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _classCallCheck(instance, Constructor) {
-	if (!(instance instanceof Constructor)) {
-		throw new TypeError("Cannot call a class as a function");
-	}
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
 }
 
 function _possibleConstructorReturn(self, call) {
-	if (!self) {
-		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	}return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-	if (typeof superClass !== "function" && superClass !== null) {
-		throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
+var SNES_WIDTH = 256;
+var SNES_HEIGHT = 224;
+
 var Game = function (_Phaser$Game) {
-	_inherits(Game, _Phaser$Game);
+  _inherits(Game, _Phaser$Game);
 
-	function Game() {
-		_classCallCheck(this, Game);
+  function Game() {
+    _classCallCheck(this, Game);
 
-		var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, 500, 500, Phaser.AUTO, 'content', null));
+    var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, window.innerWidth / 2.05, SNES_HEIGHT, Phaser.WEBGL, 'content', null));
 
-		_this.state.add('GameState', _GameState2.default, false);
-		_this.state.start('GameState');
-		return _this;
-	}
+    _this.state.add('GameState', _GameState2.default, false);
+    _this.state.start('GameState');
+    return _this;
+  }
 
-	return Game;
+  return Game;
 }(Phaser.Game);
 
-new Game();
+var game = new Game();
+
+$(window).resize(function () {
+  resizeGame();
+});
+
+function resizeGame() {
+  var size = {
+    width: window.innerWidth / 2.05,
+    height: SNES_HEIGHT
+  };
+  game.width = size.width;
+  game.height = size.height;
+  game.canvas.width = size.width;
+  game.canvas.height = size.height;
+  game.scale.width = size.width;
+  game.scale.height = size.height;
+  game.renderer.resize(size.width, size.height);
+  game.camera.setSize(size.width, size.height);
+  game.camera.setBoundsToWorld();
+}
 
 },{"states/GameState":3}],2:[function(require,module,exports){
 "use strict";
