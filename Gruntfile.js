@@ -27,7 +27,7 @@ module.exports = function (grunt) {
       { src: 'src/js'
       , js: '<%= project.src %>/game/{,*/}*.js'
       , dest: 'build/js'
-      , bundle: 'build/js/app.min.js'
+      , bundle: 'build/js/super-mario-world-js.min.js'
       , port: properties.port
       , banner:
         '/*\n' +
