@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "sources": [
+    "node_modules/browser-pack/_prelude.js",
+    "src/index.js",
+    "src/objects/RainbowText.js",
+    "src/states/GameState.js"
+  ],
+  "names": [],
+  "mappings": "AAAA;;;ACAA;;;;;;;;;;;;;;;;;;;;;;;;;;I,AAEM;iBAEL;;iBAAc;wBAAA;;0GAAA,AACP,KADO,AACF,KAAK,OADH,AACU,MADV,AACgB,WADhB,AAC2B,AACxC;;QAAA,AAAK,MAAL,AAAW,IAAX,AAAe,kCAAf,AAAuC,AACvC;QAAA,AAAK,MAAL,AAAW,MAHE,AAGb,AAAiB;SACjB;;;;EANiB,O,AAAO;;AAU1B,IAAA,AAAI;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;I,ACZE;wBAEL;;sBAAA,AAAY,MAAZ,AAAkB,GAAlB,AAAqB,GAArB,AAAwB;wBAAM;;wHAAA,AAEvB,MAFuB,AAEjB,GAFiB,AAEd,GAFc,AAEX,MAAM,EAAE,MAAF,AAAQ,cAAc,MAAtB,AAA4B,WAAW,OAFlC,AAEL,AAA8C,AAEtE;;QAAA,AAAK,SAJwB,AAI7B,AAAc,IAJe,CAIV,AACnB;QAAA,AAAK,cAAL,AAAmB,AACnB;QAAA,AAAK,UAAU,CAAA,AAAC,WAAD,AAAY,WAAZ,AAAuB,WAAvB,AAAkC,WAAjD,AAAe,AAA6C,AAE5D;;QAAA,AAAK,AACL;QAAA,AAAK,AAEL;;QAAA,AAAK,KAAL,AAAU,MAAV,AAAgB,SAXa;;SAa7B;;;;;+BAEY,AACZ;QAAA,AAAK,KAAL,AAAU,KAAV,AAAe,OAAf,AAAsB,KAAK,KAA3B,AAAgC,QAAQ,KAAxC,AAA6C,UAA7C,AAAuD,MAAvD,AAA6D,MAA7D,AAAmE,AACnE;;;;6BAEU,AAEV;;QAAK,IAAI,IAAT,AAAa,GAAG,IAAI,KAAA,AAAK,KAAzB,AAA8B,QAA9B,AAAsC,KAAK,AAE1C;;QAAI,KAAA,AAAK,gBAAgB,KAAA,AAAK,QAA9B,AAAsC,QAAQ,AAC7C;UAAA,AAAK,cAAL,AAAmB,AACnB;AAED;;SAAA,AAAK,SAAS,KAAA,AAAK,QAAQ,KAA3B,AAAc,AAAkB,cAAhC,AAA8C,AAC9C;SAAA,AAAK,AAEL;AAED;;;;;EAlCwB,O,AAAO;;kB,AAsClB;;;;;;;;;;;;;;;;;;;ACtCf;;;;;;;;;;;;;;;;;;;;;;;;;;I,AAEM;;;;;;;;;;;2BAEI,AACR;OAAI,SAAS,EAAE,GAAG,KAAA,AAAK,KAAL,AAAU,MAAf,AAAqB,SAAS,GAAG,KAAA,AAAK,KAAL,AAAU,MAAxD,AAAa,AAAiD,AAC9D;OAAI,OAAO,0BAAgB,KAAhB,AAAqB,MAAM,OAA3B,AAAkC,GAAG,OAArC,AAA4C,GAAvD,AAAW,AAA+C,AAC1D;QAAA,AAAK,OAAL,AAAY,IAAZ,AAAgB,AAChB;;;;;EANsB,O,AAAO;;kB,AAUhB",
+  "file": "generated.js",
+  "sourceRoot": "",
+  "sourcesContent": [
+    "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\"function\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\"Cannot find module '\"+o+\"'\");throw f.code=\"MODULE_NOT_FOUND\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\"function\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})",
+    "import GameState from 'states/GameState';\n\nclass Game extends Phaser.Game {\n\n\tconstructor() {\n\t\tsuper(500, 500, Phaser.AUTO, 'content', null);\n\t\tthis.state.add('GameState', GameState, false);\n\t\tthis.state.start('GameState');\n\t}\n\n}\n\nnew Game();\n",
+    "class RainbowText extends Phaser.Text {\n\n\tconstructor(game, x, y, text) {\n\n\t\tsuper(game, x, y, text, { font: \"45px Arial\", fill: \"#ff0044\", align: \"center\" });\n\n\t\tthis._speed = 125; //ms\n\t\tthis._colorIndex = 0;\n\t\tthis._colors = ['#ee4035', '#f37736', '#fdf498', '#7bc043', '#0392cf'];\n\n\t\tthis.colorize();\n\t\tthis.startTimer();\n\n\t\tthis.game.stage.addChild(this);\n\n\t}\n\t\n\tstartTimer() {\n\t\tthis.game.time.events.loop(this._speed, this.colorize, this).timer.start();\n\t}\n\n\tcolorize() {\n\n\t\tfor (let i = 0; i < this.text.length; i++) {\n\n\t\t\tif (this._colorIndex === this._colors.length) {\n\t\t\t\tthis._colorIndex = 0;\n\t\t\t}\n\n\t\t\tthis.addColor(this._colors[this._colorIndex], i);\n\t\t\tthis._colorIndex++;\n\n\t\t}\n\n\t}\n\n}\n\nexport default RainbowText;",
+    "import RainbowText from 'objects/RainbowText';\n\nclass GameState extends Phaser.State {\n\n\tcreate() {\n\t\tlet center = { x: this.game.world.centerX, y: this.game.world.centerY }\n\t\tlet text = new RainbowText(this.game, center.x, center.y, \"- phaser -\\nwith a sprinkle of\\nES6 dust!\");\n\t\ttext.anchor.set(0.5);\n\t}\n\n}\n\nexport default GameState;\n"
+  ]
+}
