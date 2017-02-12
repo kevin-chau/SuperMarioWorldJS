@@ -1,0 +1,30 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    meta(property="og:title", content=properties.title)
+    meta(property="og:description", content=properties.description)
+
+    link(rel='stylesheet', href='style/index.css')
+
+    title=properties.title
+    link(rel='icon', href='https://orig04.deviantart.net/5538/f/2015/073/a/f/roulette_block_by_waluigifan32-d8lnohn.gif')
+
+    script(src="js/phaser.js")
+    script(src="js/app.min.js")
+    script(async='', defer='', src='https://buttons.github.io/buttons.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+
+    include analytics.jade
+
+  body
+    #game
+
+    .ghbuttoncontainer
+          a.github-button(href='https://github.com/kevinchau321/SuperMarioWorldJS', data-style='mega', aria-label='View on GitHub') View on GitHub
+
+    if (!productionBuild)
+      script.
+        document.write('<script src="//' + window.location.hostname + ':#{properties.liveReloadPort}/livereload.js"><\/script>');
