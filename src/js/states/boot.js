@@ -17,6 +17,9 @@ export default class Boot extends Phaser.State {
         // Physics
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+        // Slopes
+        this.game.add.plugin(Phaser.Plugin.ArcadeSlopes);
+
         // Debug
         this.game.add.plugin(Phaser.Plugin.Debug);
 

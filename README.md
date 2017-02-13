@@ -2,7 +2,7 @@
 Super Mario World built with Phaser.
 
 <p align="center">
-  <img src="assets/screenshots/1.png?raw=true" alt="Screenshot"/>
+  <img src="static/screenshots/screenshots/1.png?raw=true" alt="Screenshot"/>
 </p>
 
 # Demo
@@ -108,8 +108,8 @@ This will start the web server as well as a `watch` task that continuously monit
     * Varying sprite width (getting stuck on walls)
 
   * Code:
-    * REFACTOR REFACTOR REFACTOR
-    * Build System:
-      * Multiple source files
+    * ES6
+    * quantpng gulp task
+    * Rewrite README
 
   * Enum sprite frames, jumptype

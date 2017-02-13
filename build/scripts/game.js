@@ -1,6 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _states = require('./states');
 
 var states = _interopRequireWildcard(_states);
@@ -9,88 +13,75 @@ var _GameState = require('./states/GameState');
 
 var _GameState2 = _interopRequireDefault(_GameState);
 
+var _window = require('./objects/window');
+
+var _window2 = _interopRequireDefault(_window);
+
+var _constants = require('./objects/constants');
+
+var _constants2 = _interopRequireDefault(_constants);
+
 function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
+	return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  } else {
-    var newObj = {};if (obj != null) {
-      for (var key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-      }
-    }newObj.default = obj;return newObj;
-  }
+	if (obj && obj.__esModule) {
+		return obj;
+	} else {
+		var newObj = {};if (obj != null) {
+			for (var key in obj) {
+				if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+			}
+		}newObj.default = obj;return newObj;
+	}
 }
 
 function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
+	if (!(instance instanceof Constructor)) {
+		throw new TypeError("Cannot call a class as a function");
+	}
 }
 
 function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+	if (!self) {
+		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	}return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	if (typeof superClass !== "function" && superClass !== null) {
+		throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
-var SNES_WIDTH = 256;
-var SNES_HEIGHT = 224;
-
 var Game = function (_Phaser$Game) {
-  _inherits(Game, _Phaser$Game);
+	_inherits(Game, _Phaser$Game);
 
-  function Game() {
-    _classCallCheck(this, Game);
+	function Game() {
+		_classCallCheck(this, Game);
 
-    var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, window.innerWidth / 2.05, SNES_HEIGHT, Phaser.WEBGL, 'content', null));
+		var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, window.innerWidth / 2.05, _constants2.default.SNES_HEIGHT, Phaser.WEBGL, 'content', null));
 
-    _this.state.add('GameState', _GameState2.default, false);
-    _this.state.start('GameState');
-    return _this;
-  }
+		Object.keys(states).forEach(function (state) {
+			return _this.state.add(state, states[state]);
+		});
+		_this.state.start('Boot');
+		return _this;
+	}
 
-  return Game;
+	return Game;
 }(Phaser.Game);
 
 var GAME = new Game();
 
-Object.keys(states).forEach(function (state) {
-  return GAME.state.add(state, states[state]);
-});
-
-GAME.state.start('Boot');
-
 $(window).resize(function () {
-  resizeGame();
+	(0, _window2.default)();
 });
 
-function resizeGame() {
-  var size = {
-    width: window.innerWidth / 2.05,
-    height: SNES_HEIGHT
-  };
-  GAME.width = size.width;
-  GAME.height = size.height;
-  GAME.canvas.width = size.width;
-  GAME.canvas.height = size.height;
-  GAME.scale.width = size.width;
-  GAME.scale.height = size.height;
-  GAME.renderer.resize(size.width, size.height);
-  GAME.camera.setSize(size.width, size.height);
-  GAME.camera.setBoundsToWorld();
-}
+exports.default = GAME;
 
-},{"./states":5,"./states/GameState":3}],2:[function(require,module,exports){
+},{"./objects/constants":3,"./objects/window":4,"./states":7,"./states/GameState":5}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -175,6 +166,56 @@ exports.default = RainbowText;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var constants = {};
+
+constants.SNES_WIDTH = 256;
+constants.SNES_HEIGHT = 224;
+
+exports.default = constants;
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _constants = require('./constants');
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _game = require('../game');
+
+var _game2 = _interopRequireDefault(_game);
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function resizeGame() {
+    var size = {
+        width: window.innerWidth / 2.05,
+        height: _constants2.default.SNES_HEIGHT
+    };
+    _game2.default.width = size.width;
+    _game2.default.height = size.height;
+    _game2.default.canvas.width = size.width;
+    _game2.default.canvas.height = size.height;
+    _game2.default.scale.width = size.width;
+    _game2.default.scale.height = size.height;
+    _game2.default.renderer.resize(size.width, size.height);
+    _game2.default.camera.setSize(size.width, size.height);
+    _game2.default.camera.setBoundsToWorld();
+}
+
+exports.default = resizeGame;
+
+},{"../game":1,"./constants":3}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
@@ -237,7 +278,7 @@ var GameState = function (_Phaser$State) {
 
 exports.default = GameState;
 
-},{"../objects/RainbowText":2}],4:[function(require,module,exports){
+},{"../objects/RainbowText":2}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -301,6 +342,9 @@ var Boot = function (_Phaser$State) {
             // Physics
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+            // Slopes
+            this.game.add.plugin(Phaser.Plugin.ArcadeSlopes);
+
             // Debug
             this.game.add.plugin(Phaser.Plugin.Debug);
 
@@ -314,7 +358,7 @@ var Boot = function (_Phaser$State) {
 
 exports.default = Boot;
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -370,7 +414,7 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
-},{"./boot":4,"./menu":6,"./over":7,"./play":8,"./preload":9}],6:[function(require,module,exports){
+},{"./boot":6,"./menu":8,"./over":9,"./play":10,"./preload":11}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -473,7 +517,7 @@ var Menu = function (_Phaser$State) {
 
 exports.default = Menu;
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -595,7 +639,7 @@ var Over = function (_Phaser$State) {
 
 exports.default = Over;
 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -866,7 +910,7 @@ var Play = function (_Phaser$State) {
 
 exports.default = Play;
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
