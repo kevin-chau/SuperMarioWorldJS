@@ -1,17 +1,26 @@
-function createControls() {
+import GAME from '../game';
+import mechanics from './mechanics';
+
+var controls = {};
+
+controls.buttons = {};
+
+controls.createControls = function () {
   // Load arrow key controls
-  cursors = game.input.keyboard.createCursorKeys();
-  buttons = {
-    'A': game.input.keyboard.addKey(Phaser.Keyboard.D),
-    'B': game.input.keyboard.addKey(Phaser.Keyboard.S),
-    'Y': game.input.keyboard.addKey(Phaser.Keyboard.A),
-    'Mute': game.input.keyboard.addKey(Phaser.Keyboard.M)
+  controls.cursors = GAME.input.keyboard.createCursorKeys();
+  controls.buttons = {
+    'A': GAME.input.keyboard.addKey(Phaser.Keyboard.D),
+    'B': GAME.input.keyboard.addKey(Phaser.Keyboard.S),
+    'Y': GAME.input.keyboard.addKey(Phaser.Keyboard.A),
+    'Mute': GAME.input.keyboard.addKey(Phaser.Keyboard.M)
   };
-  buttons.B.onDown.add(jump, this);
-  buttons.A.onDown.add(spin, this);
-  buttons.Mute.onDown.add(mute, this);
+  controls.buttons.B.onDown.add(mechanics.jump, this);
+  controls.buttons.A.onDown.add(mechanics.spin, this);
+  controls.buttons.Mute.onDown.add(controls.mute, this);
 }
 
-function mute() {
-	game.sound.mute = !game.sound.mute;
+controls.mute = function () {
+	GAME.sound.mute = !game.sound.mute;
 }
+
+export default controls;

@@ -1,4 +1,7 @@
 import GAME from '../game';
+import constants from './constants';
+
+var MAP_HEIGHT = constants.MAP_HEIGHT;
 
 var MAP_HEIGHT_16 = 416;
 var MAP_HEIGHT_32 = 400;
@@ -22,15 +25,15 @@ function buildYoshisIsland1() {
 	tilesGroup.enableBody = true;
   var blocksGroup = GAME.add.group();
 	blocksGroup.enableBody = true;
-  //
-  // // Background Objects
-  // createBushes();
-  //
-  // // First Ground Platform
-  // createGround(0,59);
-  //
+
+  // Background Objects
+  createBushes();
+
+  // First Ground Platform
+  createGround(0,59, groundTilesGroup);
+
   // createElevatedGround(59,72,4);
-  //
+
   // createGround(73,192);
   //
   // // Ditch
@@ -343,16 +346,16 @@ function createDitch(x1, x2){
   createGroundTile(x2 * 16, MAP_HEIGHT_48,83);
 }
 
-function createGround(x1, x2){
+function createGround(x1, x2, group){
   for (var i = x1; i < x2; i += 1){
-    createGroundTile(i * 16, MAP_HEIGHT_48,84);
-    createGroundTile(i * 16, MAP_HEIGHT_16,109);
-    createGroundTile(i * 16, MAP_HEIGHT_32,109);
+    createGroundTile(i * 16, MAP_HEIGHT_48,84,group);
+    createGroundTile(i * 16, MAP_HEIGHT_16,109,group);
+    createGroundTile(i * 16, MAP_HEIGHT_32,109,group);
   }
 }
 
-function createGroundTile(x,y,frame){
-  tile = groundTilesGroup.create(x, y, 'groundTiles',frame);
+function createGroundTile(x,y,frame,group){
+  var tile = group.create(x, y, 'groundTiles',frame);
   tile.body.immovable = true;
 }
 
@@ -379,7 +382,7 @@ function createBushes() {
 }
 
 function createBush(x,y,frame) {
-  bush = GAME.add.sprite(x, y, 'background-objects',frame);
+  // var bush = GAME.add.sprite(x, y, 'background-objects',frame);
 }
 
 function buildSlopes() {

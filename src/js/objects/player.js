@@ -1,7 +1,9 @@
+import GAME from '../game';
+
 function createPlayer() {
-  player = game.add.sprite(24, game.world.height - 50, 'mario');
-  // player = game.add.sprite(1024, game.world.height - 112, 'mario');
-  game.physics.arcade.enable(player);
+  var player = GAME.add.sprite(24, GAME.world.height - 64, 'mario');
+  // var player = GAME.add.sprite(96, 432, 'mario');
+  GAME.physics.arcade.enable(player);
   player.body.bounce.y = 0;
   player.body.gravity.y = 1000;
   player.body.collideWorldBounds = true;
@@ -14,7 +16,10 @@ function createPlayer() {
   // Dimensions for slope collision
   player.body.width = 12;
   player.body.height = 15;
-  game.slopes.enable(player);
+  GAME.slopes.enable(player);
+
+  // Default frame
+  player.frame = 14;
 
 
   player.animations.add('walk', [15,14], 10, true);
@@ -25,5 +30,9 @@ function createPlayer() {
   player.jumptimeStart = -1
   player.jumpType = 0;
 
-  player.body.drag.setTo(250,0)
-  }
+  player.body.drag.setTo(250,0);
+
+  return player;
+}
+
+export default createPlayer;

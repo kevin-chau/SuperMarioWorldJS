@@ -6,7 +6,7 @@ export default class Boot extends Phaser.State {
     create() {
         // Scale
         this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-        this.scale.setUserScale(2, 2);
+        this.scale.setUserScale(1, 1);
 
         // enable crisp rendering
         Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)

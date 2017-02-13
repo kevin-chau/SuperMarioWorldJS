@@ -1,20 +1,10 @@
 import * as states from './states';
-import GameState from './states/GameState';
 import resizeGame from './objects/window';
 import constants from './objects/constants';
 
-class Game extends Phaser.Game {
-
-	constructor() {
-		super(window.innerWidth / 2.05, constants.SNES_HEIGHT, Phaser.WEBGL, 'content', null);
-		Object.keys(states).forEach(state => this.state.add(state, states[state]));
-		this.state.start('Boot');
-	}
-
-}
-
-const GAME = new Game();
-
+var GAME = new Phaser.Game(window.innerWidth/1.05, constants.MAP_HEIGHT, Phaser.WEBGL);
+Object.keys(states).forEach(state => GAME.state.add(state, states[state]));
+GAME.state.start('Boot');
 $(window).resize(function() { resizeGame(); } );
 
 export default GAME;
