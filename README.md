@@ -97,6 +97,7 @@ To clean the build folder:
     * jumping on slopes more accurate
 
   * Code:
+    * gulp imagemin jpeg lossy
     * speed up production build
     * refactor yoshi island map
     * enemies

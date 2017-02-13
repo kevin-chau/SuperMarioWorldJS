@@ -11,7 +11,8 @@ var exorcist = require('exorcist');
 var babelify = require('babelify');
 var browserify = require('browserify');
 var browserSync = require('browser-sync');
-var pngquant = require('gulp-pngquant');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 var jsonminify = require('gulp-jsonminify');
 
 /**
@@ -82,9 +83,9 @@ function copyStatic() {
 
       // Compress images
       gulp.src(STATIC_PATH + '/assets/images/**/*.png')
-          .pipe(pngquant({
-              quality: '65-80'
-          }))
+          .pipe(imagemin({
+            use: [pngquant()]
+        }))
           .pipe(gulp.dest(BUILD_PATH + '/assets/images'));
     }
     return
