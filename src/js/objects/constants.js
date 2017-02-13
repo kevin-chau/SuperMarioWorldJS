@@ -9,7 +9,7 @@ var constants = {
   MAP_HEIGHT_32: 400,
   MAP_HEIGHT_48: 384,
 
-  DEBUG_ON: true,
+  DEBUG_ON: false,
 
   MUSIC_ON: false
 };

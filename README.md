@@ -52,6 +52,9 @@ To clean the build folder:
 
 NOTE: You *must* clean the build directory before running `npm start` or `npm run production` every-time.
 
+# Phaser Debug
+You can monitor frame rate and other Phaser stats by turning on the Phaser Debug plugin. In `src/js/objects/constants.js`, change `DEBUG_ON: false` to `DEBUG_ON: true`.
+
 
 # TO-DO:
   * Score
