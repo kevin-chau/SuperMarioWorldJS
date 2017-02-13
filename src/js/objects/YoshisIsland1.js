@@ -1,3 +1,5 @@
+import GAME from '../game';
+
 var MAP_HEIGHT_16 = 416;
 var MAP_HEIGHT_32 = 400;
 var MAP_HEIGHT_48 = 384;
@@ -9,79 +11,79 @@ function buildYoshisIsland1() {
 
   // Sky background
   for (var i = 0; i < 10; i++){
-    game.add.sprite(i*512, 0, 'sky');
+    GAME.add.sprite(i*512, 0, 'sky');
   }
 
-  platforms = game.add.group();
+  var platforms = GAME.add.group();
 	platforms.enableBody = true;
-	groundTilesGroup = game.add.group();
+	var groundTilesGroup = GAME.add.group();
 	groundTilesGroup.enableBody = true;
-	tilesGroup = game.add.group();
+	var tilesGroup = GAME.add.group();
 	tilesGroup.enableBody = true;
-  blocksGroup = game.add.group();
+  var blocksGroup = GAME.add.group();
 	blocksGroup.enableBody = true;
-
-  // Background Objects
-  createBushes();
-
-  // First Ground Platform
-  createGround(0,59);
-
-  createElevatedGround(59,72,4);
-
-  createGround(73,192);
-
-  // Ditch
-  createDitch(192,198);
-
-  createGround(199,212);
-
-  // GAP
-  createGap(212,3);
-
-  createGround(216,218);
-
-  createDitch(218, 223);
-
-  createGround(224,227);
-
-  createGap(227,3);
-  createGround(231,286);
-
-  createElevatedGround(286, 291, 3);
-
-  createGround(292,320);
-
-
-  // Ledges
-  ledges = game.add.group();
-  createLedge(176);
-  createLedge(1200);
-  createLedge(1264);
-  createLedge(1328);
-
-  createPipes();
-
-  createBlocks();
-
-  createPlatforms();
+  //
+  // // Background Objects
+  // createBushes();
+  //
+  // // First Ground Platform
+  // createGround(0,59);
+  //
+  // createElevatedGround(59,72,4);
+  //
+  // createGround(73,192);
+  //
+  // // Ditch
+  // createDitch(192,198);
+  //
+  // createGround(199,212);
+  //
+  // // GAP
+  // createGap(212,3);
+  //
+  // createGround(216,218);
+  //
+  // createDitch(218, 223);
+  //
+  // createGround(224,227);
+  //
+  // createGap(227,3);
+  // createGround(231,286);
+  //
+  // createElevatedGround(286, 291, 3);
+  //
+  // createGround(292,320);
+  //
+  //
+  // // Ledges
+  // ledges = GAME.add.group();
+  // createLedge(176);
+  // createLedge(1200);
+  // createLedge(1264);
+  // createLedge(1328);
+  //
+  // createPipes();
+  //
+  // createBlocks();
+  //
+  // createPlatforms();
 }
 
 function createPlatforms() {
-  tile = game.add.sprite(2784, MAP_HEIGHT - 64, 'groundTiles', 175);
-  tile = game.add.sprite(2784, MAP_HEIGHT - 80, 'groundTiles', 175);
-  tile = game.add.sprite(2784, MAP_HEIGHT - 96, 'groundTiles', 175);
-  tile = game.add.sprite(2784, MAP_HEIGHT - 112, 'groundTiles', 175);
-  tile = game.add.sprite(2784, MAP_HEIGHT - 128, 'groundTiles', 175);
-  tile = game.add.sprite(2848, MAP_HEIGHT - 112, 'groundTiles', 177);
-  tile = game.add.sprite(2848, MAP_HEIGHT - 128, 'groundTiles', 177);
+  tile = GAME.add.sprite(2784, MAP_HEIGHT - 64, 'groundTiles', 175);
+  tile = GAME.add.sprite(2784, MAP_HEIGHT - 80, 'groundTiles', 175);
+  tile = GAME.add.sprite(2784, MAP_HEIGHT - 96, 'groundTiles', 175);
+  tile = GAME.add.sprite(2784, MAP_HEIGHT - 112, 'groundTiles', 175);
+  tile = GAME.add.sprite(2784, MAP_HEIGHT - 128, 'groundTiles', 175);
+  tile = GAME.add.sprite(2848, MAP_HEIGHT - 112, 'groundTiles', 177);
+  tile = GAME.add.sprite(2848, MAP_HEIGHT - 128, 'groundTiles', 177);
 
-  tile = game.add.sprite(2832, MAP_HEIGHT - 64, 'groundTiles', 175);
-  tile = game.add.sprite(2832, MAP_HEIGHT - 80, 'groundTiles', 175);
-  tile = game.add.sprite(2880, MAP_HEIGHT - 64, 'groundTiles', 177);
-  tile = game.add.sprite(2880, MAP_HEIGHT - 80, 'groundTiles', 177);
+  tile = GAME.add.sprite(2832, MAP_HEIGHT - 64, 'groundTiles', 175);
+  tile = GAME.add.sprite(2832, MAP_HEIGHT - 80, 'groundTiles', 175);
+  tile = GAME.add.sprite(2880, MAP_HEIGHT - 64, 'groundTiles', 177);
+  tile = GAME.add.sprite(2880, MAP_HEIGHT - 80, 'groundTiles', 177);
 
-  tile = game.add.sprite(2832, MAP_HEIGHT - 160, 'groundTiles', 175);
+  tile = GAME.add.sprite(2832, MAP_HEIGHT - 160, 'groundTiles', 175);
   platform = platforms.create(2880, MAP_HEIGHT - 96, 'groundTiles', 109);
   platform.body.immovable = true;
   platform = platforms.create(2832, MAP_HEIGHT - 96, 'groundTiles', 109);
@@ -98,18 +100,18 @@ function createPlatforms() {
   platform.body.immovable = true;
 
   // Slope
-  platform = game.add.sprite(2912, MAP_HEIGHT - 176, 'groundTiles', 30);
-  platform = game.add.sprite(2912, MAP_HEIGHT - 161, 'groundTiles', 43);
-  platform = game.add.sprite(2928, MAP_HEIGHT - 160, 'groundTiles', 30);
-  platform = game.add.sprite(2928, MAP_HEIGHT - 145, 'groundTiles', 43);
-  platform = game.add.sprite(2944, MAP_HEIGHT - 144, 'groundTiles', 30);
-  platform = game.add.sprite(2944, MAP_HEIGHT - 129, 'groundTiles', 43);
-  platform = game.add.sprite(2960, MAP_HEIGHT - 128, 'groundTiles', 30);
-  platform = game.add.sprite(2960, MAP_HEIGHT - 113, 'groundTiles', 43);
-  platform = game.add.sprite(2976, MAP_HEIGHT - 112, 'groundTiles', 30);
-  platform = game.add.sprite(2976, MAP_HEIGHT - 97, 'groundTiles', 43);
-  platform = game.add.sprite(2992, MAP_HEIGHT - 96, 'groundTiles', 30);
-  platform = game.add.sprite(2992, MAP_HEIGHT - 81, 'groundTiles', 43);
+  platform = GAME.add.sprite(2912, MAP_HEIGHT - 176, 'groundTiles', 30);
+  platform = GAME.add.sprite(2912, MAP_HEIGHT - 161, 'groundTiles', 43);
+  platform = GAME.add.sprite(2928, MAP_HEIGHT - 160, 'groundTiles', 30);
+  platform = GAME.add.sprite(2928, MAP_HEIGHT - 145, 'groundTiles', 43);
+  platform = GAME.add.sprite(2944, MAP_HEIGHT - 144, 'groundTiles', 30);
+  platform = GAME.add.sprite(2944, MAP_HEIGHT - 129, 'groundTiles', 43);
+  platform = GAME.add.sprite(2960, MAP_HEIGHT - 128, 'groundTiles', 30);
+  platform = GAME.add.sprite(2960, MAP_HEIGHT - 113, 'groundTiles', 43);
+  platform = GAME.add.sprite(2976, MAP_HEIGHT - 112, 'groundTiles', 30);
+  platform = GAME.add.sprite(2976, MAP_HEIGHT - 97, 'groundTiles', 43);
+  platform = GAME.add.sprite(2992, MAP_HEIGHT - 96, 'groundTiles', 30);
+  platform = GAME.add.sprite(2992, MAP_HEIGHT - 81, 'groundTiles', 43);
   // End
   platform = platforms.create(3008, MAP_HEIGHT - 80, 'groundTiles', 152);
   platform.body.immovable = true;
@@ -141,78 +143,78 @@ function createPlatforms() {
   platform.body.immovable = true;
 
   // Filler Tiles
-  tile = game.add.sprite(3008, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2992, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2976, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2960, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2944, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2928, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2912, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2896, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2864, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2848, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2816, MAP_HEIGHT - 64, 'groundTiles', 109);
-  tile = game.add.sprite(2800, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(3008, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2992, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2976, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2960, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2944, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2928, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2912, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2896, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2864, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2848, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2816, MAP_HEIGHT - 64, 'groundTiles', 109);
+  tile = GAME.add.sprite(2800, MAP_HEIGHT - 64, 'groundTiles', 109);
   //
-  tile = game.add.sprite(2976, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2960, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2944, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2928, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2912, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2896, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2864, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2848, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2816, MAP_HEIGHT - 80, 'groundTiles', 109);
-  tile = game.add.sprite(2800, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2976, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2960, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2944, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2928, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2912, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2896, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2864, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2848, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2816, MAP_HEIGHT - 80, 'groundTiles', 109);
+  tile = GAME.add.sprite(2800, MAP_HEIGHT - 80, 'groundTiles', 109);
   //
-  tile = game.add.sprite(2960, MAP_HEIGHT - 96, 'groundTiles', 109);
-  tile = game.add.sprite(2944, MAP_HEIGHT - 96, 'groundTiles', 109);
-  tile = game.add.sprite(2928, MAP_HEIGHT - 96, 'groundTiles', 109);
-  tile = game.add.sprite(2912, MAP_HEIGHT - 96, 'groundTiles', 109);
-  tile = game.add.sprite(2896, MAP_HEIGHT - 96, 'groundTiles', 109);
-  tile = game.add.sprite(2816, MAP_HEIGHT - 96, 'groundTiles', 109);
-  tile = game.add.sprite(2800, MAP_HEIGHT - 96, 'groundTiles', 109);
+  tile = GAME.add.sprite(2960, MAP_HEIGHT - 96, 'groundTiles', 109);
+  tile = GAME.add.sprite(2944, MAP_HEIGHT - 96, 'groundTiles', 109);
+  tile = GAME.add.sprite(2928, MAP_HEIGHT - 96, 'groundTiles', 109);
+  tile = GAME.add.sprite(2912, MAP_HEIGHT - 96, 'groundTiles', 109);
+  tile = GAME.add.sprite(2896, MAP_HEIGHT - 96, 'groundTiles', 109);
+  tile = GAME.add.sprite(2816, MAP_HEIGHT - 96, 'groundTiles', 109);
+  tile = GAME.add.sprite(2800, MAP_HEIGHT - 96, 'groundTiles', 109);
   //
-  tile = game.add.sprite(2944, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2928, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2912, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2896, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2880, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2864, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2832, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2816, MAP_HEIGHT - 112, 'groundTiles', 109);
-  tile = game.add.sprite(2800, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2944, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2928, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2912, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2896, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2880, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2864, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2832, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2816, MAP_HEIGHT - 112, 'groundTiles', 109);
+  tile = GAME.add.sprite(2800, MAP_HEIGHT - 112, 'groundTiles', 109);
   //
-  tile = game.add.sprite(2928, MAP_HEIGHT - 128, 'groundTiles', 109);
-  tile = game.add.sprite(2912, MAP_HEIGHT - 128, 'groundTiles', 109);
-  tile = game.add.sprite(2896, MAP_HEIGHT - 128, 'groundTiles', 109);
-  tile = game.add.sprite(2880, MAP_HEIGHT - 128, 'groundTiles', 109);
-  tile = game.add.sprite(2864, MAP_HEIGHT - 128, 'groundTiles', 109);
-  tile = game.add.sprite(2832, MAP_HEIGHT - 128, 'groundTiles', 109);
-  tile = game.add.sprite(2816, MAP_HEIGHT - 128, 'groundTiles', 109);
-  tile = game.add.sprite(2800, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2928, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2912, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2896, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2880, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2864, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2832, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2816, MAP_HEIGHT - 128, 'groundTiles', 109);
+  tile = GAME.add.sprite(2800, MAP_HEIGHT - 128, 'groundTiles', 109);
   //
-  tile = game.add.sprite(2912, MAP_HEIGHT - 144, 'groundTiles', 109);
-  tile = game.add.sprite(2896, MAP_HEIGHT - 144, 'groundTiles', 109);
-  tile = game.add.sprite(2880, MAP_HEIGHT - 144, 'groundTiles', 109);
-  tile = game.add.sprite(2864, MAP_HEIGHT - 144, 'groundTiles', 109);
+  tile = GAME.add.sprite(2912, MAP_HEIGHT - 144, 'groundTiles', 109);
+  tile = GAME.add.sprite(2896, MAP_HEIGHT - 144, 'groundTiles', 109);
+  tile = GAME.add.sprite(2880, MAP_HEIGHT - 144, 'groundTiles', 109);
+  tile = GAME.add.sprite(2864, MAP_HEIGHT - 144, 'groundTiles', 109);
   //
-  tile = game.add.sprite(2896, MAP_HEIGHT - 160, 'groundTiles', 109);
-  tile = game.add.sprite(2880, MAP_HEIGHT - 160, 'groundTiles', 109);
-  tile = game.add.sprite(2864, MAP_HEIGHT - 160, 'groundTiles', 109);
-  tile = game.add.sprite(2848, MAP_HEIGHT - 160, 'groundTiles', 109);
+  tile = GAME.add.sprite(2896, MAP_HEIGHT - 160, 'groundTiles', 109);
+  tile = GAME.add.sprite(2880, MAP_HEIGHT - 160, 'groundTiles', 109);
+  tile = GAME.add.sprite(2864, MAP_HEIGHT - 160, 'groundTiles', 109);
+  tile = GAME.add.sprite(2848, MAP_HEIGHT - 160, 'groundTiles', 109);
 
   // Last Platform
   for (var j = 0; j < 3; j++){
-    tile = game.add.sprite(4304, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 175);
+    tile = GAME.add.sprite(4304, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 175);
   }
   for (var i = 270; i < 277; i++){
     for (var j = 0; j < 3; j++){
-      tile = game.add.sprite(16 * i, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 109);
+      tile = GAME.add.sprite(16 * i, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 109);
     }
   }
   for (var j = 0; j < 3; j++){
-    tile = game.add.sprite(4432, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 177);
+    tile = GAME.add.sprite(4432, MAP_HEIGHT - (64 + j * 16), 'groundTiles', 177);
   }
   platform = platforms.create(4304, MAP_HEIGHT - 112, 'groundTiles', 151);
   platform.body.immovable = true;
@@ -377,15 +379,15 @@ function createBushes() {
 }
 
 function createBush(x,y,frame) {
-  bush = game.add.sprite(x, y, 'background-objects',frame);
+  bush = GAME.add.sprite(x, y, 'background-objects',frame);
 }
 
 function buildSlopes() {
   // Slopes
-	game.mapSlope = game.add.tilemap('yoshis-island-1-tilemap');
-	game.mapSlope.addTilesetImage('collision', 'collision-spritesheet');
-	game.groundSlope = game.mapSlope.createLayer('collision');
-	game.slopes.convertTilemapLayer(game.groundSlope, {
+	GAME.mapSlope = GAME.add.tilemap('yoshis-island-1-tilemap');
+	GAME.mapSlope.addTilesetImage('collision', 'collision-spritesheet');
+	GAME.groundSlope = GAME.mapSlope.createLayer('collision');
+	GAME.slopes.convertTilemapLayer(GAME.groundSlope, {
 				2:  'FULL',
 				3:  'HALF_BOTTOM_LEFT',
 				4:  'HALF_BOTTOM_RIGHT',
@@ -412,15 +414,17 @@ function buildSlopes() {
 				33: 'HALF_TOP',
 				34: 'HALF_LEFT'
 			});
-	game.mapSlope.setCollisionBetween(2, 34, true, 'collision');
+	GAME.mapSlope.setCollisionBetween(2, 34, true, 'collision');
 
 	// This should work, but doesn't seem to work for the slopes engine
-	game.mapSlope.forEach(function(tile) {
+	GAME.mapSlope.forEach(function(tile) {
       if (tile.index == 3 || tile.index == 4){
         tile.collideDown = false;
         tile.collideRight = false;
         tile.collideLeft = false;
       }
 		},
-		this, 0, 0, game.mapSlope.width, game.mapSlope.height, 0);
+		this, 0, 0, GAME.mapSlope.width, GAME.mapSlope.height, 0);
 }
+
+export default buildYoshisIsland1;

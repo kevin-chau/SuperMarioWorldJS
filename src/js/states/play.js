@@ -1,11 +1,12 @@
 // import Player from '../prefabs/player';
 // import Enemy from '../prefabs/enemy';
 // import HUD from '../prefabs/hud';
+import buildYoshisIsland1 from '../objects/YoshisIsland1';
 
 export default class Play extends Phaser.State {
 
     create() {
-
+        buildYoshisIsland1();
         // this.farback = this.add.tileSprite(0, 0, 800, 2380, 'farback');
         //
         // this.game.time.slowMotion = 1;

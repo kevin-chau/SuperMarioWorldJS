@@ -49,5 +49,7 @@ export default class Menu extends Phaser.State {
         // this.menuPanel.add(this.start);
         //
         // this.music.loopFull();
+
+        this.state.start('Play');
     }
 }
