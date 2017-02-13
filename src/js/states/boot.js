@@ -1,4 +1,5 @@
 import constants from '../objects/constants';
+import GAME from '../game';
 
 export default class Boot extends Phaser.State {
 
@@ -11,6 +12,7 @@ export default class Boot extends Phaser.State {
         this.scale.setUserScale(2, 2);
 
         // enable crisp rendering
+        GAME.renderer.renderSession.roundPixels = true;
         Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)
 
         // Bounds

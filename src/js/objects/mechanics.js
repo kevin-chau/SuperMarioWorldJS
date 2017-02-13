@@ -106,7 +106,7 @@ mechanics.updateMechanics = function (player){
   // Coin collisions
   // GAME.physics.arcade.collide(coins, GAME.platforms);
   // GAME.physics.arcade.overlap(player, coins, collectCoin, null, this);
-  
+
   GAME.physics.arcade.collide(player, GAME.tilesGroup);
   GAME.physics.arcade.collide(player, GAME.blocksGroup);
 }

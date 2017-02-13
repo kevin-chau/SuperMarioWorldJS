@@ -17,20 +17,20 @@ function buildYoshisIsland1() {
     GAME.add.sprite(i*512, 0, 'sky');
   }
 
-  var platforms = GAME.add.group();
-	platforms.enableBody = true;
-	var groundTilesGroup = GAME.add.group();
-	groundTilesGroup.enableBody = true;
-	var tilesGroup = GAME.add.group();
-	tilesGroup.enableBody = true;
-  var blocksGroup = GAME.add.group();
-	blocksGroup.enableBody = true;
+  GAME.platforms = GAME.add.group();
+	GAME.platforms.enableBody = true;
+	GAME.groundTilesGroup = GAME.add.group();
+	GAME.groundTilesGroup.enableBody = true;
+	GAME.tilesGroup = GAME.add.group();
+	GAME.tilesGroup.enableBody = true;
+  GAME.blocksGroup = GAME.add.group();
+	GAME.blocksGroup.enableBody = true;
 
   // Background Objects
   createBushes();
 
   // First Ground Platform
-  createGround(0,59, groundTilesGroup);
+  createGround(0,59, GAME.groundTilesGroup);
 
   // createElevatedGround(59,72,4);
 
@@ -58,12 +58,12 @@ function buildYoshisIsland1() {
   // createGround(292,320);
   //
   //
-  // // Ledges
-  // ledges = GAME.add.group();
-  // createLedge(176);
-  // createLedge(1200);
-  // createLedge(1264);
-  // createLedge(1328);
+  // Ledges
+  var ledges = GAME.add.group();
+  createLedge(176, ledges);
+  createLedge(1200, ledges);
+  createLedge(1264, ledges);
+  createLedge(1328, ledges);
   //
   // createPipes();
   //
@@ -287,9 +287,9 @@ function createBlocks(){
   block.body.immovable = true;
 }
 
-function createLedge(x){
-  ledge = ledges.create(x, MAP_HEIGHT - 144, 'background-objects',23);
-  ledge = ledges.create(x+4, MAP_HEIGHT - 92, 'background-objects',28);
+function createLedge(x, group){
+  var ledge = group.create(x, MAP_HEIGHT - 144, 'background-objects',23);
+  var ledge = group.create(x+4, MAP_HEIGHT - 92, 'background-objects',28);
 }
 
 function createElevatedGround(x1,x2,y){
@@ -382,7 +382,7 @@ function createBushes() {
 }
 
 function createBush(x,y,frame) {
-  // var bush = GAME.add.sprite(x, y, 'background-objects',frame);
+  var bush = GAME.add.sprite(x, y, 'background-objects',frame);
 }
 
 function buildSlopes() {
