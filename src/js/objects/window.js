@@ -3,8 +3,8 @@ import GAME from '../game';
 
 function resizeGame() {
     var size = {
-        width: window.innerWidth / 1.05,
-        height: constants.MAP_HEIGHT
+        width: window.innerWidth / 2.05,
+        height: constants.SNES_HEIGHT
     };
     GAME.width = size.width;
     GAME.height = size.height;
