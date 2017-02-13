@@ -24,6 +24,7 @@ function createPlayer() {
   player.animations.add('run', [15,14], 16, true);
   player.animations.add('spin', [20,21,14], 20, true);
 
+  player.hitPlatform = false;
   player.jumptimeStart = -1
   player.jumpType = 0;
 

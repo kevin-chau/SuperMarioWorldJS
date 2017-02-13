@@ -113,7 +113,8 @@ mechanics.updateMechanics = function (player){
 
 mechanics.spin = function (player) {
 	player.jumpType = 2;
-	if (player.body.touching.down && player.hitPlatform)
+  console.log(player.hitPlatform);
+	if (player.hitPlatform)
 	 {
 			 player.jumptimeStart = GAME.time.time;
 			 player.body.velocity.y = -200;
@@ -124,7 +125,8 @@ mechanics.spin = function (player) {
 
 mechanics.jump = function (player) {
 	player.jumpType = 1;
-	if (player.body.touching.down && player.hitPlatform)
+  console.log(player.hitPlatform);
+	if (player.hitPlatform)
 	 {
 			 player.jumptimeStart = GAME.time.time;
 			 player.body.velocity.y = -250;
