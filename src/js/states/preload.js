@@ -15,8 +15,8 @@ export default class Preload extends Phaser.State {
       this.load.atlasJSONArray('pipes', 'assets/images/pipes/pipes.png', 'assets/images/pipes/pipes.json');
 
       // Music
-    	this.load.audio('Overworld Theme Intro', 'assets/audio/music/mpi.wav');
-      this.load.audio('Overworld Theme', 'assets/audio/music/mp.wav');
+    	this.load.audio('Overworld Theme Intro', 'assets/audio/music/mpi.mp3');
+      this.load.audio('Overworld Theme', 'assets/audio/music/mp.mp3');
 
     	// Sound Effects
     	this.load.audio('Jump Wav', 'assets/audio/effects/jump.wav');

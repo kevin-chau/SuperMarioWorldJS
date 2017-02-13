@@ -70,7 +70,7 @@ function clean() {
  */
 function copyStatic() {
     if (!isProduction()) {
-      return gulp.src(STATIC_PATH + '/**/*')
+      gulp.src(STATIC_PATH + '/**/*')
           .pipe(gulp.dest(BUILD_PATH));
     } else {
       // Don't copy JSON or PNG from image assets
