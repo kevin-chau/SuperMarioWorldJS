@@ -6,6 +6,7 @@ var mechanics = {};
 
 mechanics.updateMechanics = function (player){
   player.body.height = player.height;
+
   player.touchGroundTile = GAME.physics.arcade.collide(player, GAME.groundTilesGroup);
   player.onSlope = GAME.physics.arcade.collide(player, GAME.groundSlope);
   player.touchPlatform = GAME.physics.arcade.collide(player, GAME.platforms);
@@ -84,8 +85,6 @@ mechanics.updateMechanics = function (player){
         player.frame = 14;
     }
   }
-
-
 
   if (player.jumpType === 1){
     if (player.body.velocity.y < 0) {

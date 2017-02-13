@@ -5,7 +5,7 @@ var sound = {};
 sound.createSound = function() {
   // Music
   var music = GAME.add.audio('Overworld Theme');
-  music.play();
+  // music.play();
 
   // Sound effects
   sound.jumpSFX = GAME.add.audio('Jump Wav');

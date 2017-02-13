@@ -63,9 +63,9 @@ map.buildYoshisIsland1 = function () {
   // Ledges
   GAME.ledges = GAME.add.group();
   createLedge(176);
-  createLedge(1200);
-  createLedge(1264);
-  createLedge(1328);
+  for (var j = 0; j < 3; j++){
+      createLedge(1200 + j * 64);
+  }
 
   createPipes();
 
@@ -76,10 +76,9 @@ map.buildYoshisIsland1 = function () {
 
 function createPlatforms() {
   var tile = GAME.add.sprite(2784, MAP_HEIGHT - 64, 'groundTiles', 175);
-  tile = GAME.add.sprite(2784, MAP_HEIGHT - 80, 'groundTiles', 175);
-  tile = GAME.add.sprite(2784, MAP_HEIGHT - 96, 'groundTiles', 175);
-  tile = GAME.add.sprite(2784, MAP_HEIGHT - 112, 'groundTiles', 175);
-  tile = GAME.add.sprite(2784, MAP_HEIGHT - 128, 'groundTiles', 175);
+  for (var i = 0; i < 4; i++){
+    tile = GAME.add.sprite(2784, MAP_HEIGHT - (80 + i * 16), 'groundTiles', 175);
+  }
   tile = GAME.add.sprite(2848, MAP_HEIGHT - 112, 'groundTiles', 177);
   tile = GAME.add.sprite(2848, MAP_HEIGHT - 128, 'groundTiles', 177);
 

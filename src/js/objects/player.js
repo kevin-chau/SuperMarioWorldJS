@@ -3,7 +3,7 @@ import GAME from '../game';
 var player = {};
 
 player.createPlayer = function () {
-  var player = GAME.add.sprite(24, GAME.world.height - 50, 'mario');
+  var player = GAME.add.sprite(2784, GAME.world.height - 50, 'mario');
   GAME.physics.arcade.enable(player);
   player.body.bounce.y = 0;
   player.body.gravity.y = 1000;

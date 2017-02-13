@@ -1,7 +1,9 @@
 import constants from './constants';
 import GAME from '../game';
 
-function resizeGame() {
+var resize = {}
+
+resize.resizeGame = function () {
     var size = {
         width: window.innerWidth / 2.05,
         height: constants.SNES_HEIGHT
@@ -17,4 +19,4 @@ function resizeGame() {
     GAME.camera.setBoundsToWorld();
 }
 
-export default resizeGame;
+export default resize;
