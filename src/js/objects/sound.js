@@ -4,6 +4,10 @@ import constants from './constants'
 var sound = {};
 
 sound.createSound = function() {
+  // Intro
+  var intro = GAME.add.audio('Overworld Theme Intro');
+  intro.play();
+
   // Music
   var music = GAME.add.audio('Overworld Theme');
   if (constants.MUSIC_ON){
