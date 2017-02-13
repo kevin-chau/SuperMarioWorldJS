@@ -12,55 +12,44 @@ Play with the Monokai Color Palette: <a href="https://kevinchau321.github.io/Sub
 
 # Controls
 * Keyboard Mapping:
+  * ARROW KEYS - Left, Right, Up, Down
+  * A - Hold to Run
   * S - Jump
   * D - Spin Jump
-  * ARROW KEYS - Left, Right, Up, Down
   * M - Toggle Mute
 
 
 # Installing
-This project uses `node` and `npm` to get up and running:
+SuperMarioWorldJS uses `node` and `npm` to get up and running:
 
     git clone https://github.com/kevinchau321/SuperMarioWorldJS.git
     cd SuperMarioWorldJS
     npm install
 
 # Running
-This project uses `grunt connect` to run the web server behind Phaser. If you don't have the grunt command line interface you can install it with `npm`:
+To start the server, simply run :
 
-    npm install -g grunt-cli
+    npm start
 
-To start the server, simply run `grunt`:
+By default the port will be set to 3000 so go to the following URL in your browser:
 
-    grunt
-
-This will start the grunt web server as well as a `watch` task.
-If you want to run just the server without the watch task, use:
-
-    grunt:server:keepalive
-
-By default the port will be set to 8888 so go to the following URL in your browser:
-
-    http://localhost:8888
+    http://localhost:3000
 
 That's it to start playing!
-You can change the port in `Gruntfile.js`
 
 # Building
-This project uses `grunt` to build and minify the source code via UglifyJS2.
+This project uses `gulp` to build and minify the source code via UglifyJS2.
 To build the project, run:
 
-    grunt build
+    npm run production
 
-This will place a file called `super-mario-world-js.min.js` in your `build/` folder.
+This will copy uglified and minified scripts to the `build/` folder.
 
-Alternatively, just run:
+It will also a `watch` task that continuously monitors the source files and will automatically trigger a build process and browser refresh if anything changes.
 
-    grunt
+To clean the build folder:
 
-This will start the web server as well as a `watch` task that continuously monitors the source files and will automatically trigger the build process if anything changes. If you want to start the `watch` task only, run:
-
-    grunt watch
+    gulp clean
 
 # TO-DO:
   * Score
@@ -108,8 +97,6 @@ This will start the web server as well as a `watch` task that continuously monit
     * Varying sprite width (getting stuck on walls)
 
   * Code:
-    * ES6
     * quantpng gulp task
-    * Rewrite README
 
   * Enum sprite frames, jumptype
