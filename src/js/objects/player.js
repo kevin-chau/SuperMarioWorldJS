@@ -1,6 +1,8 @@
 import GAME from '../game';
 
-function createPlayer() {
+var player = {};
+
+player.createPlayer = function () {
   var player = GAME.add.sprite(24, GAME.world.height - 50, 'mario');
   GAME.physics.arcade.enable(player);
   player.body.bounce.y = 0;
@@ -30,7 +32,7 @@ function createPlayer() {
 
   player.body.drag.setTo(250,0);
 
-  return player;
+  GAME.player = player;
 }
 
-export default createPlayer;
+export default player;

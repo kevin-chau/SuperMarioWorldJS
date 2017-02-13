@@ -1,5 +1,6 @@
 import GAME from '../game';
 import controls from './controls';
+import sound from './sound'
 
 var mechanics = {};
 
@@ -111,26 +112,24 @@ mechanics.updateMechanics = function (player){
   GAME.physics.arcade.collide(player, GAME.blocksGroup);
 }
 
-mechanics.spin = function (player) {
-	player.jumpType = 2;
-  console.log(player.hitPlatform);
-	if (player.hitPlatform)
+mechanics.spin = function () {
+	GAME.player.jumpType = 2;
+	if (GAME.player.body.touching.down && GAME.player.hitPlatform)
 	 {
-			 player.jumptimeStart = GAME.time.time;
-			 player.body.velocity.y = -200;
-			 spinSFX.play();
-			 player.animations.play('spin');
+			 GAME.player.jumptimeStart = GAME.time.time;
+			 GAME.player.body.velocity.y = -200;
+			 sound.spinSFX.play();
+			 GAME.player.animations.play('spin');
 	 }
 }
 
-mechanics.jump = function (player) {
-	player.jumpType = 1;
-  console.log(player.hitPlatform);
-	if (player.hitPlatform)
+mechanics.jump = function () {
+	GAME.player.jumpType = 1;
+	if (GAME.player.body.touching.down && GAME.player.hitPlatform)
 	 {
-			 player.jumptimeStart = GAME.time.time;
-			 player.body.velocity.y = -250;
-			 jumpSFX.play();
+			 GAME.player.jumptimeStart = GAME.time.time;
+			 GAME.player.body.velocity.y = -250;
+			 sound.jumpSFX.play();
 	 }
 }
 

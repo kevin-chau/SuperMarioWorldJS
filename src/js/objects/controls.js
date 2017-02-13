@@ -20,7 +20,7 @@ controls.createControls = function () {
 }
 
 controls.mute = function () {
-	GAME.sound.mute = !game.sound.mute;
+	GAME.sound.mute = !GAME.sound.mute;
 }
 
 export default controls;

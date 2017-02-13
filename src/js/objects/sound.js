@@ -1,10 +1,16 @@
-function createSound() {
+import GAME from '../game';
+
+var sound = {};
+
+sound.createSound = function() {
   // Music
-  music = game.add.audio('Overworld Theme');
-  // music.play();
+  var music = GAME.add.audio('Overworld Theme');
+  music.play();
 
   // Sound effects
-  jumpSFX = game.add.audio('Jump Wav');
-  coinSFX = game.add.audio('Coin Wav');
-  spinSFX = game.add.audio('Spin Wav');
+  sound.jumpSFX = GAME.add.audio('Jump Wav');
+  sound.coinSFX = GAME.add.audio('Coin Wav');
+  sound.spinSFX = GAME.add.audio('Spin Wav');
 }
+
+export default sound;

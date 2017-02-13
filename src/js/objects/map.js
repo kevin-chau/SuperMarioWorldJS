@@ -1,13 +1,15 @@
 import GAME from '../game';
 import constants from './constants';
 
+var map = {};
+
 var MAP_HEIGHT = constants.MAP_HEIGHT;
 
 var MAP_HEIGHT_16 = 416;
 var MAP_HEIGHT_32 = 400;
 var MAP_HEIGHT_48 = 384;
 
-function buildYoshisIsland1() {
+map.buildYoshisIsland1 = function () {
 
   // SLOPES
   buildSlopes();
@@ -430,4 +432,4 @@ function buildSlopes() {
 		this, 0, 0, GAME.mapSlope.width, GAME.mapSlope.height, 0);
 }
 
-export default buildYoshisIsland1;
+export default map;

@@ -1,11 +1,10 @@
-import buildYoshisIsland1 from '../objects/YoshisIsland1';
-import createPlayer from '../objects/player';
-import configCamera from '../objects/camera';
+import map from '../objects/map';
+import player from '../objects/player';
+import camera from '../objects/camera';
 import controls from '../objects/controls';
+import sound from '../objects/sound';
 import mechanics from '../objects/mechanics';
-
-var player;
-var score = 0;
+import GAME from '../game';
 
 export default class Play extends Phaser.State {
 
@@ -13,17 +12,17 @@ export default class Play extends Phaser.State {
         /****************************************
       		MAP
       	****************************************/
-      	buildYoshisIsland1();
+      	map.buildYoshisIsland1();
 
       	/****************************************
       		AUDIO
       	****************************************/
-      	// createSound();
+      	sound.createSound();
 
       	/*****************************************
       		PLAYER
       	*****************************************/
-      	player = createPlayer();
+      	player.createPlayer();
 
       	/*****************************************
       		Coins
@@ -43,11 +42,11 @@ export default class Play extends Phaser.State {
       	/****************************************
       		CAMERA
       	****************************************/
-      	configCamera(player);
+      	camera.configCamera(GAME.player);
 
     }
 
     update() {
-      	mechanics.updateMechanics(player);
+      	mechanics.updateMechanics(GAME.player);
     }
 }
