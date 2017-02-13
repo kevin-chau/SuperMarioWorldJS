@@ -22,7 +22,7 @@ var SOURCE_PATH = './src';
 var LIB_PATH = './src/js/lib';
 var STATIC_PATH = './static';
 var ENTRY_FILE = SOURCE_PATH + '/js/game.js';
-var OUTPUT_FILE = 'game.js';
+var OUTPUT_FILE = 'game.min.js';
 
 var keepFiles = false;
 

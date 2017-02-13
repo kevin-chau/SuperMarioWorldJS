@@ -2,7 +2,7 @@
 Super Mario World built with Phaser.
 
 <p align="center">
-  <img src="static/screenshots/screenshots/1.png?raw=true" alt="Screenshot"/>
+  <img src="static/screenshots/1.png?raw=true" alt="Screenshot"/>
 </p>
 
 # Demo
