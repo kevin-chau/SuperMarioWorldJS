@@ -54,3 +54,6 @@ NOTE: You *must* clean the build directory before running `npm start` or `npm ru
 
 # Phaser Debug
 You can monitor frame rate and other Phaser stats by turning on the Phaser Debug plugin. In `src/js/objects/constants.js`, change `DEBUG_ON: false` to `DEBUG_ON: true`.
+
+# To Do List
+<a href="https://gist.github.com/kevinchau321/174ee60362ddf2782fcae5931d6e2ec1"> gist </a>
