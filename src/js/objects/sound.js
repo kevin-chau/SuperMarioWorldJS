@@ -1,11 +1,14 @@
 import GAME from '../game';
+import constants from './constants'
 
 var sound = {};
 
 sound.createSound = function() {
   // Music
   var music = GAME.add.audio('Overworld Theme');
-  // music.play();
+  if (constants.MUSIC_ON){
+      music.play();
+  }
 
   // Sound effects
   sound.jumpSFX = GAME.add.audio('Jump Wav');

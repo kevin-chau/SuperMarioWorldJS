@@ -358,6 +358,11 @@ function createGround(x1, x2){
 function createGroundTile(x,y,frame){
   var tile = GAME.groundTilesGroup.create(x, y, 'groundTiles',frame);
   tile.body.immovable = true;
+  // if (frame === 84){
+  //   tile.body.checkCollision.down = false;
+  //   tile.body.checkCollision.left = false;
+  //   tile.body.checkCollision.right = false;
+  // }
 }
 
 function createTile(x,y,frame){

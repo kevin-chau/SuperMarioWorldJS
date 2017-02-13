@@ -25,7 +25,9 @@ export default class Boot extends Phaser.State {
         this.game.add.plugin(Phaser.Plugin.ArcadeSlopes);
 
         // Debug
-        // this.game.add.plugin(Phaser.Plugin.Debug);
+        if (constants.DEBUG_ON){
+          this.game.add.plugin(Phaser.Plugin.Debug);
+        }
 
         // Start Prelod State
         this.state.start('Preload');
