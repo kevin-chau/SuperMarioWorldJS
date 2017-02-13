@@ -50,13 +50,7 @@ To clean the build folder:
 
     gulp clean
 
-You should clean the build folder every time before using `npm run` or `npm start`:
-
-    gulp clean && npm start
-
-OR
-
-    gulp clean && npm run production
+NOTE: You *must* clean the build directory before running `npm start` or `npm run production` every-time.
 
 
 # TO-DO:
