@@ -95,6 +95,7 @@ To clean the build folder:
     * stuck in inside Corner
     * getting stuck on walls
     * slope corners
+    * jumping on slopes more accurate
 
   * Code:
     * quantpng gulp task

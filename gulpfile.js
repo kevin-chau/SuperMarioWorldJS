@@ -12,6 +12,7 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var pngquant = require('gulp-pngquant');
+var jsonminify = require('gulp-jsonminify');
 
 /**
  * Using different folders/file names? Change these constants:
@@ -71,9 +72,13 @@ function copyStatic() {
       return gulp.src(STATIC_PATH + '/**/*')
           .pipe(gulp.dest(BUILD_PATH));
     } else {
-      // Only Copy JSON from image assets
-      gulp.src([STATIC_PATH + '/**/*', '!./static/assets/images/**/*.png', '!./static/assets/images'])
+      // Don't copy JSON or PNG from image assets
+      gulp.src([STATIC_PATH + '/**/*', '!./static/assets/images/**/*', '!./static/assets/images'])
           .pipe(gulp.dest(BUILD_PATH));
+
+      gulp.src([STATIC_PATH + '/assets/images/**/*.json'])
+        .pipe(jsonminify())
+        .pipe(gulp.dest(BUILD_PATH + '/assets/images'));
 
       // Compress images
       gulp.src(STATIC_PATH + '/assets/images/**/*.png')
