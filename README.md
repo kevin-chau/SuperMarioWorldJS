@@ -45,7 +45,7 @@ To build the project, run:
 
 This will copy uglified and minified scripts to the `build/` folder.
 
-It will also a `watch` task that continuously monitors the source files and will automatically trigger a build process and browser refresh if anything changes.
+It will also run a `watch` task that continuously monitors the source files and automatically triggers a build process and browser refresh if anything changes.
 
 To clean the build folder:
 
@@ -93,10 +93,14 @@ To clean the build folder:
   * Bugs:
     * Double jump (really fast button mashing)
     * stuck in inside Corner
-    * can't jump under slope platform
-    * Varying sprite width (getting stuck on walls)
+    * getting stuck on walls
+    * slope corners
 
   * Code:
     * quantpng gulp task
+    * gulp-jsonminify
+    * refactor yoshi island map
+    * enemies
+    * music wav files
 
   * Enum sprite frames, jumptype

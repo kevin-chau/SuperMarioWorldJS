@@ -11,6 +11,7 @@ var exorcist = require('exorcist');
 var babelify = require('babelify');
 var browserify = require('browserify');
 var browserSync = require('browser-sync');
+var pngquant = require('gulp-pngquant');
 
 /**
  * Using different folders/file names? Change these constants:
@@ -25,6 +26,7 @@ var ENTRY_FILE = SOURCE_PATH + '/js/game.js';
 var OUTPUT_FILE = 'game.min.js';
 
 var keepFiles = false;
+
 
 /**
  * Simple way to check for development/production mode.
@@ -65,8 +67,22 @@ function clean() {
  * Check out README.md for more info on the '/static' folder.
  */
 function copyStatic() {
-    return gulp.src(STATIC_PATH + '/**/*')
-        .pipe(gulp.dest(BUILD_PATH));
+    if (!isProduction()) {
+      return gulp.src(STATIC_PATH + '/**/*')
+          .pipe(gulp.dest(BUILD_PATH));
+    } else {
+      // Only Copy JSON from image assets
+      gulp.src([STATIC_PATH + '/**/*', '!./static/assets/images/**/*.png', '!./static/assets/images'])
+          .pipe(gulp.dest(BUILD_PATH));
+
+      // Compress images
+      gulp.src(STATIC_PATH + '/assets/images/**/*.png')
+          .pipe(pngquant({
+              quality: '65-80'
+          }))
+          .pipe(gulp.dest(BUILD_PATH + '/assets/images'));
+    }
+    return
 }
 
 /**

@@ -74,6 +74,12 @@ map.buildYoshisIsland1 = function () {
   createPlatforms();
 }
 
+function oneWayCollision(platformBody){
+  platformBody.checkCollision.down = false;
+  platformBody.checkCollision.left = false;
+  platformBody.checkCollision.right = false;
+}
+
 function createPlatforms() {
   var tile = GAME.add.sprite(2784, MAP_HEIGHT - 64, 'groundTiles', 175);
   for (var i = 0; i < 4; i++){
@@ -88,20 +94,29 @@ function createPlatforms() {
   tile = GAME.add.sprite(2880, MAP_HEIGHT - 80, 'groundTiles', 177);
 
   tile = GAME.add.sprite(2832, MAP_HEIGHT - 160, 'groundTiles', 175);
+
   var platform = GAME.platforms.create(2880, MAP_HEIGHT - 96, 'groundTiles', 109);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2832, MAP_HEIGHT - 96, 'groundTiles', 109);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2832, MAP_HEIGHT - 176, 'groundTiles', 151);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2848, MAP_HEIGHT - 176, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2864, MAP_HEIGHT - 176, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2880, MAP_HEIGHT - 176, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2896, MAP_HEIGHT - 176, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
+  platform.body.checkCollision.right = true;
 
   // Slope
   platform = GAME.add.sprite(2912, MAP_HEIGHT - 176, 'groundTiles', 30);
@@ -119,32 +134,46 @@ function createPlatforms() {
   // End
   platform = GAME.platforms.create(3008, MAP_HEIGHT - 80, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(3024, MAP_HEIGHT - 80, 'groundTiles', 153);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(3024, MAP_HEIGHT - 64, 'groundTiles', 177);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
+  platform.body.checkCollision.up = false;
 
   platform = GAME.platforms.create(2784, MAP_HEIGHT - 144, 'groundTiles', 151);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2800, MAP_HEIGHT - 144, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2816, MAP_HEIGHT - 144, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2832, MAP_HEIGHT - 144, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2848, MAP_HEIGHT - 144, 'groundTiles', 109);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2848, MAP_HEIGHT - 144, 'groundTiles', 153);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
 
   platform = GAME.platforms.create(2832, MAP_HEIGHT - 96, 'groundTiles', 151);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2848, MAP_HEIGHT - 96, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2864, MAP_HEIGHT - 96, 'groundTiles', 152);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
   platform = GAME.platforms.create(2880, MAP_HEIGHT - 96, 'groundTiles', 153);
   platform.body.immovable = true;
+  oneWayCollision(platform.body);
 
   // Filler Tiles
   tile = GAME.add.sprite(3008, MAP_HEIGHT - 64, 'groundTiles', 109);
@@ -358,11 +387,6 @@ function createGround(x1, x2){
 function createGroundTile(x,y,frame){
   var tile = GAME.groundTilesGroup.create(x, y, 'groundTiles',frame);
   tile.body.immovable = true;
-  // if (frame === 84){
-  //   tile.body.checkCollision.down = false;
-  //   tile.body.checkCollision.left = false;
-  //   tile.body.checkCollision.right = false;
-  // }
 }
 
 function createTile(x,y,frame){
