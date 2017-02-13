@@ -5,10 +5,10 @@ Super Mario World built with Phaser.
   <img src="static/screenshots/1.png?raw=true" alt="Screenshot"/>
 </p>
 
+Featuring ES6, Node.js, Gulp, Browserify, Babel, and Browsersync.
+
 # Demo
 Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJS/">github.io/SuperMarioWorldJS</a>
-
-Play with the Monokai Color Palette: <a href="https://kevinchau321.github.io/SublimeMarioWorldJS/">github.io/SublimeMarioWorldJS</a>
 
 # Controls
 * Keyboard Mapping:
@@ -18,7 +18,6 @@ Play with the Monokai Color Palette: <a href="https://kevinchau321.github.io/Sub
   * D - Spin Jump
   * M - Toggle Mute
 
-
 # Installing
 SuperMarioWorldJS uses `node` and `npm` to get up and running:
 
@@ -27,7 +26,7 @@ SuperMarioWorldJS uses `node` and `npm` to get up and running:
     npm install
 
 # Running
-To start the server, simply run :
+To start a development server, simply run :
 
     npm start
 
@@ -37,15 +36,15 @@ By default the port will be set to 3000 so go to the following URL in your brows
 
 That's it to start playing!
 
+`npm start` will also run a `watch` task that continuously monitors the `src` and `static` directories, automatically triggering a build process and browser refresh if anything changes.
+
 # Building
-This project uses `gulp` to build and minify the source code via UglifyJS2.
+SuperMarioWorldJS uses `gulp` to build and minify the source code via `UglifyJS`.
 To build the project, run:
 
     npm run production
 
-This will copy uglified and minified scripts to the `build/` folder.
-
-It will also run a `watch` task that continuously monitors the source files and automatically triggers a build process and browser refresh if anything changes.
+This will copy the minified scripts to the `build/` folder. Additionally, asset images will be copied with lossy compression using `pngquant` and JSON atlases will be minified using `JSON.minify`.
 
 To clean the build folder:
 
@@ -98,10 +97,8 @@ To clean the build folder:
     * jumping on slopes more accurate
 
   * Code:
-    * quantpng gulp task
-    * gulp-jsonminify
+    * speed up production build
     * refactor yoshi island map
     * enemies
-    * music wav files
-
-  * Enum sprite frames, jumptype
+    * synchronous music files
+    * Enum sprite frames, jumptype
