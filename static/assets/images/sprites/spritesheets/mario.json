@@ -190,12 +190,12 @@
          }
       },
       {
-         "filename":"sprite10",
+         "filename":"sprite10 - Looking Up",
          "frame":{
             "x":320,
             "y":9,
             "w":16,
-            "h":21
+            "h":20
          },
          "rotated":false,
          "trimmed":false,
@@ -203,11 +203,11 @@
             "x":0,
             "y":0,
             "w":16,
-            "h":21
+            "h":20
          },
          "sourceSize":{
             "w":16,
-            "h":21
+            "h":20
          }
       },
       {
@@ -1030,12 +1030,12 @@
          }
       },
       {
-         "filename":"sprite50",
+         "filename":"sprite50 - Crouching",
          "frame":{
             "x":167,
             "y":16,
             "w":16,
-            "h":14
+            "h":13
          },
          "rotated":false,
          "trimmed":false,
@@ -1043,11 +1043,11 @@
             "x":0,
             "y":0,
             "w":16,
-            "h":14
+            "h":13
          },
          "sourceSize":{
             "w":16,
-            "h":14
+            "h":13
          }
       },
       {
