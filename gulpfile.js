@@ -77,6 +77,7 @@ function copyStatic() {
       gulp.src([STATIC_PATH + '/**/*', '!./static/assets/images/**/*', '!./static/assets/images'])
           .pipe(gulp.dest(BUILD_PATH));
 
+      // Minify JSON
       gulp.src([STATIC_PATH + '/assets/images/**/*.json'])
         .pipe(jsonminify())
         .pipe(gulp.dest(BUILD_PATH + '/assets/images'));

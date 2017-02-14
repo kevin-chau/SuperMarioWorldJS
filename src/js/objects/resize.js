@@ -5,7 +5,7 @@ var resize = {}
 
 resize.resizeGame = function () {
     var size = {
-        width: window.innerWidth / 2.05,
+        width: window.innerWidth / constants.RESIZE_FACTOR,
         height: constants.SNES_HEIGHT
     };
     GAME.width = size.width;

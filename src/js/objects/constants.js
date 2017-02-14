@@ -11,7 +11,9 @@ var constants = {
 
   DEBUG_ON: false,
 
-  MUSIC_ON: false
+  MUSIC_ON: false,
+
+  RESIZE_FACTOR: 2.1
 };
 
 export default constants;

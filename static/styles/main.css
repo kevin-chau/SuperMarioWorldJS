@@ -1,5 +1,4 @@
 body {
-  background-color: black;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size:cover;
@@ -9,20 +8,13 @@ body {
 
 canvas
 {
-    background: #fffff;
-    border: 3px solid black;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    padding-right: 0;
     display: block;
+    margin: auto;
+    border: 2px solid black;
 }
 
-.ghbuttoncontainer {
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  width: 100%;
+#github-button-container {
+   text-align: center;
+   position:relative;
+   margin-top: 10px;
 }

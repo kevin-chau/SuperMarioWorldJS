@@ -13,7 +13,7 @@ export default class Boot extends Phaser.State {
 
         // enable crisp rendering
         GAME.renderer.renderSession.roundPixels = true;
-        Phaser.Canvas.setImageRenderingCrisp(this.game.canvas)
+        Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
         // Bounds
         this.world.setBounds(0, 0, constants.MAP_WIDTH, constants.MAP_HEIGHT);

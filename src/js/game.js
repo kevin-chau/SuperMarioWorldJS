@@ -2,7 +2,7 @@ import * as states from './states';
 import resize from './objects/resize';
 import constants from './objects/constants';
 
-var GAME = new Phaser.Game(window.innerWidth/2.05, constants.SNES_HEIGHT, Phaser.WEBGL);
+var GAME = new Phaser.Game(window.innerWidth/constants.RESIZE_FACTOR, constants.SNES_HEIGHT, Phaser.WEBGL, 'phaser-window');
 GAME.antialias = false;
 
 Object.keys(states).forEach(state => GAME.state.add(state, states[state]));
