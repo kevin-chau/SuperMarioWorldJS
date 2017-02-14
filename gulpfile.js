@@ -82,13 +82,12 @@ function copyStatic() {
         .pipe(gulp.dest(BUILD_PATH + '/assets/images'));
 
       // Compress images
-      gulp.src(STATIC_PATH + '/assets/images/**/*.png')
+      return gulp.src(STATIC_PATH + '/assets/images/**/*.png')
           .pipe(imagemin({
             use: [pngquant()]
         }))
           .pipe(gulp.dest(BUILD_PATH + '/assets/images'));
     }
-    return
 }
 
 /**
