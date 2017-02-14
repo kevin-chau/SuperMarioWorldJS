@@ -2,7 +2,7 @@
 Super Mario World built with Phaser.
 
 <p align="center">
-  <img src="static/screenshots/1.png?raw=true" alt="Screenshot" style="width: 100%;"/>
+  <img src="static/screenshots/1.png?raw=true" alt="Screenshot" width="100%"/>
 </p>
 
 Featuring ES6, Node.js, Gulp, Browserify, Babel, and Browsersync.
