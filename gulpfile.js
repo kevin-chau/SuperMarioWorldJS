@@ -22,10 +22,10 @@ var PHASER_PATH = './node_modules/phaser/build/';
 var BUILD_PATH = './build';
 var SCRIPTS_PATH = BUILD_PATH + '/scripts';
 var SOURCE_PATH = './src';
-var LIB_PATH = './src/js/lib';
 var STATIC_PATH = './static';
 var ENTRY_FILE = SOURCE_PATH + '/js/game.js';
 var OUTPUT_FILE = 'game.min.js';
+var LIB_PATH = SOURCE_PATH + '/js/lib';
 
 var keepFiles = false;
 
@@ -70,7 +70,7 @@ function clean() {
  */
 function copyStatic() {
     if (!isProduction()) {
-      gulp.src(STATIC_PATH + '/**/*')
+      return gulp.src(STATIC_PATH + '/**/*')
           .pipe(gulp.dest(BUILD_PATH));
     } else {
       // Don't copy JSON or PNG from image assets

@@ -2,7 +2,7 @@
   "name": "super-mario-world-js",
   "version": "0.0.1",
   "description": "Super Mario World built with Phaser JS",
-  "main": "src/index.js",
+  "main": "src/js/game.js",
   "scripts": {
     "start": "gulp",
     "production": "gulp --production"
