@@ -16,7 +16,8 @@ resize.resizeGame = function () {
     GAME.scale.height = size.height;
     GAME.renderer.resize(size.width, size.height);
     GAME.camera.setSize(size.width, size.height);
-    GAME.camera.setBoundsToWorld();
+    GAME.camera.height = constants.SNES_HEIGHT + 16;
+    GAME.camera.follow(GAME.player, Phaser.Camera.FOLLOW_PLATFORMER);
 }
 
 export default resize;

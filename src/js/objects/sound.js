@@ -5,8 +5,8 @@ var sound = {};
 
 sound.createSound = function() {
   // Intro
-  var intro = GAME.add.audio('Overworld Theme Intro');
-  intro.play();
+  // var intro = GAME.add.audio('Overworld Theme Intro');
+  // intro.play();
 
   // Music
   var music = GAME.add.audio('Overworld Theme');

@@ -13,6 +13,7 @@ export default class Preload extends Phaser.State {
       this.load.atlasJSONArray('groundTiles', 'assets/images/tiles/ground.png', 'assets/images/tiles/ground.json');
       this.load.atlasJSONArray('background-objects', 'assets/images/background/background-objects.png', 'assets/images/background/background-objects.json');
       this.load.atlasJSONArray('pipes', 'assets/images/pipes/pipes.png', 'assets/images/pipes/pipes.json');
+      this.load.atlasJSONArray('enemies', 'assets/images/enemies/enemies.png', 'assets/images/enemies/enemies.json');
 
       // Music
     	this.load.audio('Overworld Theme Intro', 'assets/audio/music/mpi.mp3');

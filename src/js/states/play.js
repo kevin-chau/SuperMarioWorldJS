@@ -5,6 +5,7 @@ import controls from '../objects/controls';
 import sound from '../objects/sound';
 import mechanics from '../objects/mechanics';
 import GAME from '../game';
+import enemies from '../objects/enemies';
 
 export default class Play extends Phaser.State {
 
@@ -44,6 +45,7 @@ export default class Play extends Phaser.State {
       	****************************************/
       	camera.configCamera(GAME.player);
 
+        enemies.createEnemies();
     }
 
     update() {

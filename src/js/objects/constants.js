@@ -13,7 +13,9 @@ var constants = {
 
   MUSIC_ON: false,
 
-  RESIZE_FACTOR: 2.1
+  RESIZE_FACTOR: 2.1,
+
+  SCALE: 2
 };
 
 export default constants;

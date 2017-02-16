@@ -9,7 +9,7 @@ export default class Boot extends Phaser.State {
     create() {
         // Scale
         this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-        this.scale.setUserScale(2, 2);
+        this.scale.setUserScale(constants.SCALE, constants.SCALE);
 
         // enable crisp rendering
         GAME.renderer.renderSession.roundPixels = true;
