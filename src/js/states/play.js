@@ -50,5 +50,6 @@ export default class Play extends Phaser.State {
 
     update() {
       	mechanics.updateMechanics(GAME.player);
+        enemies.updateEnemies();
     }
 }

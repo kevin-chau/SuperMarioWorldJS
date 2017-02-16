@@ -5,5 +5,6 @@ export default class enemy {
     this.x = x;
     this.y = y;
     this.sprite = GAME.add.sprite(x, y, 'enemies', frame);
+    this.direction;
   }
 }
