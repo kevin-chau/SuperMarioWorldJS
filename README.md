@@ -1,4 +1,4 @@
-# SuperMarioWorldJS ([Demo](https://kevinchau321.github.io/SuperMarioWorldJS/))
+# SuperMarioWorldJS ([Demo](https://kevin-chau.github.io/SuperMarioWorldJS/))
 Super Mario World built with Phaser.
 
 <p align="center">
@@ -8,7 +8,7 @@ Super Mario World built with Phaser.
 Featuring ES6, Node.js, Gulp, Browserify, Babel, and Browsersync.
 
 # Demo
-Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJS/">github.io/SuperMarioWorldJS</a>
+Play the demo online at <a href="https://kevin-chau.github.io/SuperMarioWorldJS/">github.io/SuperMarioWorldJS</a>
 
 # Controls
 * Keyboard Mapping:
@@ -21,7 +21,7 @@ Play the demo online at <a href="https://kevinchau321.github.io/SuperMarioWorldJ
 # Installing
 SuperMarioWorldJS uses `node` and `npm` to get up and running:
 
-    git clone https://github.com/kevinchau321/SuperMarioWorldJS.git
+    git clone https://github.com/kevin-chau/SuperMarioWorldJS.git
     cd SuperMarioWorldJS
     npm install
 
@@ -54,4 +54,4 @@ To clean the build folder:
 You can monitor frame rate and other Phaser stats by turning on the Phaser Debug plugin. In `src/js/objects/constants.js`, change `DEBUG_ON: false` to `DEBUG_ON: true`.
 
 # To Do List
-<a href="https://gist.github.com/kevinchau321/174ee60362ddf2782fcae5931d6e2ec1"> gist </a>
+<a href="https://gist.github.com/kevin-chau/174ee60362ddf2782fcae5931d6e2ec1"> gist </a>
